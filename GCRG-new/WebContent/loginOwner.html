@@ -1,0 +1,44 @@
+<header>
+	<div class="container">
+		<div class="heading">
+			GCRG
+		</div>
+	</div>
+</header>
+<section>
+	<div class="container">
+		<div class="tab-background">
+			<ul class="nav nav-tabs nav-justified">
+				<li>
+					<a href="#/addOrder">Guest</a>
+				</li>
+				<li class="active">
+					<a>Admin</a>
+				</li>
+			</ul>
+		</div>
+		<div id="content" class="tab-content">
+			<div class="tab-pane active" id="tab-owner">
+				<h2>Login please!</h2>
+				<div class="fields">
+					<form action="#/viewReservation">
+						<div class="field-spacing">
+							Email:
+							<input type="email" required>
+						</div>
+						<div class="field-spacing">
+							Password:
+							<input type="password" required>
+						</div>
+						<div class="field-spacing">
+							<button type="submit" ng-click="login()" class="btn large-btn btn-primary" id="login">
+								Log in
+							</button>
+						</div>
+					</form>
+					<a href="#">Forgot password?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

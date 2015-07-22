@@ -1,0 +1,78 @@
+<header>
+	<div class="container">
+		<div class="heading">
+			GCRG
+		</div>
+	</div>
+</header>
+<section>
+	<div class="container">
+		<div class="tab-background">
+			<ul class="nav nav-tabs nav-justified">
+				<li class="active">
+					<a>Guest</a>
+				</li>
+				<li>
+					<a href="#/loginOwner">Admin</a>
+				</li>
+			</ul>
+		</div>
+		<div id="content" class="tab-content">
+			<div class="tab-pane active" id="tab-guest">
+				<h2>Please make your profile.</h2>
+				<div class="fields">
+					<div class="field-spacing">
+						<form action="#/doneOrder">
+							<div class="field-spacing">
+								<label for="firstName">First Name:</label>
+								<input type="text"
+								ng-model="firstName" required="required" autofocus>
+								<label
+								for="lastName">Last Name:</label>
+								<input type="text"
+								ng-model="lastName" required="required">
+							</div>
+							<div class="field-spacing">
+								<label for="emailId">Email:</label>
+								<input type="email"
+								ng-model="emailId" required="required">
+								<label for="number">Number:</label>
+								<input type="tel" ng-model="phone" required="required">
+							</div>
+							<div class="field-spacing">
+								<label for="date">Date:</label>
+								<input type="date" ng-model="date"
+								required="required">
+								<label for="time">Time:</label>
+								<input
+								type="time" ng-model="time" required="required">
+								<label
+								for="partySize">ID:</label>
+								<input type="number"
+								ng-model="partySize" required="required" max=10 min=1>
+								<label
+								for="occasion">Position:</label>
+								<input type="text"
+								ng-model="occasion" required="required">
+								<button type="submit" ng-click="addCustomer()" class="btn large-btn btn-primary"
+								id="add_customer">
+									Add me
+								</button>
+							</div>
+						</form>
+						<form >
+							<div class="field-spacing">
+								Edit an existing profile? Enter your ID:
+								<input
+								type="text" ng-model="reservationId" required="required">
+								<button type="submit" ng-click="getCustomer()" class="btn large-btn btn-primary">
+									Submit
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

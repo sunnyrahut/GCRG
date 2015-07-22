@@ -1,0 +1,57 @@
+<header>
+	<div class="container">
+		<div class="heading">
+			You are logged in as an admin!
+		</div>
+		<button type="button" ng-click="signOut()" class="btn btn-default navbar-btn">
+			Sign out
+		</button>
+	</div>
+</header>
+<section>
+	<div class="container">
+		<div class="tab-background">
+			<ul class="nav nav-tabs nav-justified">
+				<li>
+					<a href="#/viewReservation">View Users</a>
+				</li>
+				<li>
+					<a href='#/seating'>View User's Statuses</a>
+				</li>
+				<li>
+					<a href='#/addReservation'>Create/Edit User</a>
+				</li>
+				<li>
+					<a href='#/profile'>Profile and Settings</a>
+				</li>
+				<li class="active">
+					<a>Contact List</a>
+				</li>
+			</ul>
+		</div>
+		<div id="content" class="tab-content">
+			<div class="tab-pane active" id="tab-contacts">
+				<h2>Contact List</h2>
+				<div>
+					<input type ="text" ng-model="search" placeholder="Search contacts">
+				</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th ng-click="prop='firstName'; reverse=!reverse;"><i class="fa fa-male"></i> Name</th>
+							<th ng-click="prop='email'; reverse=!reverse;"><i class="fa fa-envelope"></i> Email</th>
+							<th ng-click="prop='phone'; reverse=!reverse;"><i class="fa fa-phone-square"></i> Phone</th>
+						</tr>
+					</thead>
+					<tbody ng-init="prop='name'; reverse=true;">
+						<tr ng-repeat="person in people | filter: search | orderBy:prop:reverse">
+							<td>{{person.firstName}} {{person.lastName}}</td>
+							<td>{{person.email}}</td>
+							<td>{{person.phone}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>

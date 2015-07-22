@@ -1,0 +1,74 @@
+CREATE TABLE people (
+    BOOKING_ID int(11) NOT NULL AUTO_INCREMENT,
+    FIRST_NAME varchar(45) DEFAULT NULL,
+    LAST_NAME varchar(45) DEFAULT NULL,
+    EMAIL varchar(50) DEFAULT NULL,
+    BOOKING_DATE date DEFAULT NULL,
+    BOOKING_TIME time DEFAULT NULL,
+    PHONE varchar(10) DEFAULT NULL,
+    PARTY_SIZE int(2) DEFAULT NULL,
+    OCCASION varchar(50) DEFAULT NULL,
+    PRIMARY KEY (BOOKING_ID)
+)  ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+INSERT INTO people (FIRST_NAME, LAST_NAME, EMAIL, BOOKING_DATE, BOOKING_TIME, PHONE, PARTY_SIZE, OCCASION) VALUES 
+('PENELOPE','GUINESS','PENELOPE.GUINESS@abc.com','2014-06-10','18:03','5556662589',5, 'Birthday party'),
+('SAM','GUINESS','SAM.GUINESS@abc.com','2014-06-20','10:03','5556662589',10, 'Wedding party'),
+('PAUL','GUINESS','PAUL.GUINESS@abc.com','2014-05-10','18:05','5556662589',25, 'Graduation party'),
+('SEAN','GUINESS','SEAN.GUINESS@abc.com','2014-06-25','20:03','5556662589',15, 'Anniversary party'),
+('TOM','GUINESS','TOM.GUINESS@abc.com','2014-06-10','01:03','5556662589',19, 'Birthday party');
+
+CREATE TABLE restaurant_profile(
+ROLE_ID int(2) not null,
+ROLE varchar(15) default null,
+FIRST_NAME varchar(25) default null,
+PHONE varchar(25) default null,
+EMAIL varchar(50) default null,
+PRIMARY KEY(ROLE_ID))
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO restaurant_profile (ROLE_ID, ROLE, FIRST_NAME, PHONE, EMAIL) VALUES 
+(1,'MANAGER','SAM KING','6195556699','sam@gmail.com'),
+(2,'CLERK','SAM KING','6195556699','sam@gmail.com'),
+(3,'RECEPTIONIST','SAM SINGH','6195556699','sam@gmail.com'),
+(4,'LOBBY MANAGER','RAMLAL','6195556699','sam@gmail.com'),
+(5,'WAITER','JOHN','6195556699','sam@gmail.com'),
+(6,'MANAGER','SUNNY','6195556699','sam@gmail.com');
+
+CREATE TABLE login(
+LOGIN_ID varchar(25) not null,
+LOGIN_PASSWORD varchar(25) not null,
+PRIMARY KEY (LOGIN_ID))
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO login(LOGIN_ID, LOGIN_PASSWORD) values
+('sunny@gmail.com','shskvh');
+
+CREATE TABLE assign_table(
+TABLE_NO int(2) not null,
+BOOKING_ID int(2) default null,
+TABLE_STATUS varchar(15) default null,
+SINCE datetime default null,
+PRIMARY KEY (TABLE_NO),
+CONSTRAINT fk FOREIGN KEY (BOOKING_ID) REFERENCES people(BOOKING_ID))
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO assign_table(TABLE_NO, BOOKING_ID, TABLE_STATUS, SINCE) values
+(1,1,'Occupied','2014-03-03 15:05:15'),
+(2,2,'Available','2014-04-04 04:05:15'),
+(3,3,'Occupied','2014-05-05 03:05:15'),
+(4,4,'Occupied','2014-06-06 02:05:15'),
+(5,5,'Occupied','2014-03-03 15:05:15'),
+(6,1,'Available','2014-04-04 04:05:15'),
+(7,2,'Occupied','2014-05-05 03:05:15'),
+(8,3,'Occupied','2014-06-06 02:05:15'),
+(9,4,'Occupied','2014-03-03 15:05:15'),
+(10,5,'Available','2014-04-04 04:05:15');
+
+create table auto_assign(
+ASSIGN varchar(10) default null,
+AUTO boolean default null)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into auto_assign(ASSIGN, AUTO) values
+('Assign', false);

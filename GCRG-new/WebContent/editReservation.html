@@ -1,0 +1,80 @@
+<header>
+	<div class="container">
+		<div class="heading">
+			<i class="fa fa-cutlery"></i> You are logged in as an owner!
+		</div>
+		<button type="button" ng-click="signOut()" class="btn btn-default navbar-btn">
+			Sign out
+		</button>
+	</div>
+</header>
+<section>
+	<div class="container">
+		<div class="tab-background">
+			<ul class="nav nav-tabs nav-justified">
+				<li>
+					<a href="#/viewReservation">View Reservation</a>
+				</li>
+				<li>
+					<a href='#/seating'>View Seating Area</a>
+				</li>
+				<li class="active">
+					<a>Create/Edit Reservation</a>
+				</li>
+				<li>
+					<a href="#/profile">Profile and Settings</a>
+				</li>
+				<li>
+					<a href="#/contacts">Contact List</a>
+				</li>
+			</ul>
+		</div>
+		<div id="content" class="tab-content">
+			<div class="tab-pane active" id="tab-guest">
+				<h2>Update your reservation.</h2>
+				<div class="fields">
+					<div class="field-spacing">
+						<form>
+							<div class="field-spacing">
+								<label for="firstName">First Name:</label>
+								<input type="text"
+								ng-model="firstName" required="required" autofocus>
+								<label
+								for="lastName">Last Name:</label>
+								<input type="text"
+								ng-model="lastName" required="required">
+							</div>
+							<div class="field-spacing">
+								<label for="emailId">Email:</label>
+								<input type="email"
+								ng-model="emailId" required="required">
+								<label for="number">Number:</label>
+								<input type="tel" ng-model="phone" required="required">
+							</div>
+							<div class="field-spacing">
+								<label for="date">Date:</label>
+								<input type="date" ng-model="date"
+								required="required">
+								<label for="time">Time:</label>
+								<input
+								type="time" ng-model="time" required="required">
+								<label
+								for="partySize">Party size:</label>
+								<input type="number"
+								ng-model="partySize" required="required" max=10 min=1>
+								<label
+								for="occasion">Occasion:</label>
+								<input type="text"
+								ng-model="occasion" required="required">
+								<button type="submit" ng-click="updateCustomer()" class="btn large-btn btn-primary"
+								id="add_customer">
+									Update
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

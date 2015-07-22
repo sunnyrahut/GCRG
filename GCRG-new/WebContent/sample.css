@@ -1,0 +1,83 @@
+@media only screen and (min-width: 320px) {
+	.btn {
+		border-radius: 15px;
+		display: inline-block;
+		font-size: 100%;
+	}
+
+	.btn-primary {
+		background-image: linear-gradient(to bottom,#3EFF02 0,rgba(255, 10, 10, 0.83) 100%);
+	}
+
+	.tab-background {
+		background-color: rgba(0, 255, 41, 0.59);
+	}
+
+	body {
+		font-family: 'Lobster Two', cursive;
+		font-size: 175%;
+		font-weight: 100;
+		background-image: url('bkgrnd.jpeg');
+		background-size: cover;
+	}
+
+	h2 {
+		text-shadow: 1px 0px rgba(0, 0, 0, 0.72);
+		font-size: 250%;
+		color: rgb(61, 0, 255);
+	}
+
+	.tab-pane {
+		text-align: center;
+		background-image: linear-gradient(rgba(255, 235, 129, 0.56), rgba(112, 255, 0, 0.17));
+		border-radius: 100px;
+		box-shadow: 0px 0px 30px rgba(255, 230, 129, 0.72);
+		border-style: groove;
+		margin-top: 40px;
+		font-weight: bold;
+	}
+
+	.fields {
+		display: inline;
+		width: 160px;
+		margin: 0 auto;
+	}
+
+	.field-spacing {
+		margin: 30px;
+	}
+
+	input {
+		border-radius: 10px;
+		border-color: rgb(0, 255, 173);
+	}
+
+	.heading {
+		display: inline-block;
+		text-align: center;
+		margin: 25px;
+		color: rgba(0, 0, 0, 1);
+		font-size: 50px;
+		background-color: rgba(173, 255, 0, 0.38);
+		border-radius: 12px;
+	}
+
+	.container {
+		text-align: center;
+	}
+
+	th {
+		text-align: center;
+		cursor: pointer;
+		font-size: 150%;
+	}
+
+	.table > thead > tr > th {
+		vertical-align: bottom;
+		border-bottom: 2px solid #F00;
+	}
+	a {
+		color: rgba(0, 0, 0, 0.66);
+		text-shadow: 1px 0px rgba(255, 255, 255, 0.72);
+	}
+}

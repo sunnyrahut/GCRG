@@ -1,0 +1,38 @@
+<header>
+	<div class="container">
+		<div class="heading">
+			<i class="fa fa-cutlery"></i> You are logged in as an owner!
+		</div>
+		<button type="button" ng-click="signOut()" class="btn btn-default navbar-btn">
+			Sign out
+		</button>
+	</div>
+</header>
+<section>
+	<div class="container">
+		<div class="tab-background">
+			<ul class="nav nav-tabs nav-justified">
+				<li>
+					<a href="#/viewReservation">View Reservation</a>
+				</li>
+				<li>
+					<a href='#/seating'>View Seating Area</a>
+				</li>
+				<li>
+					<a href="#/addReservation">Create/Edit Reservation</a>
+				</li>
+				<li>
+					<a href="#/profile">Profile and Settings</a>
+				</li>
+				<li>
+					<a href="#/contacts">Contact List</a>
+				</li>
+			</ul>
+		</div>
+		<div id="content" class="tab-content">
+			<div class="tab-pane active" id="tab-guest">
+				<h2>Thank you for placing the order.</h2>
+			</div>
+		</div>
+	</div>
+</section>

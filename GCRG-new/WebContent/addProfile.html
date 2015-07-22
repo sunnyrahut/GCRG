@@ -1,0 +1,72 @@
+<header>
+	<div class="container">
+		<div class="heading">
+			<i class="fa fa-cutlery"></i> You are logged in as an owner!
+		</div>
+		<button type="button" ng-click="signOut()" class="btn btn-default navbar-btn">
+			Sign out
+		</button>
+	</div>
+</header>
+<section>
+	<div class="container">
+		<div class="tab-background">
+			<ul class="nav nav-tabs nav-justified">
+				<li>
+					<a href="#/viewReservation">View Reservation</a>
+				</li>
+				<li>
+					<a href='#/seating'>View Seating Area</a>
+				</li>
+				<li>
+					<a href='#/addReservation'>Create/Edit Reservation</a>
+				</li>
+				<li class="active">
+					<a>Profile and Settings</a>
+				</li>
+				<li>
+					<a href="#/contacts">Contact List</a>
+				</li>
+			</ul>
+		</div>
+		<div id="content" class="tab-content">
+			<div class="tab-pane active" id="tab-profile">
+				<h2>Update Profile</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th><i class="fa fa-male"></i> RoleID</th>
+							<th><i class="fa fa-male"></i> Role</th>
+							<th>Name</th>
+							<th><i class="fa fa-phone-square"></i> Phone</th>
+							<th><i class="fa fa-envelope"></i> Email</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+							<input type="text" ng-model="roleId">
+							</td>
+							<td>
+							<input type="text" ng-model="role">
+							</td>
+							<td>
+							<input type="text" ng-model="name">
+							</td>
+							<td>
+							<input type="text" ng-model="phone">
+							</td>
+							<td>
+							<input type="text" ng-model="email">
+							</td>
+							<td>
+							<input type="button" value="Add" ng-click="add()">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>
