@@ -1,0 +1,33 @@
+<header>
+	<div class="container">
+		<div class="heading">GCRG</div>
+	</div>
+</header>
+<section>
+	<div class="container">
+		<div class="tab-background">
+			<ul class="nav nav-tabs nav-justified">
+				<li><a href="#/addUser">New users</a></li>
+				<li class="active"><a>Existing users</a></li>
+			</ul>
+		</div>
+		<div id="content" class="tab-content">
+			<div class="tab-pane active" id="tab-owner">
+				<h2>Login please!</h2>
+				<div class="fields">
+					<div class="field-spacing">
+						Email: <input type="email" required ng-model="email">
+					</div>
+					<div class="field-spacing">
+						Password: <input type="password" required ng-model="password">
+					</div>
+					<div class="field-spacing">
+						<button type="submit" ng-click="login()"
+							class="btn large-btn btn-primary" id="login">Log in</button>
+					</div>
+					<a href="#">Forgot password?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

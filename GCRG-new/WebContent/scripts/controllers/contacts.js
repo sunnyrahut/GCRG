@@ -1,7 +1,7 @@
-restaurant.controller('Contact', [ '$scope', '$location', 'people',
-		function($scope, $location, people) {
-			$scope.people = people.data.data;
+gcrg.controller('Contact', [ '$scope', '$location', 'contacts',
+		function($scope, $location, contacts) {
+			$scope.contacts = contacts.data.data;
 			$scope.signOut = function() {
-				$location.path('/loginOwner');
+				$location.path('/addUser');
 			};
 		} ]);

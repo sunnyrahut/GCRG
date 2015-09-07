@@ -1,0 +1,55 @@
+<header>
+	<div class="container">
+		<div class="heading">You are logged in</div>
+		<button type="button" ng-click="signOut()"
+			class="btn btn-default navbar-btn">Sign out</button>
+	</div>
+</header>
+<section>
+	<div class="container">
+		<div class="tab-background">
+			<ul class="nav nav-tabs nav-justified">
+				<li class="active"><a>View Users</a></li>
+				<li><a href="#/contacts">Contact List</a></li>
+			</ul>
+		</div>
+		<div id="content" class="tab-content">
+			<div class="tab-pane active" id="tab-reservation">
+				<h2>Users list</h2>
+				<div>
+					<input type="text" ng-model="search" placeholder="Search users">
+				</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th ng-click="prop='userID'; reverse=!reverse;">User ID</th>
+							<th ng-click="prop='timeStamp'; reverse=!reverse;">Since</th>
+							<th ng-click="prop='firstName'; reverse=!reverse;">First
+								Name</th>
+							<th ng-click="prop='lastName'; reverse=!reverse;">Last Name</th>
+							<th ng-click="prop='email'; reverse=!reverse;">Email</th>
+							<th ng-click="prop='phone'; reverse=!reverse;">Phone</th>
+							<th>More Info</th>
+						</tr>
+					</thead>
+					<tbody ng-init="prop='userID'; reverse=false;">
+						<tr
+							ng-repeat="person in people | filter: search | orderBy:prop:reverse">
+							<td>{{person.userID}}</td>
+							<td>{{person.timeStamp|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+							<td>{{person.firstName}}</td>
+							<td>{{person.lastName}}</td>
+							<td>{{person.email}}</td>
+							<td>{{person.phone}}</td>
+							<td>
+								<button type="submit" ng-click="editDetails(person.userID)"
+									class="btn large-btn btn-primary">Edit</button>
+								<button type="submit" ng-click="deleteUser(person.userID)"
+									class="btn large-btn btn-primary">Delete</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+</section>

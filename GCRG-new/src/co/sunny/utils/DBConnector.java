@@ -10,8 +10,8 @@ import co.sunny.exception.EateryException;
 
 public class DBConnector {
 	private final static String USERNAME = "root";
-	private final static String PASSWORD = "GCRG";
-	private final static String DBURL = "jdbc:mysql://localhost:3306/eatery";
+	private final static String PASSWORD = "sunny9490";
+	private final static String DBURL = "jdbc:mysql://localhost:3306/gcrg";
 
 	public static Connection getDBConnection() throws EateryException {
 

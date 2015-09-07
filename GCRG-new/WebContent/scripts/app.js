@@ -1,171 +1,91 @@
-var restaurant = angular.module('restaurant', [ 'ngRoute' ]);
+var gcrg = angular.module('gcrg', [ 'ngRoute', 'chart.js' ]);
 
-restaurant.run([ '$http', '$templateCache', function($http, $templateCache) {
-	$http.get('addOrder.html', {
+gcrg.run([ '$http', '$templateCache', function($http, $templateCache) {
+	$http.get('addUser.html', {
 		cache : $templateCache
 	});
-	$http.get('loginOwner.html', {
-		cache : $templateCache
-	});
-	$http.get('addProfile.html', {
-		cache : $templateCache
-	});
-	$http.get('addReservation.html', {
+	$http.get('loginExistingUser.html', {
 		cache : $templateCache
 	});
 	$http.get('contacts.html', {
 		cache : $templateCache
 	});
-	$http.get('customerDetails.html', {
+	$http.get('userDetails.html', {
 		cache : $templateCache
 	});
-	$http.get('customerStatus.html', {
+	$http.get('doneUser.html', {
 		cache : $templateCache
 	});
-	$http.get('doneOrder.html', {
+	$http.get('editUser.html', {
 		cache : $templateCache
 	});
-	$http.get('doneReservation.html', {
+	$http.get('viewUsers.html', {
 		cache : $templateCache
 	});
-	$http.get('editProfile.html', {
+	$http.get('line-customTooltips.html', {
 		cache : $templateCache
 	});
-	$http.get('editReservation.html', {
-		cache : $templateCache
-	});
-	$http.get('profile.html', {
-		cache : $templateCache
-	});
-	$http.get('seating.html', {
-		cache : $templateCache
-	});
-	$http.get('updateOrder.html', {
-		cache : $templateCache
-	});
-	$http.get('viewReservation.html', {
+	$http.get('fileUpload.html', {
 		cache : $templateCache
 	});
 } ]);
 
-restaurant
-		.config([
-				'$routeProvider',
-				function($routeProvider) {
-					$routeProvider
-							.when('/addOrder', {
-								templateUrl : 'addOrder.html',
-								controller : 'AddOrder',
-								resolve : {
-									auto : [ '$http', function($http) {
-										return $http({
-											method : 'GET',
-											url : 'rest/auto/get'
-										});
-									} ],
-									table : [ '$http', function($http) {
-										return $http({
-											method : 'GET',
-											url : 'rest/table/getAvailable'
-										});
-									} ]
-								}
-							})
-
-							.when('/doneOrder', {
-								templateUrl : 'doneOrder.html',
-								controller : 'DoneOrder'
-							})
-							.when('/loginOwner', {
-								templateUrl : 'loginOwner.html',
-								controller : 'LoginOwner'
-							})
-							.when('/viewReservation', {
-								templateUrl : 'viewReservation.html',
-								controller : 'OwnerHome',
-								resolve : {
-									people : [ '$http', function($http) {
-										return $http({
-											method : 'GET',
-											url : 'rest/people/getAll'
-										});
-									} ]
-								}
-							})
-							.when('/seating', {
-								templateUrl : 'seating.html',
-								controller : 'Seating',
-								resolve : {
-									tables : [ '$http', function($http) {
-										return $http({
-											method : 'GET',
-											url : 'rest/table/getAll'
-										});
-									} ]
-								}
-							})
-							.when('/addReservation', {
-								templateUrl : 'addReservation.html',
-								controller : 'AddReservation',
-							})
-							.when(
-									'/editReservation/:id/:firstName/:lastName/:emailId/:date/:time/:phone/:partySize/:occasion',
-									{
-										templateUrl : 'editReservation.html',
-										controller : 'EditReservation'
-									})
-							.when('/doneReservation', {
-								templateUrl : 'doneReservation.html',
-								controller : 'DoneReservation',
-							})
-							.when('/customerDetails/:id', {
-								templateUrl : 'customerDetails.html',
-								controller : 'CustomerDetails',
-							})
-							.when('/profile', {
-								templateUrl : 'profile.html',
-								controller : 'Profile',
-								resolve : {
-									auto : [ '$http', function($http) {
-										return $http({
-											method : 'GET',
-											url : 'rest/auto/get'
-										});
-									} ],
-									people : [ '$http', function($http) {
-										return $http({
-											method : 'GET',
-											url : 'rest/owner/getAll'
-										});
-									} ]
-								}
-							})
-							.when('/editProfile/:id', {
-								templateUrl : 'editProfile.html',
-								controller : 'EditProfile',
-							})
-							.when('/addProfile', {
-								templateUrl : 'addProfile.html',
-								controller : 'AddProfile',
-							})
-							.when('/contacts', {
-								templateUrl : 'contacts.html',
-								controller : 'Contact',
-								resolve : {
-									people : [ '$http', function($http) {
-										return $http({
-											method : 'GET',
-											url : 'rest/people/getAll'
-										});
-									} ]
-								}
-							})
-							.when(
-									'/updateOrder/:id/:firstName/:lastName/:emailId/:date/:time/:phone/:partySize/:occasion',
-									{
-										templateUrl : 'updateOrder.html',
-										controller : 'UpdateOrder'
-									}).otherwise({
-								redirectTo : '/addOrder'
-							});
-				} ]);
+gcrg.config([ '$routeProvider', function($routeProvider) {
+	$routeProvider.when('/addUser', {
+		templateUrl : 'addUser.html',
+		controller : 'AddUser'
+	}).when('/doneUser', {
+		templateUrl : 'doneUser.html',
+		controller : 'DoneUser'
+	}).when('/loginExistingUser', {
+		templateUrl : 'loginExistingUser.html',
+		controller : 'LoginExistingUser',
+		resolve : {
+			users : [ '$http', function($http) {
+				return $http({
+					method : 'GET',
+					url : 'rest/users/getAll'
+				});
+			} ]
+		}
+	}).when('/viewUsers', {
+		templateUrl : 'viewUsers.html',
+		controller : 'ViewUsers',
+		resolve : {
+			users : [ '$http', function($http) {
+				return $http({
+					method : 'GET',
+					url : 'rest/contacts/getAll'
+				});
+			} ]
+		}
+	}).when('/userDetails/:id', {
+		templateUrl : 'userDetails.html',
+		controller : 'UserDetails',
+	}).when('/contacts', {
+		templateUrl : 'contacts.html',
+		controller : 'Contact',
+		resolve : {
+			contacts : [ '$http', function($http) {
+				return $http({
+					method : 'GET',
+					url : 'rest/contacts/getAll'
+				});
+			} ]
+		}
+	}).when('/graph', {
+		templateUrl : 'line-customTooltips.html',
+		controller : 'DisplayGraph',
+		resolve : {
+			dataValues : [ '$http', function($http) {
+				return $http({
+					method : 'GET',
+					url : 'rest/atq/getAll'
+				});
+			} ]
+		}
+	}).when('/fileUpload', {
+		templateUrl : 'fileUpload.html',
+		controller : 'FileUpload'
+	});
+} ]);

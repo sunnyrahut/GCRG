@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html ng-app="restaurant">
+<html ng-app="gcrg">
 <head>
 
 <!--[if lt IE 9]>
@@ -14,6 +14,8 @@
 <link rel="stylesheet" type="text/css"
 	href="scripts/lib/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="sample.css">
+<link rel="stylesheet" type="text/css"
+	href="scripts/lib/angular-chart.js/angular-chart.css">
 <link rel="stylesheet" type="text/css"
 	href="scripts/lib/bootstrap/css/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css"
@@ -28,36 +30,45 @@
 
 	<!-- JavaScripts libraries-->
 	<script type="text/javascript"
-		src="scripts/lib/bootstrap/js/jquery-1.11.0.min.js"></script>
+		src="http://maps.googleapis.com/maps/api/js"></script>
+	<script type="text/javascript"
+		src="scripts/lib/bootstrap/js/jquery-1.11.0.min.js">
+		
+	</script>
 	<script type="text/javascript"
 		src="scripts/lib/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="scripts/lib/angular.min.js"></script>
 	<script type="text/javascript"
-		src="scripts/lib/angular-resource.min.js"></script>
-	<script type="text/javascript" src="scripts/lib/angular-animate.min.js"></script>
-	<script type="text/javascript" src="scripts/lib/angular-route.min.js"></script>
+		src="scripts/lib/angular-1.4.3/angular.min.js"></script>
+	<script type="text/javascript"
+		src="scripts/lib/angular-1.4.3/angular-resource.min.js"></script>
+	<script type="text/javascript"
+		src="scripts/lib/angular-1.4.3/angular-animate.min.js"></script>
+	<script type="text/javascript"
+		src="scripts/lib/angular-1.4.3/angular-route.min.js"></script>
+	<script type="text/javascript"
+		src="scripts/lib/Chart.js-master/Chart.js"></script>
+	<script type="text/javascript"
+		src="scripts/lib/angular-chart.js/angular-chart.js"></script>
 	<!-- 	<script type="text/javascript" src="scripts/script.js"></script> -->
 	<script type="text/javascript" src="scripts/app.js"></script>
-	<script type="text/javascript" src="scripts/controllers/addOrder.js"></script>
-	<script type="text/javascript" src="scripts/controllers/loginOwner.js"></script>
-	<script type="text/javascript" src="scripts/controllers/doneOrder.js"></script>
-	<script type="text/javascript" src="scripts/controllers/updateOrder.js"></script>
-	<script type="text/javascript" src="scripts/controllers/ownerHome.js"></script>
-	<script type="text/javascript" src="scripts/controllers/seating.js"></script>
+	<script type="text/javascript" src="scripts/controllers/addUser.js"></script>
 	<script type="text/javascript"
-		src="scripts/controllers/customerDetails.js"></script>
-	<script type="text/javascript"
-		src="scripts/controllers/addReservation.js"></script>
-	<script type="text/javascript"
-		src="scripts/controllers/editReservation.js"></script>
-	<script type="text/javascript"
-		src="scripts/controllers/doneReservation.js"></script>
-	<script type="text/javascript" src="scripts/controllers/profile.js"></script>
-	<script type="text/javascript" src="scripts/controllers/editProfile.js"></script>
-	<script type="text/javascript" src="scripts/controllers/addProfile.js"></script>
+		src="scripts/controllers/loginExistingUser.js"></script>
+	<script type="text/javascript" src="scripts/controllers/doneUser.js"></script>
+	<script type="text/javascript" src="scripts/controllers/updateUser.js"></script>
+	<script type="text/javascript" src="scripts/controllers/userDetails.js"></script>
+	<script type="text/javascript" src="scripts/controllers/addUser.js"></script>
+	<script type="text/javascript" src="scripts/controllers/editUser.js"></script>
+	<script type="text/javascript" src="scripts/controllers/doneUser.js"></script>
+	<script type="text/javascript" src="scripts/controllers/viewUsers.js"></script>
 	<script type="text/javascript" src="scripts/controllers/contacts.js"></script>
-
+	<script type="text/javascript" src="scripts/controllers/fileUpload.js"></script>
+	<script type="text/javascript"
+		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+		
+	</script>
+	<script type="text/javascript"
+		src="scripts/controllers/displayGraph.js"></script>
 </body>
 
 </html>
-
