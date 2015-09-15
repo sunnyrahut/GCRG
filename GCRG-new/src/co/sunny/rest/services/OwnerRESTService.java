@@ -12,8 +12,8 @@ import javax.ws.rs.core.MediaType;
 
 import co.sunny.dao.OwnerDAO;
 import co.sunny.entities.OwnerVO;
-import co.sunny.exception.EateryException;
-import co.sunny.utils.EateryResponse;
+import co.sunny.exception.GCRGException;
+import co.sunny.utils.GCRGResponse;
 
 @Path("/owner")
 public class OwnerRESTService {
@@ -21,16 +21,16 @@ public class OwnerRESTService {
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.APPLICATION_JSON)
-	public EateryResponse getAllPeople() {
+	public GCRGResponse getAllPeople() {
 
 		OwnerDAO dao = new OwnerDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 
 		try {
 			List<OwnerVO> list = dao.getAllPeople();
 			resp.setStatus("SUCCESS");
 			resp.setData(list);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}
@@ -42,16 +42,16 @@ public class OwnerRESTService {
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public EateryResponse addOwner(OwnerVO owner) {
+	public GCRGResponse addOwner(OwnerVO owner) {
 
 		OwnerDAO dao = new OwnerDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 
 		try {
 			owner = dao.addOwner(owner);
 			resp.setStatus("SUCCESS");
 			resp.setData(owner);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}
@@ -62,16 +62,16 @@ public class OwnerRESTService {
 	@GET
 	@Path("/get/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public EateryResponse getOwner(@PathParam("id") int id) {
+	public GCRGResponse getOwner(@PathParam("id") int id) {
 
 		OwnerDAO dao = new OwnerDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 
 		try {
 			OwnerVO owner = dao.getOwner(id);
 			resp.setStatus("SUCCESS");
 			resp.setData(owner);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}
@@ -81,16 +81,16 @@ public class OwnerRESTService {
 
 	@POST
 	@Path("/delete/{id}")
-	public EateryResponse deleteOwner(@PathParam("id") int id) {
+	public GCRGResponse deleteOwner(@PathParam("id") int id) {
 
 		OwnerDAO dao = new OwnerDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 		List<OwnerVO> people = null;
 		try {
 			people = dao.deleteOwner(id);
 			resp.setStatus("SUCCESS");
 			resp.setData(people);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}
@@ -102,15 +102,15 @@ public class OwnerRESTService {
 	@Path("/update")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public EateryResponse updateOwner(OwnerVO owner) {
+	public GCRGResponse updateOwner(OwnerVO owner) {
 
 		OwnerDAO dao = new OwnerDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 		try {
 			owner = dao.updateOwner(owner);
 			resp.setStatus("SUCCESS");
 			resp.setData(owner);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}

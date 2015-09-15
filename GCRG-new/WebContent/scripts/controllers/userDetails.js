@@ -1,5 +1,5 @@
 gcrg.controller('UserDetails', function($scope, $location, $http, $route,
-		$routeParams) {
+		$routeParams, $window, auth) {
 	$http({
 		method : 'GET',
 		url : 'rest/users/get/' + $routeParams.id,
@@ -35,7 +35,9 @@ gcrg.controller('UserDetails', function($scope, $location, $http, $route,
 	};
 
 	$scope.signOut = function() {
-		$location.path('/addUser');
+		$window.sessionStorage["userInfo"] = null;
+		userInfo = null;
+		$location.path('/loginExistingUser');
 	};
 
 });

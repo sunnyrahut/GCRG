@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.sunny.entities.OwnerLoginVO;
-import co.sunny.exception.EateryException;
+import co.sunny.exception.GCRGException;
 import co.sunny.utils.DBConnector;
 
 public class OwnerLoginDAO {
 
-	public List<OwnerLoginVO> getAllPeople() throws EateryException {
+	public List<OwnerLoginVO> getAllPeople() throws GCRGException {
 
 		Connection con = DBConnector.getDBConnection();
 		PreparedStatement ps = null;
@@ -34,7 +34,7 @@ public class OwnerLoginDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(ps, rs, con);
 		}
@@ -42,7 +42,7 @@ public class OwnerLoginDAO {
 		return people;
 	}
 
-	public OwnerLoginVO getOwnerLogin(String id) throws EateryException {
+	public OwnerLoginVO getOwnerLogin(String id) throws GCRGException {
 
 		Connection con = DBConnector.getDBConnection();
 		PreparedStatement ps = null;
@@ -59,13 +59,13 @@ public class OwnerLoginDAO {
 				ownerLogin.setId(rs.getString("LOGIN_ID"));
 				ownerLogin.setPassword(rs.getString("LOGIN_PASSWORD"));
 			} else {
-				throw new EateryException("OwnerLogin with the ID=" + id
+				throw new GCRGException("OwnerLogin with the ID=" + id
 						+ " not found in the system.");
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(ps, rs, con);
 		}
@@ -74,7 +74,7 @@ public class OwnerLoginDAO {
 	}
 
 	public OwnerLoginVO addOwnerLogin(OwnerLoginVO ownerLogin)
-			throws EateryException {
+			throws GCRGException {
 
 		Connection conn = DBConnector.getDBConnection();
 		PreparedStatement preStmt = null;
@@ -93,7 +93,7 @@ public class OwnerLoginDAO {
 		} catch (SQLException e) {
 			System.err.println("Error " + e.getMessage());
 			e.getStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(preStmt, rs, conn);
 		}
@@ -102,7 +102,7 @@ public class OwnerLoginDAO {
 	}
 
 	public OwnerLoginVO updateOwnerLogin(OwnerLoginVO ownerLogin)
-			throws EateryException {
+			throws GCRGException {
 
 		Connection conn = DBConnector.getDBConnection();
 		PreparedStatement preStmt = null;
@@ -114,13 +114,13 @@ public class OwnerLoginDAO {
 			preStmt.setString(1, ownerLogin.getPassword());
 			preStmt.setString(2, ownerLogin.getId());
 			if (preStmt.executeUpdate() <= 0) {
-				throw new EateryException("OwnerLogin with the ID="
+				throw new GCRGException("OwnerLogin with the ID="
 						+ ownerLogin.getId() + " not found in the system.");
 			}
 		} catch (SQLException e) {
 			System.err.println("Error " + e.getMessage());
 			e.getStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(preStmt, rs, conn);
 		}
@@ -128,7 +128,7 @@ public class OwnerLoginDAO {
 	}
 
 	public List<OwnerLoginVO> deleteOwnerLogin(String id)
-			throws EateryException {
+			throws GCRGException {
 
 		Connection conn = DBConnector.getDBConnection();
 		PreparedStatement preStmt = null;
@@ -140,7 +140,7 @@ public class OwnerLoginDAO {
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			preStmt.setString(1, id);
 			if (preStmt.executeUpdate() <= 0) {
-				throw new EateryException("OwnerLogin with the ID=" + id
+				throw new GCRGException("OwnerLogin with the ID=" + id
 						+ " not found in the system.");
 			}
 
@@ -156,7 +156,7 @@ public class OwnerLoginDAO {
 		} catch (SQLException e) {
 			System.err.println("Error " + e.getMessage());
 			e.getStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(preStmt, rs, conn);
 		}

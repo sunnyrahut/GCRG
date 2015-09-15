@@ -12,8 +12,8 @@ import javax.ws.rs.core.MediaType;
 
 import co.sunny.dao.OwnerLoginDAO;
 import co.sunny.entities.OwnerLoginVO;
-import co.sunny.exception.EateryException;
-import co.sunny.utils.EateryResponse;
+import co.sunny.exception.GCRGException;
+import co.sunny.utils.GCRGResponse;
 
 @Path("/ownerLogin")
 public class OwnerLoginRESTService {
@@ -21,16 +21,16 @@ public class OwnerLoginRESTService {
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.APPLICATION_JSON)
-	public EateryResponse getAllPeople() {
+	public GCRGResponse getAllPeople() {
 
 		OwnerLoginDAO dao = new OwnerLoginDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 
 		try {
 			List<OwnerLoginVO> list = dao.getAllPeople();
 			resp.setStatus("SUCCESS");
 			resp.setData(list);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}
@@ -42,16 +42,16 @@ public class OwnerLoginRESTService {
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public EateryResponse addOwnerLogin(OwnerLoginVO ownerLogin) {
+	public GCRGResponse addOwnerLogin(OwnerLoginVO ownerLogin) {
 
 		OwnerLoginDAO dao = new OwnerLoginDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 
 		try {
 			ownerLogin = dao.addOwnerLogin(ownerLogin);
 			resp.setStatus("SUCCESS");
 			resp.setData(ownerLogin);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}
@@ -62,16 +62,16 @@ public class OwnerLoginRESTService {
 	@GET
 	@Path("/get/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public EateryResponse getOwnerLogin(@PathParam("id") String id) {
+	public GCRGResponse getOwnerLogin(@PathParam("id") String id) {
 
 		OwnerLoginDAO dao = new OwnerLoginDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 
 		try {
 			OwnerLoginVO ownerLogin = dao.getOwnerLogin(id);
 			resp.setStatus("SUCCESS");
 			resp.setData(ownerLogin);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}
@@ -81,16 +81,16 @@ public class OwnerLoginRESTService {
 
 	@POST
 	@Path("/delete/{id}")
-	public EateryResponse deleteOwnerLogin(@PathParam("id") String id) {
+	public GCRGResponse deleteOwnerLogin(@PathParam("id") String id) {
 
 		OwnerLoginDAO dao = new OwnerLoginDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 		List<OwnerLoginVO> people = null;
 		try {
 			people = dao.deleteOwnerLogin(id);
 			resp.setStatus("SUCCESS");
 			resp.setData(people);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}
@@ -102,15 +102,15 @@ public class OwnerLoginRESTService {
 	@Path("/update")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public EateryResponse updateOwnerLogin(OwnerLoginVO ownerLogin) {
+	public GCRGResponse updateOwnerLogin(OwnerLoginVO ownerLogin) {
 
 		OwnerLoginDAO dao = new OwnerLoginDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 		try {
 			ownerLogin = dao.updateOwnerLogin(ownerLogin);
 			resp.setStatus("SUCCESS");
 			resp.setData(ownerLogin);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}

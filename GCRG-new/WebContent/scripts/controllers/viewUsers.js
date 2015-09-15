@@ -1,7 +1,7 @@
-gcrg.controller('ViewUsers', [ '$scope', '$location', '$http', 'users',
-		function($scope, $location, $http, users) {
+gcrg.controller('ViewUsers', [ '$scope', '$location', '$window', '$http',
+		'users', 'authenticateUser',
+		function($scope, $location, $window, $http, users, authenticateUser) {
 			$scope.people = users.data.data;
-			console.log(users.data.data);
 			$scope.editDetails = function(id) {
 				$location.path('/userDetails/' + id);
 			}
@@ -20,6 +20,8 @@ gcrg.controller('ViewUsers', [ '$scope', '$location', '$http', 'users',
 				});
 			};
 			$scope.signOut = function() {
-				$location.path('/addUser');
+				$window.sessionStorage["userInfo"] = null;
+				userInfo = null;
+				$location.path('/loginExistingUser');
 			};
 		} ]);

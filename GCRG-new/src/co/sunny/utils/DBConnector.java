@@ -6,14 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import co.sunny.exception.EateryException;
+import co.sunny.exception.GCRGException;
 
 public class DBConnector {
 	private final static String USERNAME = "root";
 	private final static String PASSWORD = "sunny9490";
 	private final static String DBURL = "jdbc:mysql://localhost:3306/gcrg";
 
-	public static Connection getDBConnection() throws EateryException {
+	public static Connection getDBConnection() throws GCRGException {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -29,7 +29,7 @@ public class DBConnector {
 		} catch (SQLException e) {
 			System.err.println("Connection Error" + e.getMessage());
 			e.printStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		}
 
 		return conn;

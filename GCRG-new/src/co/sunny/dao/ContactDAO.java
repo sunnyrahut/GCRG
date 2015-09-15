@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.sunny.entities.ContactVO;
-import co.sunny.exception.EateryException;
+import co.sunny.exception.GCRGException;
 import co.sunny.utils.DBConnector;
 
 public class ContactDAO {
 
-	public List<ContactVO> getAllContacts() throws EateryException {
+	public List<ContactVO> getAllContacts() throws GCRGException {
 
 		Connection con = DBConnector.getDBConnection();
 		PreparedStatement ps = null;
@@ -37,7 +37,7 @@ public class ContactDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(ps, rs, con);
 		}
@@ -45,7 +45,7 @@ public class ContactDAO {
 		return contacts;
 	}
 
-	public ContactVO addContact(ContactVO contact) throws EateryException {
+	public ContactVO addContact(ContactVO contact) throws GCRGException {
 
 		Connection conn = DBConnector.getDBConnection();
 		PreparedStatement preStmt = null;
@@ -67,7 +67,7 @@ public class ContactDAO {
 		} catch (SQLException e) {
 			System.err.println("Error " + e.getMessage());
 			e.getStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(preStmt, rs, conn);
 		}
@@ -75,7 +75,7 @@ public class ContactDAO {
 		return contact;
 	}
 
-	public ContactVO updateContact(ContactVO contact) throws EateryException {
+	public ContactVO updateContact(ContactVO contact) throws GCRGException {
 
 		Connection conn = DBConnector.getDBConnection();
 		PreparedStatement preStmt = null;
@@ -91,20 +91,20 @@ public class ContactDAO {
 			preStmt.setString(4, contact.getName());
 			preStmt.setInt(5, contact.getUserID());
 			if (preStmt.executeUpdate() <= 0) {
-				throw new EateryException("contact with the ID="
+				throw new GCRGException("contact with the ID="
 						+ contact.getUserID() + " not found in the system.");
 			}
 		} catch (SQLException e) {
 			System.err.println("Error " + e.getMessage());
 			e.getStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(preStmt, rs, conn);
 		}
 		return contact;
 	}
 
-	public List<ContactVO> deleteContact(int id) throws EateryException {
+	public List<ContactVO> deleteContact(int id) throws GCRGException {
 
 		Connection conn = DBConnector.getDBConnection();
 		PreparedStatement preStmt = null;
@@ -116,7 +116,7 @@ public class ContactDAO {
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			preStmt.setInt(1, id);
 			if (preStmt.executeUpdate() <= 0) {
-				throw new EateryException("contact with the ID=" + id
+				throw new GCRGException("contact with the ID=" + id
 						+ " not found in the system.");
 			}
 
@@ -135,7 +135,7 @@ public class ContactDAO {
 		} catch (SQLException e) {
 			System.err.println("Error " + e.getMessage());
 			e.getStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(preStmt, rs, conn);
 		}

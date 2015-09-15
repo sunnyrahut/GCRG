@@ -27,7 +27,15 @@
 </head>
 <body>
 	<div ng-view></div>
-
+	<footer>
+		<p align="center">
+			<b>This material is based upon work supported by the National
+				Science Foundation under NSF OPP: 9732105 and 0119060 Any opinions,
+				findings, conclusions, or recommendations expressed in the material
+				are those of the author(s) and do not necessarily reflect the views
+				of the National Science Foundation.</b>
+		</p>
+	</footer>
 	<!-- JavaScripts libraries-->
 	<script type="text/javascript"
 		src="http://maps.googleapis.com/maps/api/js"></script>

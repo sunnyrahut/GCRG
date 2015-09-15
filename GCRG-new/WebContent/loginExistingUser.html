@@ -1,33 +1,54 @@
 <header>
 	<div class="container">
-		<div class="heading">GCRG</div>
+		<div class="heading">Global Change Research Group</div>
 	</div>
 </header>
-<section>
-	<div class="container">
-		<div class="tab-background">
-			<ul class="nav nav-tabs nav-justified">
-				<li><a href="#/addUser">New users</a></li>
-				<li class="active"><a>Existing users</a></li>
-			</ul>
-		</div>
-		<div id="content" class="tab-content">
-			<div class="tab-pane active" id="tab-owner">
-				<h2>Login please!</h2>
-				<div class="fields">
-					<div class="field-spacing">
-						Email: <input type="email" required ng-model="email">
-					</div>
-					<div class="field-spacing">
-						Password: <input type="password" required ng-model="password">
-					</div>
-					<div class="field-spacing">
-						<button type="submit" ng-click="login()"
-							class="btn large-btn btn-primary" id="login">Log in</button>
-					</div>
-					<a href="#">Forgot password?</a>
+<nav>
+	<div class="tab-background">
+		<ul class="nav nav-tabs nav-justified">
+			<li><a href="#/addUser">New users</a></li>
+			<li class="active"><a>Existing users</a></li>
+		</ul>
+	</div>
+</nav>
+<article>
+	<section>
+		<div class="container">
+			<div id="content" class="tab-content">
+				<div class="tab-pane active" id="tab-owner">
+					<h2 align="center">User Login</h2>
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control" id="inputEmail3"
+									placeholder="Email" ng-model="email">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="inputPassword3"
+									placeholder="Password" ng-model="password">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<div class="checkbox">
+									<label> <input type="checkbox"> Remember me
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-default" ng-click="login()">Sign
+									in</button>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
+</article>

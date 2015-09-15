@@ -6,11 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import co.sunny.entities.AutoVO;
-import co.sunny.exception.EateryException;
+import co.sunny.exception.GCRGException;
 import co.sunny.utils.DBConnector;
 
 public class AutoDAO {
-	public AutoVO getAuto() throws EateryException {
+	public AutoVO getAuto() throws GCRGException {
 
 		Connection con = DBConnector.getDBConnection();
 		PreparedStatement ps = null;
@@ -29,7 +29,7 @@ public class AutoDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(ps, rs, con);
 		}
@@ -37,7 +37,7 @@ public class AutoDAO {
 		return auto;
 	}
 
-	public AutoVO updateAuto(AutoVO auto) throws EateryException {
+	public AutoVO updateAuto(AutoVO auto) throws GCRGException {
 
 		Connection conn = DBConnector.getDBConnection();
 		PreparedStatement preStmt = null;
@@ -52,7 +52,7 @@ public class AutoDAO {
 		} catch (SQLException e) {
 			System.err.println("Error " + e.getMessage());
 			e.getStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(preStmt, rs, conn);
 		}

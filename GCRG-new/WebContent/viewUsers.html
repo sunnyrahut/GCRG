@@ -1,25 +1,27 @@
 <header>
 	<div class="container">
-		<div class="heading">You are logged in</div>
+		<div class="heading">Global Change Research Group</div>
 		<button type="button" ng-click="signOut()"
-			class="btn btn-default navbar-btn">Sign out</button>
+			class="btn btn-default navbar-btn">logout</button>
 	</div>
 </header>
-<section>
-	<div class="container">
-		<div class="tab-background">
-			<ul class="nav nav-tabs nav-justified">
-				<li class="active"><a>View Users</a></li>
-				<li><a href="#/contacts">Contact List</a></li>
-			</ul>
-		</div>
-		<div id="content" class="tab-content">
-			<div class="tab-pane active" id="tab-reservation">
-				<h2>Users list</h2>
+<nav>
+	<div class="tab-background">
+		<ul class="nav nav-tabs nav-justified">
+			<li class="active"><a>View Users</a></li>
+			<li><a href="#/contacts">Contact List</a></li>
+			<li><a href="#/graph">Graphs</a></li>
+		</ul>
+	</div>
+</nav>
+<article>
+	<section>
+		<div class="container">
+			<div id="content" class="tab-content">
 				<div>
 					<input type="text" ng-model="search" placeholder="Search users">
 				</div>
-				<table class="table">
+				<table class="table table-hover">
 					<thead>
 						<tr>
 							<th ng-click="prop='userID'; reverse=!reverse;">User ID</th>
@@ -29,7 +31,6 @@
 							<th ng-click="prop='lastName'; reverse=!reverse;">Last Name</th>
 							<th ng-click="prop='email'; reverse=!reverse;">Email</th>
 							<th ng-click="prop='phone'; reverse=!reverse;">Phone</th>
-							<th>More Info</th>
 						</tr>
 					</thead>
 					<tbody ng-init="prop='userID'; reverse=false;">
@@ -41,15 +42,14 @@
 							<td>{{person.lastName}}</td>
 							<td>{{person.email}}</td>
 							<td>{{person.phone}}</td>
-							<td>
-								<button type="submit" ng-click="editDetails(person.userID)"
-									class="btn large-btn btn-primary">Edit</button>
-								<button type="submit" ng-click="deleteUser(person.userID)"
-									class="btn large-btn btn-primary">Delete</button>
-							</td>
+							<td><input type="button" value="Edit user"
+								ng-click="editDetails(person.userID)"></td>
+							<td><input type="button" value="Delete user"
+								ng-click="deleteUser()"></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-</section>
+	</section>
+</article>

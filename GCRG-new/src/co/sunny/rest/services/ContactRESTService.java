@@ -12,8 +12,8 @@ import javax.ws.rs.core.MediaType;
 
 import co.sunny.dao.ContactDAO;
 import co.sunny.entities.ContactVO;
-import co.sunny.exception.EateryException;
-import co.sunny.utils.EateryResponse;
+import co.sunny.exception.GCRGException;
+import co.sunny.utils.GCRGResponse;
 
 @Path("/contacts")
 public class ContactRESTService {
@@ -21,16 +21,16 @@ public class ContactRESTService {
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.APPLICATION_JSON)
-	public EateryResponse getAllContacts() {
+	public GCRGResponse getAllContacts() {
 
 		ContactDAO dao = new ContactDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 
 		try {
 			List<ContactVO> list = dao.getAllContacts();
 			resp.setStatus("SUCCESS");
 			resp.setData(list);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}
@@ -42,16 +42,16 @@ public class ContactRESTService {
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public EateryResponse addContact(ContactVO contact) {
+	public GCRGResponse addContact(ContactVO contact) {
 
 		ContactDAO dao = new ContactDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 
 		try {
 			contact = dao.addContact(contact);
 			resp.setStatus("SUCCESS");
 			resp.setData(contact);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}
@@ -61,16 +61,16 @@ public class ContactRESTService {
 
 	@POST
 	@Path("/delete/{id}")
-	public EateryResponse deleteContact(@PathParam("id") int id) {
+	public GCRGResponse deleteContact(@PathParam("id") int id) {
 
 		ContactDAO dao = new ContactDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 		List<ContactVO> contacts = null;
 		try {
 			contacts = dao.deleteContact(id);
 			resp.setStatus("SUCCESS");
 			resp.setData(contacts);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}
@@ -82,15 +82,15 @@ public class ContactRESTService {
 	@Path("/update")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public EateryResponse updateContact(ContactVO contact) {
+	public GCRGResponse updateContact(ContactVO contact) {
 
 		ContactDAO dao = new ContactDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 		try {
 			contact = dao.updateContact(contact);
 			resp.setStatus("SUCCESS");
 			resp.setData(contact);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}

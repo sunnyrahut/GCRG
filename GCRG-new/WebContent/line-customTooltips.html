@@ -1,6 +1,66 @@
-<input type="date" ng-model="fromDate">
-<input type="date" ng-model="toDate">
-<input type="button" ng-click="generateGraph()" value="generate graph">
-<canvas id="line" class="chart chart-line" data="data" labels="labels"
-	legend="true" series="series">
-</canvas>
+<header>
+	<div class="container">
+		<div class="heading">Global Change Research Group</div>
+		<button type="button" ng-click="signOut()"
+			class="btn btn-default navbar-btn">logout</button>
+	</div>
+</header>
+<nav>
+	<div class="tab-background">
+		<ul class="nav nav-tabs nav-justified">
+			<li><a href="#/viewUsers">View Users</a></li>
+			<li><a href="#/contacts">Contact List</a></li>
+			<li class="active"><a>Graphs</a></li>
+		</ul>
+	</div>
+</nav>
+<article>
+	<section>
+		<div class="container">
+			<div id="content" class="tab-content">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>From Date</th>
+							<th>To Date</th>
+							<th>Parameter</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="date" ng-model="fromDate"></td>
+							<td><input type="date" ng-model="toDate"></td>
+							<td><select ng-model="parameter">
+									<option value="vpd">VPD</option>
+									<option value="windSpeed">windSpeed</option>
+									<option value="wind_dir">wind_dir</option>
+									<option value="uStar">u*</option>
+									<option value="h">H</option>
+									<option value="qc_H">qc_H</option>
+									<option value="le">LE</option>
+									<option value="qc_LE">qc_LE</option>
+									<option value="co2_flux">co2_flux</option>
+									<option value="qc_co2_flux">qc_co2_flux</option>
+									<option value="h2o_flux">h2o_flux</option>
+									<option value="qc_h2o_flux">qc_h2o_flux</option>
+									<option value="ch4_flux">ch4_flux</option>
+									<option value="qc_ch4_flux">qc_ch4_flux</option>
+									<option value="co2_mixing_ratio">co2_mixing_ratio</option>
+									<option value="h2o_mixing_ratio">h2o_mixing_ratio</option>
+									<option value="ch4_mixing_ratio">ch4_mixing_ratio</option>
+									<option value="air_pressure">air_pressure</option>
+									<option value="rh">RH</option>
+							</select></td>
+							<td><input type="button" ng-click="generateGraph()"
+								value="generate graph"></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="tab-pane active" id="tab-contacts">
+					<canvas id="line" class="chart chart-line" data="data"
+						labels="labels" legend="true" series="series"></canvas>
+				</div>
+			</div>
+		</div>
+	</section>
+</article>

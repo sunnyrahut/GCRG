@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.sunny.entities.UserVO;
-import co.sunny.exception.EateryException;
+import co.sunny.exception.GCRGException;
 import co.sunny.utils.DBConnector;
 
 public class UserDAO {
 
-	public List<UserVO> getAllUsers() throws EateryException {
+	public List<UserVO> getAllUsers() throws GCRGException {
 
 		Connection con = DBConnector.getDBConnection();
 		PreparedStatement ps = null;
@@ -39,7 +39,7 @@ public class UserDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(ps, rs, con);
 		}
@@ -47,7 +47,7 @@ public class UserDAO {
 		return users;
 	}
 
-	public UserVO getUser(int id) throws EateryException {
+	public UserVO getUser(int id) throws GCRGException {
 
 		Connection con = DBConnector.getDBConnection();
 		PreparedStatement ps = null;
@@ -69,13 +69,13 @@ public class UserDAO {
 				user.setPassword(rs.getString("password"));
 				user.setTimeStamp(rs.getTimestamp("time_stamp"));
 			} else {
-				throw new EateryException("user with the ID=" + id
+				throw new GCRGException("user with the ID=" + id
 						+ " not found in the system.");
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(ps, rs, con);
 		}
@@ -83,7 +83,7 @@ public class UserDAO {
 		return user;
 	}
 
-	public UserVO addUser(UserVO user) throws EateryException {
+	public UserVO addUser(UserVO user) throws GCRGException {
 
 		Connection conn = DBConnector.getDBConnection();
 		PreparedStatement preStmt = null;
@@ -110,7 +110,7 @@ public class UserDAO {
 		} catch (SQLException e) {
 			System.err.println("Error " + e.getMessage());
 			e.getStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(preStmt, rs, conn);
 		}
@@ -118,7 +118,7 @@ public class UserDAO {
 		return user;
 	}
 
-	public UserVO updateUser(UserVO user) throws EateryException {
+	public UserVO updateUser(UserVO user) throws GCRGException {
 
 		Connection conn = DBConnector.getDBConnection();
 		PreparedStatement preStmt = null;
@@ -136,20 +136,20 @@ public class UserDAO {
 			preStmt.setString(6, user.getPhone());
 			preStmt.setLong(7, user.getUserID());
 			if (preStmt.executeUpdate() <= 0) {
-				throw new EateryException("OwnerLogin with the ID="
+				throw new GCRGException("OwnerLogin with the ID="
 						+ user.getUserID() + " not found in the system.");
 			}
 		} catch (SQLException e) {
 			System.err.println("Error " + e.getMessage());
 			e.getStackTrace();
-			throw new EateryException("Error: " + e.getMessage(), e.getCause());
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(preStmt, rs, conn);
 		}
 		return user;
 	}
 
-	public List<UserVO> deleteUser(int id) throws EateryException {
+	public List<UserVO> deleteUser(int id) throws GCRGException {
 
 		Connection conn = DBConnector.getDBConnection();
 		PreparedStatement preStmt = null;
@@ -162,7 +162,7 @@ public class UserDAO {
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			preStmt.setInt(1, id);
 			if (preStmt.executeUpdate() <= 0) {
-				throw new EateryException("user with the ID=" + id
+				throw new GCRGException("user with the ID=" + id
 						+ " not found in the system.");
 			}
 			rs = conn.prepareStatement("SELECT * FROM users",
@@ -181,7 +181,7 @@ public class UserDAO {
 		} catch (SQLException e) {
 			System.err.println("Error " + e.getMessage());
 			e.getStackTrace();
-			throw new EateryException("Error:" + e.getMessage(), e.getCause());
+			throw new GCRGException("Error:" + e.getMessage(), e.getCause());
 		} finally {
 			DBConnector.closeResources(preStmt, rs, conn);
 		}

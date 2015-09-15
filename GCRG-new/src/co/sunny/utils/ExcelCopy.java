@@ -6,11 +6,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import co.sunny.exception.EateryException;
+import co.sunny.exception.GCRGException;
 
 public class ExcelCopy {
 	public static String readDataFromCsvFile(String location)
-			throws EateryException {
+			throws GCRGException {
 		String csvFile = location;
 		BufferedReader br = null;
 		String line = "";
@@ -42,8 +42,8 @@ public class ExcelCopy {
 		System.out.println(data);
 		try {
 			fileWriter = new FileWriter(fileName, true);
-			fileWriter.append("\n");
 			fileWriter.append(data);
+			fileWriter.append("\n");
 			fileWriter.flush();
 			fileWriter.close();
 		} catch (IOException e) {

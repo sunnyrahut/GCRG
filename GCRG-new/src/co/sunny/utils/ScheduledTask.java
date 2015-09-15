@@ -7,7 +7,7 @@ import java.util.TimerTask;
 
 import org.apache.commons.io.FileUtils;
 
-import co.sunny.exception.EateryException;
+import co.sunny.exception.GCRGException;
 
 public class ScheduledTask extends TimerTask {
 	public static String searchCSVFile(String parentDirectory) {
@@ -17,9 +17,10 @@ public class ScheduledTask extends TimerTask {
 				searchCSVFile(f.getAbsolutePath());
 			}
 			String filePath = f.getAbsolutePath();
-			String fileExtention = filePath.substring(
-					filePath.lastIndexOf(".") + 1, filePath.length());
-			if ("csv".equals(fileExtention)) {
+			String fileName = filePath.substring(filePath.lastIndexOf("/") + 1,
+					filePath.length());
+			if (fileName.contains("full_output")) {
+				System.out.println(filePath);
 				return filePath;
 			}
 		}
@@ -87,6 +88,12 @@ public class ScheduledTask extends TimerTask {
 				}
 				renameFile("C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\csv_data");
 				rt.exec("\"C:\\Program Files (x86)\\LI-COR\\EddyPro-6.0.0\\bin\\eddypro_rp.exe\" -s win -c console -m desktop C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\ATQ-LGR-CSAT_improved_separation_NewCols.eddypro");
+				try {
+					Thread.sleep(10000); // 3000 milliseconds is one second.
+				} catch (InterruptedException ex) {
+					Thread.currentThread().interrupt();
+				}
+				rt.exec("\"C:\\Program Files (x86)\\LI-COR\\EddyPro-6.0.0\\bin\\eddypro_fcc.exe\" -s win -c console -m desktop C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\ATQ-LGR-CSAT_improved_separation_NewCols.eddypro");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -95,21 +102,29 @@ public class ScheduledTask extends TimerTask {
 
 			// Copy and paste the resultant row to the master data csv file
 			try {
-				Thread.sleep(10000); // 10000 milliseconds is one second.
+				Thread.sleep(5000); // 10000 milliseconds is one second.
 			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
 			try {
 				data = ExcelCopy
 						.readDataFromCsvFile(searchCSVFile("C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\output"));
-			} catch (EateryException e) {
+			} catch (GCRGException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			String[] parameters = data.split(",");
 			ExcelCopy
 					.writeDataToExcelFile(
 							"C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\Master data\\master_data.csv",
 							data);
+			DatabaseUploader dbUploader = new DatabaseUploader();
+			try {
+				dbUploader.run(parameters);
+			} catch (GCRGException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		// System.out.println(files);
 	}

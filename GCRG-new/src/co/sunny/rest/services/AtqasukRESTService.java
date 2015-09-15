@@ -8,9 +8,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import co.sunny.dao.AtqasukDAO;
-import co.sunny.entities.DataVO;
-import co.sunny.exception.EateryException;
-import co.sunny.utils.EateryResponse;
+import co.sunny.entities.NoGapDataVO;
+import co.sunny.exception.GCRGException;
+import co.sunny.utils.GCRGResponse;
 
 @Path("/atq")
 public class AtqasukRESTService {
@@ -18,16 +18,16 @@ public class AtqasukRESTService {
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.APPLICATION_JSON)
-	public EateryResponse getAllData() {
+	public GCRGResponse getAllData() {
 
 		AtqasukDAO dao = new AtqasukDAO();
-		EateryResponse resp = new EateryResponse();
+		GCRGResponse resp = new GCRGResponse();
 
 		try {
-			List<DataVO> list = dao.getAllData();
+			List<NoGapDataVO> list = dao.getAllData();
 			resp.setStatus("SUCCESS");
 			resp.setData(list);
-		} catch (EateryException e) {
+		} catch (GCRGException e) {
 			resp.setStatus("ERROR");
 			resp.setMsg(e.getMessage());
 		}

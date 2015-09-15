@@ -9,10 +9,10 @@
 			100%);
 	}
 	.tab-background {
-		background-color: rgba(0, 255, 41, 0.59);
+		background-color: rgba(255, 255, 255);
 	}
 	body {
-		font-family: 'Lobster Two', cursive;
+		font-family: "Times New Roman", Georgia, Serif;
 		font-size: 175%;
 		font-weight: 100;
 		background-image: url('bkgrnd.jpg');
@@ -21,13 +21,13 @@
 	h2 {
 		text-shadow: 1px 0px rgba(0, 0, 0, 0.72);
 		font-size: 250%;
-		color: rgb(61, 0, 255);
+		color: rgba(255, 167, 0, 0.37);
 	}
 	.tab-pane {
 		text-align: center;
-		background-image: linear-gradient(rgba(255, 235, 129, 0.56),
-			rgba(112, 255, 0, 0.17));
-		border-radius: 100px;
+		background-image: linear-gradient(rgba(255, 255, 255, 0.83),
+			rgba(222, 180, 180, 0.57));
+		border-radius: 20px;
 		box-shadow: 0px 0px 30px rgba(255, 230, 129, 0.72);
 		border-style: groove;
 		margin-top: 40px;
@@ -51,7 +51,7 @@
 		margin: 25px;
 		color: rgba(0, 0, 0, 1);
 		font-size: 50px;
-		background-color: rgba(173, 255, 0, 0.38);
+		background-color: rgba(255, 255, 255, 0.15);
 		border-radius: 12px;
 	}
 	.container {
