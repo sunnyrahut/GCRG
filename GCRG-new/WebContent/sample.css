@@ -43,7 +43,7 @@
 	}
 	input {
 		border-radius: 10px;
-		border-color: rgb(0, 255, 173);
+		border-color: rgb(248, 220, 153);
 	}
 	.heading {
 		display: inline-block;
@@ -54,8 +54,9 @@
 		background-color: rgba(255, 255, 255, 0.15);
 		border-radius: 12px;
 	}
-	.container {
-		text-align: center;
+	.headerBackground {
+		background-image:
+			url('http://nsidc.org/icelights/files/2011/05/sea_ice_jumbles_smaller.jpg');
 	}
 	th {
 		text-align: center;
@@ -64,7 +65,7 @@
 	}
 	.table>thead>tr>th {
 		vertical-align: bottom;
-		border-bottom: 2px solid #F00;
+		border-bottom: 2px solid rgb(218, 193, 160);
 	}
 	a {
 		color: rgba(0, 0, 0, 0.66);

@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import co.sunny.dao.AtqasukDAO;
-import co.sunny.entities.NoGapDataVO;
+import co.sunny.entities.NoGapFilledDataVO;
 import co.sunny.exception.GCRGException;
 
 public class DatabaseUploader {
@@ -23,14 +23,12 @@ public class DatabaseUploader {
 		String newFormat = "yyyy/MM/dd HH:mm";
 		SimpleDateFormat sdf;
 		try {
-			NoGapDataVO dataVo = new NoGapDataVO();
+			NoGapFilledDataVO dataVo = new NoGapFilledDataVO();
 			// use comma as separator
 			try {
 				sdf = new SimpleDateFormat(newFormat);
 				Date date = sdf.parse(parameters[1].replace("-", "/") + " "
 						+ parameters[2]);
-				// System.out.println(parameters[1].replace("-", "/") + " "
-				// + parameters[2]);
 				System.out.println("date:" + sdf.format(date));
 				dataVo.setTimeStamp(sdf.format(date));
 			} catch (ParseException e1) {
@@ -96,7 +94,7 @@ public class DatabaseUploader {
 			dataVo.setWindSpeed(Float.parseFloat(parameters[77]));
 
 			try {
-				atq.addData(dataVo, conn, preStmt, rs);
+				atq.addNoGapData(dataVo, conn, preStmt, rs);
 				System.out.println("Uploaded");
 			} catch (GCRGException e) {
 				// TODO Auto-generated catch block

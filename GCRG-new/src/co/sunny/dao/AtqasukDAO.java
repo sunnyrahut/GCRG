@@ -8,26 +8,32 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.sunny.entities.NoGapDataVO;
+import co.sunny.entities.CSVData;
+import co.sunny.entities.GapFilledDataVO;
+import co.sunny.entities.GenerateCSVVO;
+import co.sunny.entities.MeteorologicalDataVO;
+import co.sunny.entities.NoGapFilledDataVO;
 import co.sunny.exception.GCRGException;
 import co.sunny.utils.DBConnector;
 
 public class AtqasukDAO {
 
-	public List<NoGapDataVO> getAllData() throws GCRGException {
+	public List<NoGapFilledDataVO> getAllNoGapData(String fromDate,
+			String toDate) throws GCRGException {
 
 		Connection con = DBConnector.getDBConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 
-		List<NoGapDataVO> allData = new ArrayList<NoGapDataVO>();
-
+		List<NoGapFilledDataVO> allData = new ArrayList<NoGapFilledDataVO>();
 		try {
-			ps = con.prepareStatement("SELECT * FROM atq_no_gap_filled");
+			ps = con.prepareStatement("SELECT * FROM atq_no_gap_filled WHERE time_stamp<=? AND time_stamp>=?");
+			ps.setString(1, toDate);
+			ps.setString(2, fromDate);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				NoGapDataVO data = new NoGapDataVO();
+				NoGapFilledDataVO data = new NoGapFilledDataVO();
 				data.setTimeStamp(rs.getTimestamp("time_stamp").toString());
 				data.setAir_pressure(rs.getFloat("air_pressure"));
 				data.setCh4_flux(rs.getFloat("ch4_flux"));
@@ -61,8 +67,9 @@ public class AtqasukDAO {
 		return allData;
 	}
 
-	public NoGapDataVO addData(NoGapDataVO data, Connection conn,
-			PreparedStatement preStmt, ResultSet rs) throws GCRGException {
+	public NoGapFilledDataVO addNoGapData(NoGapFilledDataVO data,
+			Connection conn, PreparedStatement preStmt, ResultSet rs)
+			throws GCRGException {
 
 		try {
 			preStmt = conn
@@ -195,5 +202,402 @@ public class AtqasukDAO {
 			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
 		}
 		return data;
+	}
+
+	public List<GapFilledDataVO> getAllGapData(String fromDate, String toDate)
+			throws GCRGException {
+
+		Connection con = DBConnector.getDBConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		List<GapFilledDataVO> allData = new ArrayList<GapFilledDataVO>();
+
+		try {
+			ps = con.prepareStatement("SELECT * FROM atq_gap_filled WHERE time_stamp<=? AND time_stamp>=?");
+			ps.setString(1, toDate);
+			ps.setString(2, fromDate);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				GapFilledDataVO data = new GapFilledDataVO();
+				data.setTimeStamp(rs.getTimestamp("time_stamp").toString());
+				data.setGPP_f(rs.getFloat("GPP_f"));
+				data.setH_f(rs.getFloat("H_f"));
+				data.setH_fqcOK(rs.getFloat("H_fqcOK"));
+				data.setLE_f(rs.getFloat("LE_f"));
+				data.setLE_fqcOK(rs.getFloat("LE_fqcOK"));
+				data.setNEE_f(rs.getFloat("NEE_f"));
+				data.setNEE_fqcOK(rs.getFloat("NEE_fqcOK"));
+				data.setReco(rs.getFloat("Reco"));
+				allData.add(data);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
+		} finally {
+			DBConnector.closeResources(ps, rs, con);
+		}
+
+		return allData;
+	}
+
+	public GapFilledDataVO addGapData(GapFilledDataVO data, Connection conn,
+			PreparedStatement preStmt, ResultSet rs) throws GCRGException {
+
+		try {
+			preStmt = conn
+					.prepareStatement(
+							"INSERT INTO atq_gap_filled (time_stamp, NEE_f, NEE_fqcOK, LE_f, LE_fqcOK, H_fqcOK, H_f, Reco, GPP_f) VALUES (?,?,?,?,?,?,?,?,?)",
+							PreparedStatement.RETURN_GENERATED_KEYS);
+			// date = format.parse(data.getTimeStamp());
+			preStmt.setString(1, data.getTimeStamp());
+
+			if (data.getNEE_f() != 0) {
+				preStmt.setFloat(2, data.getNEE_f());
+			} else {
+				preStmt.setNull(2, Types.FLOAT);
+			}
+
+			if (data.getNEE_fqcOK() != 0) {
+				preStmt.setFloat(3, data.getNEE_fqcOK());
+			} else {
+				preStmt.setNull(3, Types.FLOAT);
+			}
+
+			if (data.getLE_f() != 0) {
+				preStmt.setFloat(4, data.getLE_f());
+			} else {
+				preStmt.setNull(4, Types.FLOAT);
+			}
+
+			if (data.getLE_fqcOK() != 0) {
+				preStmt.setFloat(5, data.getLE_fqcOK());
+			} else {
+				preStmt.setNull(5, Types.FLOAT);
+			}
+
+			if (data.getH_fqcOK() != 0) {
+				preStmt.setFloat(6, data.getH_fqcOK());
+			} else {
+				preStmt.setNull(6, Types.FLOAT);
+			}
+
+			if (data.getH_f() != 0) {
+				preStmt.setFloat(7, data.getH_f());
+			} else {
+				preStmt.setNull(7, Types.FLOAT);
+			}
+
+			if (data.getReco() != 0) {
+				preStmt.setFloat(8, data.getReco());
+			} else {
+				preStmt.setNull(8, Types.FLOAT);
+			}
+
+			if (data.getGPP_f() != 0) {
+				preStmt.setFloat(9, data.getGPP_f());
+			} else {
+				preStmt.setNull(9, Types.FLOAT);
+			}
+
+			preStmt.executeUpdate();
+			rs = preStmt.getGeneratedKeys();
+
+		} catch (SQLException e) {
+			System.err.println("Error " + e.getMessage());
+			e.getStackTrace();
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
+		}
+		return data;
+	}
+
+	public List<MeteorologicalDataVO> getAllMeteoData(String fromDate,
+			String toDate) throws GCRGException {
+
+		Connection con = DBConnector.getDBConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		List<MeteorologicalDataVO> allData = new ArrayList<MeteorologicalDataVO>();
+
+		try {
+			ps = con.prepareStatement("SELECT * FROM atq_meteorological WHERE time_stamp<=? AND time_stamp>=?");
+			ps.setString(1, toDate);
+			ps.setString(2, fromDate);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				MeteorologicalDataVO data = new MeteorologicalDataVO();
+				data.setTimeStamp(rs.getTimestamp("time_stamp").toString());
+				data.setAir_T_AVG_L(rs.getFloat("Air_T_AVG_L"));
+				data.setG_1_AVG_L(rs.getFloat("G_1_AVG_L"));
+				data.setG_2_AVG_L(rs.getFloat("G_2_AVG_L"));
+				data.setG_3_AVG_L(rs.getFloat("G_3_AVG_L"));
+				data.setP2_SWC_5_AVG_L(rs.getFloat("P2_SWC_5_AVG_L"));
+				data.setP2_SWC_15_AVG_L(rs.getFloat("P2_SWC_15_AVG_L"));
+				data.setP2_SWC_30_AVG_L(rs.getFloat("P2_SWC_30_AVG_L"));
+				data.setP3_SolT15_AVG_L(rs.getFloat("P3_SolT15_AVG_L"));
+				data.setP3_SolT30_AVG_L(rs.getFloat("P3_SolT30_AVG_L"));
+				data.setP3_SolT5_AVG_L(rs.getFloat("P3_SolT5_AVG_L"));
+				data.setP3_SWC_15_AVG_L(rs.getFloat("P3_SWC_15_AVG_L"));
+				data.setP3_SWC_30_AVG_L(rs.getFloat("P3_SWC_30_AVG_L"));
+				data.setP3_SWC_5_AVG_L(rs.getFloat("P3_SWC_5_AVG_L"));
+				data.setP4_SolT15_AVG_L(rs.getFloat("P4_SolT15_AVG_L"));
+				data.setP4_SolT30_AVG_L(rs.getFloat("P4_SolT30_AVG_L"));
+				data.setP4_SolT5_AVG_L(rs.getFloat("P4_SolT5_AVG_L"));
+				data.setPAR_AVG_L(rs.getFloat("PAR_AVG_L"));
+				data.setPPT_TOT_L(rs.getFloat("PPT_TOT_L"));
+				data.setPress_mb_AVG_L(rs.getFloat("Press_mb_AVG_L"));
+				data.setRH_AVG_L(rs.getFloat("RH_AVG_L"));
+				data.setRnet_WC_AVG_L(rs.getFloat("Rnet_WC_AVG_L"));
+				data.setRsolar_AVG_L(rs.getFloat("Rsolar_AVG_L"));
+				data.setSnowDepth_L(rs.getFloat("SnowDepth_L"));
+				data.setSS_Dif_R_AVG_L(rs.getFloat("SS_Dif_R_AVG_L"));
+				data.setSS_Tl_R_AVG_L(rs.getFloat("SS_Tl_R_AVG_L"));
+				data.setSWC_1_AVG_L(rs.getFloat("SWC_1_AVG_L"));
+				data.setSWC_2_AVG_L(rs.getFloat("SWC_2_AVG_L"));
+				data.setSWC_3_AVG_L(rs.getFloat("SWC_3_AVG_L"));
+				data.setSWC_4_AVG_L(rs.getFloat("SWC_4_AVG_L"));
+				allData.add(data);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
+		} finally {
+			DBConnector.closeResources(ps, rs, con);
+		}
+
+		return allData;
+	}
+
+	public MeteorologicalDataVO addMeteoData(MeteorologicalDataVO data,
+			Connection conn, PreparedStatement preStmt, ResultSet rs)
+			throws GCRGException {
+
+		try {
+			preStmt = conn
+					.prepareStatement(
+							"INSERT INTO atq_meteorological (time_stamp, PAR_AVG_L, Rsolar_AVG_L, Rnet_WC_AVG_L, Air_T_AVG_L, RH_AVG_L, G_1_AVG_L, G_2_AVG_L, G_3_AVG_L, PPT_TOT_L, Press_mb_AVG_L, SS_Tl_R_AVG_L, SS_Dif_R_AVG_L, SWC_1_AVG_L, SWC_2_AVG_L, SWC_3_AVG_L, SWC_4_AVG_L, P2_SWC_5_AVG_L, P2_SWC_15_AVG_L, P2_SWC_30_AVG_L, P3_SWC_5_AVG_L, P3_SWC_15_AVG_L, P3_SWC_30_AVG_L, P3_SolT5_AVG_L, P3_SolT15_AVG_L, P3_SolT30_AVG_L, P4_SolT5_AVG_L, P4_SolT15_AVG_L, P4_SolT30_AVG_L, SnowDepth_L) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+							PreparedStatement.RETURN_GENERATED_KEYS);
+			// date = format.parse(data.getTimeStamp());
+			preStmt.setString(1, data.getTimeStamp());
+
+			if (data.getPAR_AVG_L() != 0) {
+				preStmt.setFloat(2, data.getPAR_AVG_L());
+			} else {
+				preStmt.setNull(2, Types.FLOAT);
+			}
+
+			if (data.getRsolar_AVG_L() != 0) {
+				preStmt.setFloat(3, data.getRsolar_AVG_L());
+			} else {
+				preStmt.setNull(3, Types.FLOAT);
+			}
+
+			if (data.getRnet_WC_AVG_L() != 0) {
+				preStmt.setFloat(4, data.getRnet_WC_AVG_L());
+			} else {
+				preStmt.setNull(4, Types.FLOAT);
+			}
+
+			if (data.getAir_T_AVG_L() != 0) {
+				preStmt.setFloat(5, data.getAir_T_AVG_L());
+			} else {
+				preStmt.setNull(5, Types.FLOAT);
+			}
+
+			if (data.getRH_AVG_L() != 0) {
+				preStmt.setFloat(6, data.getRH_AVG_L());
+			} else {
+				preStmt.setNull(6, Types.FLOAT);
+			}
+
+			if (data.getG_1_AVG_L() != 0) {
+				preStmt.setFloat(7, data.getG_1_AVG_L());
+			} else {
+				preStmt.setNull(7, Types.FLOAT);
+			}
+
+			if (data.getG_2_AVG_L() != 0) {
+				preStmt.setFloat(8, data.getG_2_AVG_L());
+			} else {
+				preStmt.setNull(8, Types.FLOAT);
+			}
+
+			if (data.getG_3_AVG_L() != 0) {
+				preStmt.setFloat(9, data.getG_3_AVG_L());
+			} else {
+				preStmt.setNull(9, Types.FLOAT);
+			}
+
+			if (data.getPPT_TOT_L() != 0) {
+				preStmt.setFloat(10, data.getPPT_TOT_L());
+			} else {
+				preStmt.setNull(10, Types.FLOAT);
+			}
+
+			if (data.getPress_mb_AVG_L() != 0) {
+				preStmt.setFloat(11, data.getPress_mb_AVG_L());
+			} else {
+				preStmt.setNull(11, Types.FLOAT);
+			}
+
+			if (data.getSS_Tl_R_AVG_L() != 0) {
+				preStmt.setFloat(12, data.getSS_Tl_R_AVG_L());
+			} else {
+				preStmt.setNull(12, Types.FLOAT);
+			}
+
+			if (data.getSS_Dif_R_AVG_L() != 0) {
+				preStmt.setFloat(13, data.getSS_Dif_R_AVG_L());
+			} else {
+				preStmt.setNull(13, Types.FLOAT);
+			}
+
+			if (data.getSWC_1_AVG_L() != 0) {
+				preStmt.setFloat(14, data.getSWC_1_AVG_L());
+			} else {
+				preStmt.setNull(14, Types.FLOAT);
+			}
+
+			if (data.getSWC_2_AVG_L() != 0) {
+				preStmt.setFloat(15, data.getSWC_2_AVG_L());
+			} else {
+				preStmt.setNull(15, Types.FLOAT);
+			}
+
+			if (data.getSWC_3_AVG_L() != 0) {
+				preStmt.setFloat(16, data.getSWC_3_AVG_L());
+			} else {
+				preStmt.setNull(16, Types.FLOAT);
+			}
+
+			if (data.getSWC_4_AVG_L() != 0) {
+				preStmt.setFloat(17, data.getSWC_4_AVG_L());
+			} else {
+				preStmt.setNull(17, Types.FLOAT);
+			}
+
+			if (data.getP2_SWC_5_AVG_L() != 0) {
+				preStmt.setFloat(18, data.getP2_SWC_5_AVG_L());
+			} else {
+				preStmt.setNull(18, Types.FLOAT);
+			}
+
+			if (data.getP2_SWC_15_AVG_L() != 0) {
+				preStmt.setFloat(19, data.getP2_SWC_15_AVG_L());
+			} else {
+				preStmt.setNull(19, Types.FLOAT);
+			}
+
+			if (data.getP2_SWC_30_AVG_L() != 0) {
+				preStmt.setFloat(20, data.getP2_SWC_30_AVG_L());
+			} else {
+				preStmt.setNull(20, Types.FLOAT);
+			}
+
+			if (data.getP3_SWC_5_AVG_L() != 0) {
+				preStmt.setFloat(21, data.getP3_SWC_5_AVG_L());
+			} else {
+				preStmt.setNull(21, Types.FLOAT);
+			}
+
+			if (data.getP3_SWC_15_AVG_L() != 0) {
+				preStmt.setFloat(22, data.getP3_SWC_15_AVG_L());
+			} else {
+				preStmt.setNull(22, Types.FLOAT);
+			}
+
+			if (data.getP3_SWC_30_AVG_L() != 0) {
+				preStmt.setFloat(23, data.getP3_SWC_30_AVG_L());
+			} else {
+				preStmt.setNull(23, Types.FLOAT);
+			}
+
+			if (data.getP3_SolT5_AVG_L() != 0) {
+				preStmt.setFloat(24, data.getP3_SolT5_AVG_L());
+			} else {
+				preStmt.setNull(24, Types.FLOAT);
+			}
+
+			if (data.getP3_SolT15_AVG_L() != 0) {
+				preStmt.setFloat(25, data.getP3_SolT15_AVG_L());
+			} else {
+				preStmt.setNull(25, Types.FLOAT);
+			}
+
+			if (data.getP3_SolT30_AVG_L() != 0) {
+				preStmt.setFloat(26, data.getP3_SolT30_AVG_L());
+			} else {
+				preStmt.setNull(26, Types.FLOAT);
+			}
+
+			if (data.getP4_SolT5_AVG_L() != 0) {
+				preStmt.setFloat(27, data.getP4_SolT5_AVG_L());
+			} else {
+				preStmt.setNull(27, Types.FLOAT);
+			}
+
+			if (data.getP4_SolT15_AVG_L() != 0) {
+				preStmt.setFloat(28, data.getP4_SolT15_AVG_L());
+			} else {
+				preStmt.setNull(28, Types.FLOAT);
+			}
+
+			if (data.getP4_SolT30_AVG_L() != 0) {
+				preStmt.setFloat(29, data.getP4_SolT30_AVG_L());
+			} else {
+				preStmt.setNull(29, Types.FLOAT);
+			}
+
+			if (data.getSnowDepth_L() != 0) {
+				preStmt.setFloat(30, data.getSnowDepth_L());
+			} else {
+				preStmt.setNull(30, Types.FLOAT);
+			}
+
+			preStmt.executeUpdate();
+			rs = preStmt.getGeneratedKeys();
+
+		} catch (SQLException e) {
+			System.err.println("Error " + e.getMessage());
+			e.getStackTrace();
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
+		}
+		return data;
+	}
+
+	public List<CSVData> getParamData(GenerateCSVVO generateCSV)
+			throws GCRGException {
+
+		Connection con = DBConnector.getDBConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		List<CSVData> allData = new ArrayList<CSVData>();
+
+		try {
+			ps = con.prepareStatement("SELECT " + generateCSV.getParameter()
+					+ ",time_stamp FROM " + generateCSV.getDataType());
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				CSVData data = new CSVData();
+				data.setTimeStamp(rs.getTimestamp("time_stamp").toString());
+				data.setParameter(rs.getString(generateCSV.getParameter()));
+				allData.add(data);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
+		} finally {
+			DBConnector.closeResources(ps, rs, con);
+		}
+
+		return allData;
 	}
 }

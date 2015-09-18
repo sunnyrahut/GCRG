@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import co.sunny.dao.AtqasukDAO;
-import co.sunny.entities.NoGapDataVO;
+import co.sunny.entities.NoGapFilledDataVO;
 import co.sunny.exception.GCRGException;
 
 public class CSVFileReader {
@@ -50,7 +50,7 @@ public class CSVFileReader {
 			FileWriter fw = new FileWriter(file.getAbsoluteFile());
 			bw = new BufferedWriter(fw);
 			br = new BufferedReader(new FileReader(csvFile));
-			NoGapDataVO dataVo = new NoGapDataVO();
+			NoGapFilledDataVO dataVo = new NoGapFilledDataVO();
 			while ((line = br.readLine()) != null) {
 
 				// use comma as separator
@@ -68,29 +68,6 @@ public class CSVFileReader {
 						e1.printStackTrace();
 					}
 
-					// if (data[146].equals("")) {
-					// data[146] = "0";
-					// }
-					// System.out.println("Ch4:" + data[146]);
-					// bw.write(data[146]);
-					// dataVo.setCh4Ppm(Float.parseFloat(data[146]));
-					// bw.newLine();
-					//
-					// if (data[20].equals("")) {
-					// data[20] = "0";
-					// }
-					// System.out.println("CO2:" + data[20]);
-					// bw.write(data[20]);
-					// dataVo.setCo2Flux(Float.parseFloat(data[20]));
-					// bw.newLine();
-					//
-					// if (data[23].equals("")) {
-					// data[23] = "0";
-					// }
-					// System.out.println("H2O:" + data[23]);
-					// bw.write(data[23]);
-					// dataVo.setH2oFlux(Float.parseFloat(data[23]));
-					// bw.newLine();
 					System.out.println("H:" + parameters[10]);
 					dataVo.setH(Float.parseFloat(parameters[10]));
 
@@ -148,7 +125,7 @@ public class CSVFileReader {
 					System.out.println("Wind speed:" + parameters[77]);
 					dataVo.setWindSpeed(Float.parseFloat(parameters[77]));
 					try {
-						atq.addData(dataVo, conn, preStmt, rs);
+						atq.addNoGapData(dataVo, conn, preStmt, rs);
 						System.out.println("Uploading...");
 					} catch (GCRGException e) {
 						// TODO Auto-generated catch block

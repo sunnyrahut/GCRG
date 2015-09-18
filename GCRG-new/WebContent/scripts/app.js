@@ -197,14 +197,6 @@ gcrg
 										templateUrl : 'line-customTooltips.html',
 										controller : 'DisplayGraph',
 										resolve : {
-											dataValues : [
-													'$http',
-													function($http) {
-														return $http({
-															method : 'GET',
-															url : 'rest/atq/getAll'
-														});
-													} ],
 											auth : [
 													"$q",
 													"$window",

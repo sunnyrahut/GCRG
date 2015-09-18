@@ -89,7 +89,7 @@ public class ScheduledTask extends TimerTask {
 				renameFile("C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\csv_data");
 				rt.exec("\"C:\\Program Files (x86)\\LI-COR\\EddyPro-6.0.0\\bin\\eddypro_rp.exe\" -s win -c console -m desktop C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\ATQ-LGR-CSAT_improved_separation_NewCols.eddypro");
 				try {
-					Thread.sleep(10000); // 3000 milliseconds is one second.
+					Thread.sleep(15000); // 3000 milliseconds is one second.
 				} catch (InterruptedException ex) {
 					Thread.currentThread().interrupt();
 				}
