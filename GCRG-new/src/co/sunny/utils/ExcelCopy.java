@@ -10,7 +10,7 @@ import co.sunny.exception.GCRGException;
 
 public class ExcelCopy {
 	public static String readDataFromCsvFile(String location)
-			throws GCRGException {
+			throws FileNotFoundException {
 		String csvFile = location;
 		BufferedReader br = null;
 		String line = "";

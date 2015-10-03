@@ -46,13 +46,13 @@
 	<script type="text/javascript"
 		src="scripts/lib/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript"
-		src="scripts/lib/angular-1.4.3/angular.min.js"></script>
+		src="scripts/lib/angular-1.4.7/angular.min.js"></script>
 	<script type="text/javascript"
-		src="scripts/lib/angular-1.4.3/angular-resource.min.js"></script>
+		src="scripts/lib/angular-1.4.7/angular-resource.min.js"></script>
 	<script type="text/javascript"
-		src="scripts/lib/angular-1.4.3/angular-animate.min.js"></script>
+		src="scripts/lib/angular-1.4.7/angular-animate.min.js"></script>
 	<script type="text/javascript"
-		src="scripts/lib/angular-1.4.3/angular-route.min.js"></script>
+		src="scripts/lib/angular-1.4.7/angular-route.min.js"></script>
 	<script type="text/javascript"
 		src="scripts/lib/Chart.js-master/Chart.js"></script>
 	<script type="text/javascript"
