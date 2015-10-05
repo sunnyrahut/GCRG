@@ -34,6 +34,7 @@ public class UserDAO {
 				user.setPhone(rs.getString("PHONE"));
 				user.setPassword(rs.getString("password"));
 				user.setTimeStamp(rs.getTimestamp("time_stamp"));
+				user.setUserType(rs.getString("user_type"));
 				users.add(user);
 			}
 
@@ -68,6 +69,7 @@ public class UserDAO {
 				user.setPhone(rs.getString("PHONE"));
 				user.setPassword(rs.getString("password"));
 				user.setTimeStamp(rs.getTimestamp("time_stamp"));
+				user.setUserType(rs.getString("user_type"));
 			} else {
 				throw new GCRGException("user with the ID=" + id
 						+ " not found in the system.");
@@ -91,7 +93,7 @@ public class UserDAO {
 		try {
 			preStmt = conn
 					.prepareStatement(
-							"INSERT INTO users (time_stamp, first_name, last_name, password, email, phone) VALUES (?,?,?,?,?,?)",
+							"INSERT INTO users (time_stamp, first_name, last_name, password, email, phone, user_type) VALUES (?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS);
 			preStmt.setTimestamp(1, user.getTimeStamp());
 			preStmt.setString(2, user.getFirstName());
@@ -99,6 +101,7 @@ public class UserDAO {
 			preStmt.setString(4, user.getPassword());
 			preStmt.setString(5, user.getEmail());
 			preStmt.setString(6, user.getPhone());
+			preStmt.setString(7, user.getUserType());
 
 			preStmt.executeUpdate();
 			rs = preStmt.getGeneratedKeys();
@@ -126,7 +129,7 @@ public class UserDAO {
 		try {
 			preStmt = conn
 					.prepareStatement(
-							"UPDATE users SET first_name=?, last_name=?, time_stamp=?, password=?, EMAIL=?, PHONE=? WHERE user_id=?",
+							"UPDATE users SET first_name=?, last_name=?, time_stamp=?, password=?, EMAIL=?, PHONE=?, user_type=? WHERE user_id=?",
 							PreparedStatement.RETURN_GENERATED_KEYS);
 			preStmt.setString(1, user.getFirstName());
 			preStmt.setString(2, user.getLastName());
@@ -134,7 +137,8 @@ public class UserDAO {
 			preStmt.setString(4, user.getPassword());
 			preStmt.setString(5, user.getEmail());
 			preStmt.setString(6, user.getPhone());
-			preStmt.setLong(7, user.getUserID());
+			preStmt.setString(7, user.getUserType());
+			preStmt.setLong(8, user.getUserID());
 			if (preStmt.executeUpdate() <= 0) {
 				throw new GCRGException("OwnerLogin with the ID="
 						+ user.getUserID() + " not found in the system.");
@@ -176,6 +180,8 @@ public class UserDAO {
 				user.setPhone(rs.getString("PHONE"));
 				user.setPassword(rs.getString("password"));
 				user.setTimeStamp(rs.getTimestamp("time_stamp"));
+				user.setUserType(rs.getString("user_type"));
+				;
 				users.add(user);
 			}
 		} catch (SQLException e) {

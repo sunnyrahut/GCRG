@@ -1,0 +1,57 @@
+<header>
+	<div style="text-align: center">
+		<div class="heading">Global Change Research Group</div>
+		<button type="button" ng-click="signOut()"
+			class="btn btn-default navbar-btn">logout</button>
+	</div>
+</header>
+<nav>
+	<div class="tab-background">
+		<ul class="nav nav-tabs nav-justified">
+			<li class="active"><a>Contact List</a></li>
+			<li><a href="#/graphUser">Graphs</a></li>
+		</ul>
+	</div>
+</nav>
+<article>
+	<section>
+		<div style="text-align: center">
+			<div id="content" class="tab-content">
+				<!-- 			<div class="tab-pane active" id="tab-contacts"> -->
+				<div>
+					<input type="text" ng-model="search" placeholder="Search contacts">
+				</div>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th ng-click="prop='name'; reverse=!reverse;"><i
+								class="fa fa-male"></i> Name</th>
+							<th ng-click="prop='role'; reverse=!reverse;"><i
+								class="fa fa-phone-square"></i> Role</th>
+							<th ng-click="prop='email'; reverse=!reverse;"><i
+								class="fa fa-envelope"></i> Email</th>
+							<th ng-click="prop='phone'; reverse=!reverse;"><i
+								class="fa fa-phone-square"></i> Phone</th>
+						</tr>
+					</thead>
+					<tbody ng-init="prop='name'; reverse=true;">
+						<tr>
+							<td><input type="text" ng-model=name></td>
+							<td><input type="text" ng-model=role></td>
+							<td><input type="text" ng-model=email></td>
+							<td><input type="text" ng-model=phone></td>
+						</tr>
+						<tr
+							ng-repeat="contact in contacts | filter: search | orderBy:prop:reverse">
+							<td>{{contact.name}}</td>
+							<td>{{contact.role}}</td>
+							<td>{{contact.email}}</td>
+							<td>{{contact.phone}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- 			</div> -->
+			</div>
+		</div>
+	</section>
+</article>

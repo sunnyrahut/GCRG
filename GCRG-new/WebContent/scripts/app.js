@@ -7,7 +7,10 @@ gcrg.run([ '$http', '$templateCache', function($http, $templateCache) {
 	$http.get('loginExistingUser.html', {
 		cache : $templateCache
 	});
-	$http.get('contacts.html', {
+	$http.get('contactsAdmin.html', {
+		cache : $templateCache
+	});
+	$http.get('contactsUser.html', {
 		cache : $templateCache
 	});
 	$http.get('userDetails.html', {
@@ -22,7 +25,10 @@ gcrg.run([ '$http', '$templateCache', function($http, $templateCache) {
 	$http.get('viewUsers.html', {
 		cache : $templateCache
 	});
-	$http.get('line-customTooltips.html', {
+	$http.get('graphUser.html', {
+		cache : $templateCache
+	});
+	$http.get('graphAdmin.html', {
 		cache : $templateCache
 	});
 } ]);
@@ -36,10 +42,14 @@ gcrg.factory("authenticateUser", function($http, $q, $window, $location) {
 			if (result.data.status === "SUCCESS") {
 				userInfo = {
 					status : result.data.status,
-					userName : result.data.data[0].email
+					userType : result.data.data[0].userType
 				};
 				$window.sessionStorage["userInfo"] = JSON.stringify(userInfo);
-				$location.path('/viewUsers');
+				if (userInfo.userType == "Admin") {
+					$location.path('/viewUsers');
+				} else if (userInfo.userType == "User") {
+					$location.path('/contactsUser');
+				}
 				deferred.resolve(userInfo);
 			} else {
 				alert("User credentials not found in the database!!");
@@ -117,7 +127,7 @@ gcrg
 															authenticateUser) {
 														var userInfo = JSON
 																.parse($window.sessionStorage["userInfo"]);
-														if (userInfo) {
+														if (userInfo.userType == "Admin") {
 															return $q
 																	.when(userInfo);
 														} else {
@@ -144,7 +154,7 @@ gcrg
 														var userInfo = JSON
 																.parse($window.sessionStorage["userInfo"]);
 
-														if (userInfo) {
+														if (userInfo.userType == "Admin") {
 															return $q
 																	.when(userInfo);
 														} else {
@@ -157,9 +167,45 @@ gcrg
 										}
 									})
 							.when(
-									'/contacts',
+									'/contactsAdmin',
 									{
-										templateUrl : 'contacts.html',
+										templateUrl : 'contactsAdmin.html',
+										controller : 'Contact',
+										resolve : {
+											contacts : [
+													'$http',
+													function($http) {
+														return $http({
+															method : 'GET',
+															url : 'rest/contacts/getAll'
+														});
+													} ],
+											auth : [
+													"$q",
+													"$window",
+													"authenticateUser",
+													function($q, $window,
+															authenticateUser) {
+														var userInfo = JSON
+																.parse($window.sessionStorage["userInfo"]);
+														console
+																.log(userInfo.userType);
+														if (userInfo.userType == "Admin") {
+															return $q
+																	.when(userInfo);
+														} else {
+															return $q
+																	.reject({
+																		authenticated : false
+																	});
+														}
+													} ]
+										}
+									})
+							.when(
+									'/contactsUser',
+									{
+										templateUrl : 'contactsUser.html',
 										controller : 'Contact',
 										resolve : {
 											contacts : [
@@ -179,7 +225,7 @@ gcrg
 														var userInfo = JSON
 																.parse($window.sessionStorage["userInfo"]);
 
-														if (userInfo) {
+														if (userInfo.userType == "User") {
 															return $q
 																	.when(userInfo);
 														} else {
@@ -192,9 +238,9 @@ gcrg
 										}
 									})
 							.when(
-									'/graph',
+									'/graphAdmin',
 									{
-										templateUrl : 'line-customTooltips.html',
+										templateUrl : 'graphAdmin.html',
 										controller : 'DisplayGraph',
 										resolve : {
 											auth : [
@@ -206,7 +252,34 @@ gcrg
 														var userInfo = JSON
 																.parse($window.sessionStorage["userInfo"]);
 
-														if (userInfo) {
+														if (userInfo.userType == "Admin") {
+															return $q
+																	.when(userInfo);
+														} else {
+															return $q
+																	.reject({
+																		authenticated : false
+																	});
+														}
+													} ]
+										}
+									})
+							.when(
+									'/graphUser',
+									{
+										templateUrl : 'graphUser.html',
+										controller : 'DisplayGraph',
+										resolve : {
+											auth : [
+													"$q",
+													"$window",
+													"authenticateUser",
+													function($q, $window,
+															authenticateUser) {
+														var userInfo = JSON
+																.parse($window.sessionStorage["userInfo"]);
+
+														if (userInfo.userType == "User") {
 															return $q
 																	.when(userInfo);
 														} else {

@@ -8,7 +8,8 @@ gcrg.controller('LoginExistingUser', [ '$scope', '$location', '$q', '$http',
 					"email" : $scope.email,
 					"phone" : "",
 					"password" : $scope.password,
-					"timeStamp" : new Date()
+					"timeStamp" : new Date(),
+					"userType" : ""
 				};
 				authenticateUser.login(obj);
 			}

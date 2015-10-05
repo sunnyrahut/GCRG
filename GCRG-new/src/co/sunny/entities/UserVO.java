@@ -11,6 +11,7 @@ public class UserVO {
 	private String phone;
 	private long userID;
 	private Timestamp timeStamp;
+	private String userType;
 
 	public String getFirstName() {
 		return firstName;
@@ -68,4 +69,11 @@ public class UserVO {
 		this.phone = phone;
 	}
 
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
 }
