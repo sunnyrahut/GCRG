@@ -29,7 +29,7 @@ public class LoginRESTService {
 				if (list.get(i).getEmail().equals(user.getEmail())
 						&& list.get(i).getPassword().equals(user.getPassword())) {
 					resp.setStatus("SUCCESS");
-					resp.setData(list);
+					resp.setData(list.get(i));
 					return resp;
 				}
 			}

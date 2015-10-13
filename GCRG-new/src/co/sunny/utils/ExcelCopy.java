@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import co.sunny.exception.GCRGException;
-
 public class ExcelCopy {
 	public static String readDataFromCsvFile(String location)
 			throws FileNotFoundException {

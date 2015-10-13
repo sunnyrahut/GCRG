@@ -12,7 +12,7 @@ import org.apache.commons.net.ftp.FTPFile;
 
 public class FTPConnection {
 
-	public static long lastMod;
+	public static long lastMod = Long.MIN_VALUE;
 
 	public FTPClient getConnection(String server, int port, String user,
 			String password, String directory) {

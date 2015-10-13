@@ -11,10 +11,7 @@ public class NoGapFilledDataVO {
 	private float qc_H;
 	private float LE;
 	private float qc_LE;
-	private float co2_flux;
-	private float qc_co2_flux;
 	private float h2o_flux;
-	private float qc_h2o_flux;
 	private float ch4_flux;
 	private float qc_ch4_flux;
 	private float co2_mixing_ratio;
@@ -95,36 +92,12 @@ public class NoGapFilledDataVO {
 		this.qc_LE = qc_LE;
 	}
 
-	public float getCo2_flux() {
-		return co2_flux;
-	}
-
-	public void setCo2_flux(float co2_flux) {
-		this.co2_flux = co2_flux;
-	}
-
-	public float getQc_co2_flux() {
-		return qc_co2_flux;
-	}
-
-	public void setQc_co2_flux(float qc_co2_flux) {
-		this.qc_co2_flux = qc_co2_flux;
-	}
-
 	public float getH2o_flux() {
 		return h2o_flux;
 	}
 
 	public void setH2o_flux(float h2o_flux) {
 		this.h2o_flux = h2o_flux;
-	}
-
-	public float getQc_h2o_flux() {
-		return qc_h2o_flux;
-	}
-
-	public void setQc_h2o_flux(float qc_h2o_flux) {
-		this.qc_h2o_flux = qc_h2o_flux;
 	}
 
 	public float getCh4_flux() {

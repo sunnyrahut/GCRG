@@ -39,10 +39,11 @@ gcrg.factory("authenticateUser", function($http, $q, $window, $location) {
 	function login(obj) {
 		var deferred = $q.defer();
 		$http.post("rest/login/authenticate", obj).then(function(result) {
+			console.log(result.data);
 			if (result.data.status === "SUCCESS") {
 				userInfo = {
 					status : result.data.status,
-					userType : result.data.data[0].userType
+					userType : result.data.data.userType
 				};
 				$window.sessionStorage["userInfo"] = JSON.stringify(userInfo);
 				if (userInfo.userType == "Admin") {

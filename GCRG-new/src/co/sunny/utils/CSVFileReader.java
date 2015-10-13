@@ -77,12 +77,6 @@ public class CSVFileReader {
 					System.out.println("CH4 mixing ratio:" + parameters[50]);
 					dataVo.setCh4_mixing_ratio(Float.parseFloat(parameters[50]));
 
-					System.out.println("CO2 flux:" + parameters[16]);
-					dataVo.setCo2_flux(Float.parseFloat(parameters[16]));
-
-					System.out.println("CH4 flux:" + parameters[22]);
-					dataVo.setCo2_flux(Float.parseFloat(parameters[22]));
-
 					System.out.println("CO2 mixing ratio:" + parameters[40]);
 					dataVo.setCo2_mixing_ratio(Float.parseFloat(parameters[40]));
 
@@ -98,14 +92,8 @@ public class CSVFileReader {
 					System.out.println("QC ch4 flux:" + parameters[23]);
 					dataVo.setQc_ch4_flux(Float.parseFloat(parameters[23]));
 
-					System.out.println("QC CO2 flux:" + parameters[17]);
-					dataVo.setQc_co2_flux(Float.parseFloat(parameters[17]));
-
 					System.out.println("Qc H:" + parameters[11]);
 					dataVo.setQc_H(Float.parseFloat(parameters[11]));
-
-					System.out.println("Qc H2O flux:" + parameters[20]);
-					dataVo.setQc_h2o_flux(Float.parseFloat(parameters[20]));
 
 					System.out.println("Qc LE:" + parameters[14]);
 					dataVo.setQc_LE(Float.parseFloat(parameters[14]));
