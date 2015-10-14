@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import co.sunny.dao.AtqasukDAO;
+import co.sunny.entities.GapFilledDataVO;
 import co.sunny.entities.MeteorologicalDataVO;
 import co.sunny.entities.NoGapFilledDataVO;
 import co.sunny.exception.GCRGException;
@@ -29,7 +30,10 @@ public class DatabaseUploader {
 		calendar.set(Calendar.MONTH, (int) Float.parseFloat(parameters[1]));
 		calendar.set(Calendar.HOUR_OF_DAY,
 				(int) Float.parseFloat(parameters[3]));
-		if (((int) Float.parseFloat(parameters[4]) % 1) * 24 > 0.9) {
+		System.out.println("Minute: "
+				+ ((Float.parseFloat(parameters[4]) % 1) * 24) % 1);
+		if ((((Float.parseFloat(parameters[4]) % 1) * 24) % 1) >= 0.9
+				|| (((Float.parseFloat(parameters[4]) % 1) * 24) % 1) <= 0.1) {
 			calendar.set(Calendar.MINUTE, 00);
 		} else {
 			calendar.set(Calendar.MINUTE, 30);
@@ -225,5 +229,22 @@ public class DatabaseUploader {
 			DBConnector.closeResources(preStmt, rs, conn);
 		}
 		System.out.println("Done with " + lineNo + "rows");
+	}
+
+	public void uploadGapFilledData(GapFilledDataVO data) throws GCRGException {
+		AtqasukDAO atq = new AtqasukDAO();
+		Connection conn = DBConnector.getDBConnection();
+		PreparedStatement preStmt = null;
+		ResultSet rs = null;
+
+		try {
+			atq.addGapData(data, conn, preStmt, rs);
+			System.out.println("Uploaded");
+		} catch (GCRGException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeResources(preStmt, rs, conn);
+		}
 	}
 }

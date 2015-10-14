@@ -16,6 +16,7 @@ import org.apache.commons.net.ftp.FTPFile;
 
 public class ScheduledTaskNoGap extends TimerTask {
 	private static int rowNumber = 0;
+	private static int backUpNumber = 1;
 
 	public static String searchCSVFile(String parentDirectory) {
 		File[] files = new File(parentDirectory).listFiles();
@@ -136,12 +137,13 @@ public class ScheduledTaskNoGap extends TimerTask {
 					if (rowNumber >= 500) {
 						try {
 							rt.exec("\"C:\\Program Files\\MATLAB\\R2015a\\bin\\matlab.exe\" -nodisplay -nosplash -nodesktop -r \"run('C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\Matlab\\Filter_EP_forWebsite.m')");
+							System.out.println("Matlab executed..");
 						} catch (IOException e2) {
 							// TODO Auto-generated catch block
 							e2.printStackTrace();
 						}
 						try {
-							Thread.sleep(15000); // 10000 milliseconds is one
+							Thread.sleep(30000); // 10000 milliseconds is one
 													// second.
 						} catch (InterruptedException ex) {
 							Thread.currentThread().interrupt();
@@ -204,7 +206,10 @@ public class ScheduledTaskNoGap extends TimerTask {
 						}
 						File file = new File(
 								"C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\Master data\\master_data.csv");
-						file.delete();
+						file.renameTo(new File(
+								"C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\Backup\\master_data_"
+										+ backUpNumber + ".csv"));
+						backUpNumber++;
 						rowNumber = 0;
 
 						FileWriter fileWriter = null;
@@ -219,6 +224,7 @@ public class ScheduledTaskNoGap extends TimerTask {
 							}
 							fileWriter.flush();
 							fileWriter.close();
+							System.out.println("Backup created..");
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
