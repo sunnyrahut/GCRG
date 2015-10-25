@@ -57,6 +57,8 @@
 		src="scripts/lib/Chart.js-master/Chart.js"></script>
 	<script type="text/javascript"
 		src="scripts/lib/angular-chart.js/angular-chart.js"></script>
+	<script type="text/javascript"
+		src="scripts/lib/canvasjs-1.7.0/canvasjs.min.js"></script>
 	<!-- 	<script type="text/javascript" src="scripts/script.js"></script> -->
 	<script type="text/javascript" src="scripts/app.js"></script>
 	<script type="text/javascript" src="scripts/controllers/addUser.js"></script>

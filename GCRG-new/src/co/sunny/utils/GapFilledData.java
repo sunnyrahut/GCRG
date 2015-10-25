@@ -137,9 +137,4 @@ public class GapFilledData {
 			}
 		}
 	}
-
-	public static void main(String[] args) {
-		GapFilledData gfd = new GapFilledData();
-		gfd.readGapFilledData();
-	}
 }

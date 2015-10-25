@@ -24,10 +24,10 @@ public class DatabaseUploader {
 		PreparedStatement preStmt = null;
 		ResultSet rs = null;
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.DAY_OF_YEAR,
+		calendar.set(Calendar.DAY_OF_MONTH,
 				(int) Float.parseFloat(parameters[2]));
 		calendar.set(Calendar.YEAR, (int) Float.parseFloat(parameters[0]));
-		calendar.set(Calendar.MONTH, (int) Float.parseFloat(parameters[1]));
+		calendar.set(Calendar.MONTH, (int) Float.parseFloat(parameters[1]) - 1);
 		calendar.set(Calendar.HOUR_OF_DAY,
 				(int) Float.parseFloat(parameters[3]));
 		System.out.println("Minute: "

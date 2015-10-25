@@ -42,9 +42,9 @@
 									<option value="windSpeed">windSpeed</option>
 									<option value="wind_dir">wind_dir</option>
 									<option value="uStar">u*</option>
-									<option value="H">H</option>
+									<option value="h">H</option>
 									<option value="qc_H">qc_H</option>
-									<option value="LE">LE</option>
+									<option value="le">LE</option>
 									<option value="qc_LE">qc_LE</option>
 									<option value="co2_flux">co2_flux</option>
 									<option value="qc_co2_flux">qc_co2_flux</option>
@@ -56,46 +56,46 @@
 									<option value="h2o_mixing_ratio">h2o_mixing_ratio</option>
 									<option value="ch4_mixing_ratio">ch4_mixing_ratio</option>
 									<option value="air_pressure">air_pressure</option>
-									<option value="RH">RH</option></select> <select ng-model="parameter"
+									<option value="rh">RH</option></select> <select ng-model="parameter"
 								ng-show="dataType=='atq_gap_filled'"><option
-										value="NEE_f">NEE_f</option>
-									<option value="NEE_fqcOK">NEE_fqcOK</option>
-									<option value="LE_f">LE_f</option>
-									<option value="LE_fqcOK">LE_fqcOK</option>
-									<option value="H_f">H_f</option>
-									<option value="H_fqcOK">H_fqcOK</option>
-									<option value="Reco">Reco</option>
-									<option value="GPP_f">GPP_f</option></select> <select
+										value="nee_f">NEE_f</option>
+									<option value="nee_fqcok">NEE_fqcOK</option>
+									<option value="le_f">LE_f</option>
+									<option value="le_fqcok">LE_fqcOK</option>
+									<option value="h_f">H_f</option>
+									<option value="h_fqcok">H_fqcOK</option>
+									<option value="reco">Reco</option>
+									<option value="gpp_f">GPP_f</option></select> <select
 								ng-model="parameter" ng-show="dataType=='atq_meteorological'"><option
 										value="PAR_AVG_L">PAR_AVG_L</option>
-									<option value="Rsolar_AVG_L">Rsolar_AVG_L</option>
-									<option value="Rnet_WC_AVG_L">Rnet_WC_AVG_L</option>
-									<option value="Air_T_AVG_L">Air_T_AVG_L</option>
-									<option value="RH_AVG_L">RH_AVG_L</option>
-									<option value="G_1_AVG_L">G_1_AVG_L</option>
-									<option value="G_2_AVG_L">G_2_AVG_L</option>
-									<option value="G_3_AVG_L">G_3_AVG_L</option>
-									<option value="PPT_TOT_L">PPT_TOT_L</option>
-									<option value="Press_mb_AVG_L">Press_mb_AVG_L</option>
-									<option value="SS_Tl_R_AVG_L">SS_Tl_R_AVG_L</option>
-									<option value="SS_Dif_R_AVG_L">SS_Dif_R_AVG_L</option>
-									<option value="SWC_1_AVG_L">SWC_1_AVG_L</option>
-									<option value="SWC_2_AVG_L">SWC_2_AVG_L</option>
-									<option value="SWC_3_AVG_L">SWC_3_AVG_L</option>
-									<option value="SWC_4_AVG_L">SWC_4_AVG_L</option>
-									<option value="P2_SWC_5_AVG_L">P2_SWC_5_AVG_L</option>
-									<option value="P2_SWC_15_AVG_L">P2_SWC_15_AVG_L</option>
-									<option value="P2_SWC_30_AVG_L">P2_SWC_30_AVG_L</option>
-									<option value="P3_SWC_5_AVG_L">P3_SWC_5_AVG_L</option>
-									<option value="P3_SWC_15_AVG_L">P3_SWC_15_AVG_L</option>
-									<option value="P3_SWC_30_AVG_L">P3_SWC_30_AVG_L</option>
-									<option value="P3_SolT5_AVG_L">P3_SolT5_AVG_L</option>
-									<option value="P3_SolT15_AVG_L">P3_SolT15_AVG_L</option>
-									<option value="P3_SolT30_AVG_L">P3_SolT30_AVG_L</option>
-									<option value="P4_SolT5_AVG_L">P4_SolT5_AVG_L</option>
-									<option value="P4_SolT15_AVG_L">P4_SolT15_AVG_L</option>
-									<option value="P4_SolT30_AVG_L">P4_SolT30_AVG_L</option>
-									<option value="SnowDepth_L">SnowDepth_L</option></select></td>
+									<option value="rsolar_AVG_L">Rsolar_AVG_L</option>
+									<option value="rnet_WC_AVG_L">Rnet_WC_AVG_L</option>
+									<option value="air_T_AVG_L">Air_T_AVG_L</option>
+									<option value="rh_AVG_L">RH_AVG_L</option>
+									<option value="g_1_AVG_L">G_1_AVG_L</option>
+									<option value="g_2_AVG_L">G_2_AVG_L</option>
+									<option value="g_3_AVG_L">G_3_AVG_L</option>
+									<option value="ppt_TOT_L">PPT_TOT_L</option>
+									<option value="press_mb_AVG_L">Press_mb_AVG_L</option>
+									<option value="ss_Tl_R_AVG_L">SS_Tl_R_AVG_L</option>
+									<option value="ss_Dif_R_AVG_L">SS_Dif_R_AVG_L</option>
+									<option value="swc_1_AVG_L">SWC_1_AVG_L</option>
+									<option value="swc_2_AVG_L">SWC_2_AVG_L</option>
+									<option value="swc_3_AVG_L">SWC_3_AVG_L</option>
+									<option value="swc_4_AVG_L">SWC_4_AVG_L</option>
+									<option value="p2_SWC_5_AVG_L">P2_SWC_5_AVG_L</option>
+									<option value="p2_SWC_15_AVG_L">P2_SWC_15_AVG_L</option>
+									<option value="p2_SWC_30_AVG_L">P2_SWC_30_AVG_L</option>
+									<option value="p3_SWC_5_AVG_L">P3_SWC_5_AVG_L</option>
+									<option value="p3_SWC_15_AVG_L">P3_SWC_15_AVG_L</option>
+									<option value="p3_SWC_30_AVG_L">P3_SWC_30_AVG_L</option>
+									<option value="p3_SolT5_AVG_L">P3_SolT5_AVG_L</option>
+									<option value="p3_SolT15_AVG_L">P3_SolT15_AVG_L</option>
+									<option value="p3_SolT30_AVG_L">P3_SolT30_AVG_L</option>
+									<option value="p4_SolT5_AVG_L">P4_SolT5_AVG_L</option>
+									<option value="p4_SolT15_AVG_L">P4_SolT15_AVG_L</option>
+									<option value="p4_SolT30_AVG_L">P4_SolT30_AVG_L</option>
+									<option value="snowDepth_L">SnowDepth_L</option></select></td>
 							<td><input type="button" ng-click="generateGraph()"
 								value="generate graph"></td>
 							<td><input type="button" ng-click="generateExcel()"
@@ -107,9 +107,11 @@
 					<a href="http://www.bgc-jena.mpg.de/~MDIwork/eddyproc/upload.php"
 						target="_blank">Eddy Covariance Gap-Filling Tool </a>
 				</div>
-				<div class="tab-pane active" id="tab-contacts">
+				<!-- <div class="tab-pane active" id="tab-contacts">
 					<canvas id="line" class="chart chart-line" data="data"
 						labels="labels" legend="true" series="series"></canvas>
+				</div> -->
+				<div id="chartContainer" style="height: 300px; width: 100%;">
 				</div>
 			</div>
 		</div>

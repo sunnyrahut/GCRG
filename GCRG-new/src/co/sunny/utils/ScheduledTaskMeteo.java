@@ -5,7 +5,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.TimerTask;
 
 import org.apache.commons.io.FileUtils;
@@ -53,6 +56,17 @@ public class ScheduledTaskMeteo extends TimerTask {
 		FTPFile sourceFile;
 		FileOutputStream destFile;
 		FTPConnection ftp = new FTPConnection();
+		String newFormat = "yyyy/MM/dd HH:mm:ss";
+		SimpleDateFormat sdf;
+		sdf = new SimpleDateFormat(newFormat);
+		Date date = null;
+		try {
+			date = sdf.parse("2015/10/20 00:00:00");
+		} catch (ParseException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		FTPConnection.lastMod = date.getTime();
 		FTPClient ftpClient = ftp.getConnection("mr-spoc.sdsu.edu", 21,
 				"Sunny", "GCRGthesis", "/spoc/atqasuk/weather");
 		files = ftp.getFTPFiles(ftpClient);

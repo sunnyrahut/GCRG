@@ -44,7 +44,7 @@ public class AtqasukRESTService {
 	}
 
 	@GET
-	@Path("/getAllGap/{data}")
+	@Path("/getAllGap/{fromDate}/{toDate}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public GCRGResponse getAllGapData(@PathParam("fromDate") String fromDate,
 			@PathParam("toDate") String toDate) {
@@ -65,7 +65,7 @@ public class AtqasukRESTService {
 	}
 
 	@GET
-	@Path("/getAllMeteorological/{data}")
+	@Path("/getAllMeteorological/{fromDate}/{toDate}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public GCRGResponse getAllMeteorologicalData(
 			@PathParam("fromDate") String fromDate,
