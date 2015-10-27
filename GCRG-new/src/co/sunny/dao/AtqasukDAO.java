@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +40,7 @@ public class AtqasukDAO {
 				data.setCo2_mixing_ratio(rs.getFloat("co2_mixing_ratio"));
 				data.setH(rs.getFloat("H"));
 				data.setH2o_flux(rs.getFloat("h2o_flux"));
+				data.setCo2_flux(rs.getFloat("co2_flux"));
 				data.setH2o_mixing_ratio(rs.getFloat("h2o_mixing_ratio"));
 				data.setLE(rs.getFloat("LE"));
 				data.setQc_ch4_flux(rs.getFloat("ch4_flux"));
@@ -71,106 +71,27 @@ public class AtqasukDAO {
 		try {
 			preStmt = conn
 					.prepareStatement(
-							"INSERT INTO atq_no_gap_filled_cleaned (time_stamp, air_pressure, ch4_flux, ch4_mixing_ratio, co2_mixing_ratio, H, h2o_flux, h2o_mixing_ratio, LE, qc_ch4_flux, qc_H, qc_LE, RH, uStar, VPD, wind_dir, wind_speed) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+							"INSERT INTO atq_no_gap_filled_cleaned (time_stamp, air_pressure, ch4_flux, ch4_mixing_ratio, co2_mixing_ratio, H, co2_flux, h2o_flux, h2o_mixing_ratio, LE, qc_ch4_flux, qc_H, qc_LE, RH, uStar, VPD, wind_dir, wind_speed) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS);
 			// date = format.parse(data.getTimeStamp());
 			preStmt.setString(1, data.getTimeStamp());
-
-			if (data.getAir_pressure() != 0) {
-				preStmt.setFloat(2, data.getAir_pressure());
-			} else {
-				preStmt.setNull(2, Types.FLOAT);
-			}
-
-			if (data.getCh4_flux() != 0) {
-				preStmt.setFloat(3, data.getCh4_flux());
-			} else {
-				preStmt.setNull(3, Types.FLOAT);
-			}
-
-			if (data.getCh4_mixing_ratio() != 0) {
-				preStmt.setFloat(4, data.getCh4_mixing_ratio());
-			} else {
-				preStmt.setNull(4, Types.FLOAT);
-			}
-
-			if (data.getCo2_mixing_ratio() != 0) {
-				preStmt.setFloat(5, data.getCo2_mixing_ratio());
-			} else {
-				preStmt.setNull(5, Types.FLOAT);
-			}
-
-			if (data.getH() != 0) {
-				preStmt.setFloat(6, data.getH());
-			} else {
-				preStmt.setNull(6, Types.FLOAT);
-			}
-
-			if (data.getH2o_flux() != 0) {
-				preStmt.setFloat(7, data.getH2o_flux());
-			} else {
-				preStmt.setNull(7, Types.FLOAT);
-			}
-
-			if (data.getH2o_mixing_ratio() != 0) {
-				preStmt.setFloat(8, data.getH2o_mixing_ratio());
-			} else {
-				preStmt.setNull(8, Types.FLOAT);
-			}
-
-			if (data.getLE() != 0) {
-				preStmt.setFloat(9, data.getLE());
-			} else {
-				preStmt.setNull(9, Types.FLOAT);
-			}
-
-			if (data.getQc_ch4_flux() != 0) {
-				preStmt.setFloat(10, data.getQc_ch4_flux());
-			} else {
-				preStmt.setNull(10, Types.FLOAT);
-			}
-
-			if (data.getQc_H() != 0) {
-				preStmt.setFloat(11, data.getQc_H());
-			} else {
-				preStmt.setNull(11, Types.FLOAT);
-			}
-
-			if (data.getQc_LE() != 0) {
-				preStmt.setFloat(12, data.getQc_LE());
-			} else {
-				preStmt.setNull(12, Types.FLOAT);
-			}
-
-			if (data.getRH() != 0) {
-				preStmt.setFloat(13, data.getRH());
-			} else {
-				preStmt.setNull(13, Types.FLOAT);
-			}
-
-			if (data.getuStar() != 0) {
-				preStmt.setFloat(14, data.getuStar());
-			} else {
-				preStmt.setNull(14, Types.FLOAT);
-			}
-
-			if (data.getVPD() != 0) {
-				preStmt.setFloat(15, data.getVPD());
-			} else {
-				preStmt.setNull(15, Types.FLOAT);
-			}
-
-			if (data.getWind_dir() != 0) {
-				preStmt.setFloat(16, data.getWind_dir());
-			} else {
-				preStmt.setNull(16, Types.FLOAT);
-			}
-
-			if (data.getWindSpeed() != 0) {
-				preStmt.setFloat(17, data.getWindSpeed());
-			} else {
-				preStmt.setNull(17, Types.FLOAT);
-			}
+			preStmt.setFloat(2, data.getAir_pressure());
+			preStmt.setFloat(3, data.getCh4_flux());
+			preStmt.setFloat(4, data.getCh4_mixing_ratio());
+			preStmt.setFloat(5, data.getCo2_mixing_ratio());
+			preStmt.setFloat(6, data.getH());
+			preStmt.setFloat(7, data.getCo2_flux());
+			preStmt.setFloat(8, data.getH2o_flux());
+			preStmt.setFloat(9, data.getH2o_mixing_ratio());
+			preStmt.setFloat(10, data.getLE());
+			preStmt.setFloat(11, data.getQc_ch4_flux());
+			preStmt.setFloat(12, data.getQc_H());
+			preStmt.setFloat(13, data.getQc_LE());
+			preStmt.setFloat(14, data.getRH());
+			preStmt.setFloat(15, data.getuStar());
+			preStmt.setFloat(16, data.getVPD());
+			preStmt.setFloat(17, data.getWind_dir());
+			preStmt.setFloat(18, data.getWindSpeed());
 
 			preStmt.executeUpdate();
 			rs = preStmt.getGeneratedKeys();
@@ -233,53 +154,14 @@ public class AtqasukDAO {
 			// date = format.parse(data.getTimeStamp());
 			preStmt.setString(1, data.getTimeStamp());
 
-			if (data.getNEE_f() != 0) {
-				preStmt.setFloat(2, data.getNEE_f());
-			} else {
-				preStmt.setNull(2, Types.FLOAT);
-			}
-
-			if (data.getNEE_fqcOK() != 0) {
-				preStmt.setFloat(3, data.getNEE_fqcOK());
-			} else {
-				preStmt.setNull(3, Types.FLOAT);
-			}
-
-			if (data.getLE_f() != 0) {
-				preStmt.setFloat(4, data.getLE_f());
-			} else {
-				preStmt.setNull(4, Types.FLOAT);
-			}
-
-			if (data.getLE_fqcOK() != 0) {
-				preStmt.setFloat(5, data.getLE_fqcOK());
-			} else {
-				preStmt.setNull(5, Types.FLOAT);
-			}
-
-			if (data.getH_fqcOK() != 0) {
-				preStmt.setFloat(6, data.getH_fqcOK());
-			} else {
-				preStmt.setNull(6, Types.FLOAT);
-			}
-
-			if (data.getH_f() != 0) {
-				preStmt.setFloat(7, data.getH_f());
-			} else {
-				preStmt.setNull(7, Types.FLOAT);
-			}
-
-			if (data.getReco() != 0) {
-				preStmt.setFloat(8, data.getReco());
-			} else {
-				preStmt.setNull(8, Types.FLOAT);
-			}
-
-			if (data.getGPP_f() != 0) {
-				preStmt.setFloat(9, data.getGPP_f());
-			} else {
-				preStmt.setNull(9, Types.FLOAT);
-			}
+			preStmt.setFloat(2, data.getNEE_f());
+			preStmt.setFloat(3, data.getNEE_fqcOK());
+			preStmt.setFloat(4, data.getLE_f());
+			preStmt.setFloat(5, data.getLE_fqcOK());
+			preStmt.setFloat(6, data.getH_fqcOK());
+			preStmt.setFloat(7, data.getH_f());
+			preStmt.setFloat(8, data.getReco());
+			preStmt.setFloat(9, data.getGPP_f());
 
 			preStmt.executeUpdate();
 			rs = preStmt.getGeneratedKeys();
@@ -364,179 +246,35 @@ public class AtqasukDAO {
 			// date = format.parse(data.getTimeStamp());
 			preStmt.setString(1, data.getTimeStamp());
 
-			if (data.getPAR_AVG_L() != 0) {
-				preStmt.setFloat(2, data.getPAR_AVG_L());
-			} else {
-				preStmt.setNull(2, Types.FLOAT);
-			}
-
-			if (data.getRsolar_AVG_L() != 0) {
-				preStmt.setFloat(3, data.getRsolar_AVG_L());
-			} else {
-				preStmt.setNull(3, Types.FLOAT);
-			}
-
-			if (data.getRnet_WC_AVG_L() != 0) {
-				preStmt.setFloat(4, data.getRnet_WC_AVG_L());
-			} else {
-				preStmt.setNull(4, Types.FLOAT);
-			}
-
-			if (data.getAir_T_AVG_L() != 0) {
-				preStmt.setFloat(5, data.getAir_T_AVG_L());
-			} else {
-				preStmt.setNull(5, Types.FLOAT);
-			}
-
-			if (data.getRH_AVG_L() != 0) {
-				preStmt.setFloat(6, data.getRH_AVG_L());
-			} else {
-				preStmt.setNull(6, Types.FLOAT);
-			}
-
-			if (data.getG_1_AVG_L() != 0) {
-				preStmt.setFloat(7, data.getG_1_AVG_L());
-			} else {
-				preStmt.setNull(7, Types.FLOAT);
-			}
-
-			if (data.getG_2_AVG_L() != 0) {
-				preStmt.setFloat(8, data.getG_2_AVG_L());
-			} else {
-				preStmt.setNull(8, Types.FLOAT);
-			}
-
-			if (data.getG_3_AVG_L() != 0) {
-				preStmt.setFloat(9, data.getG_3_AVG_L());
-			} else {
-				preStmt.setNull(9, Types.FLOAT);
-			}
-
-			if (data.getPPT_TOT_L() != 0) {
-				preStmt.setFloat(10, data.getPPT_TOT_L());
-			} else {
-				preStmt.setNull(10, Types.FLOAT);
-			}
-
-			if (data.getPress_mb_AVG_L() != 0) {
-				preStmt.setFloat(11, data.getPress_mb_AVG_L());
-			} else {
-				preStmt.setNull(11, Types.FLOAT);
-			}
-
-			if (data.getSS_Tl_R_AVG_L() != 0) {
-				preStmt.setFloat(12, data.getSS_Tl_R_AVG_L());
-			} else {
-				preStmt.setNull(12, Types.FLOAT);
-			}
-
-			if (data.getSS_Dif_R_AVG_L() != 0) {
-				preStmt.setFloat(13, data.getSS_Dif_R_AVG_L());
-			} else {
-				preStmt.setNull(13, Types.FLOAT);
-			}
-
-			if (data.getSWC_1_AVG_L() != 0) {
-				preStmt.setFloat(14, data.getSWC_1_AVG_L());
-			} else {
-				preStmt.setNull(14, Types.FLOAT);
-			}
-
-			if (data.getSWC_2_AVG_L() != 0) {
-				preStmt.setFloat(15, data.getSWC_2_AVG_L());
-			} else {
-				preStmt.setNull(15, Types.FLOAT);
-			}
-
-			if (data.getSWC_3_AVG_L() != 0) {
-				preStmt.setFloat(16, data.getSWC_3_AVG_L());
-			} else {
-				preStmt.setNull(16, Types.FLOAT);
-			}
-
-			if (data.getSWC_4_AVG_L() != 0) {
-				preStmt.setFloat(17, data.getSWC_4_AVG_L());
-			} else {
-				preStmt.setNull(17, Types.FLOAT);
-			}
-
-			if (data.getP2_SWC_5_AVG_L() != 0) {
-				preStmt.setFloat(18, data.getP2_SWC_5_AVG_L());
-			} else {
-				preStmt.setNull(18, Types.FLOAT);
-			}
-
-			if (data.getP2_SWC_15_AVG_L() != 0) {
-				preStmt.setFloat(19, data.getP2_SWC_15_AVG_L());
-			} else {
-				preStmt.setNull(19, Types.FLOAT);
-			}
-
-			if (data.getP2_SWC_30_AVG_L() != 0) {
-				preStmt.setFloat(20, data.getP2_SWC_30_AVG_L());
-			} else {
-				preStmt.setNull(20, Types.FLOAT);
-			}
-
-			if (data.getP3_SWC_5_AVG_L() != 0) {
-				preStmt.setFloat(21, data.getP3_SWC_5_AVG_L());
-			} else {
-				preStmt.setNull(21, Types.FLOAT);
-			}
-
-			if (data.getP3_SWC_15_AVG_L() != 0) {
-				preStmt.setFloat(22, data.getP3_SWC_15_AVG_L());
-			} else {
-				preStmt.setNull(22, Types.FLOAT);
-			}
-
-			if (data.getP3_SWC_30_AVG_L() != 0) {
-				preStmt.setFloat(23, data.getP3_SWC_30_AVG_L());
-			} else {
-				preStmt.setNull(23, Types.FLOAT);
-			}
-
-			if (data.getP3_SolT5_AVG_L() != 0) {
-				preStmt.setFloat(24, data.getP3_SolT5_AVG_L());
-			} else {
-				preStmt.setNull(24, Types.FLOAT);
-			}
-
-			if (data.getP3_SolT15_AVG_L() != 0) {
-				preStmt.setFloat(25, data.getP3_SolT15_AVG_L());
-			} else {
-				preStmt.setNull(25, Types.FLOAT);
-			}
-
-			if (data.getP3_SolT30_AVG_L() != 0) {
-				preStmt.setFloat(26, data.getP3_SolT30_AVG_L());
-			} else {
-				preStmt.setNull(26, Types.FLOAT);
-			}
-
-			if (data.getP4_SolT5_AVG_L() != 0) {
-				preStmt.setFloat(27, data.getP4_SolT5_AVG_L());
-			} else {
-				preStmt.setNull(27, Types.FLOAT);
-			}
-
-			if (data.getP4_SolT15_AVG_L() != 0) {
-				preStmt.setFloat(28, data.getP4_SolT15_AVG_L());
-			} else {
-				preStmt.setNull(28, Types.FLOAT);
-			}
-
-			if (data.getP4_SolT30_AVG_L() != 0) {
-				preStmt.setFloat(29, data.getP4_SolT30_AVG_L());
-			} else {
-				preStmt.setNull(29, Types.FLOAT);
-			}
-
-			if (data.getSnowDepth_L() != 0) {
-				preStmt.setFloat(30, data.getSnowDepth_L());
-			} else {
-				preStmt.setNull(30, Types.FLOAT);
-			}
+			preStmt.setFloat(2, data.getPAR_AVG_L());
+			preStmt.setFloat(3, data.getRsolar_AVG_L());
+			preStmt.setFloat(4, data.getRnet_WC_AVG_L());
+			preStmt.setFloat(5, data.getAir_T_AVG_L());
+			preStmt.setFloat(6, data.getRH_AVG_L());
+			preStmt.setFloat(7, data.getG_1_AVG_L());
+			preStmt.setFloat(8, data.getG_2_AVG_L());
+			preStmt.setFloat(9, data.getG_3_AVG_L());
+			preStmt.setFloat(10, data.getPPT_TOT_L());
+			preStmt.setFloat(11, data.getPress_mb_AVG_L());
+			preStmt.setFloat(12, data.getSS_Tl_R_AVG_L());
+			preStmt.setFloat(13, data.getSS_Dif_R_AVG_L());
+			preStmt.setFloat(14, data.getSWC_1_AVG_L());
+			preStmt.setFloat(15, data.getSWC_2_AVG_L());
+			preStmt.setFloat(16, data.getSWC_3_AVG_L());
+			preStmt.setFloat(17, data.getSWC_4_AVG_L());
+			preStmt.setFloat(18, data.getP2_SWC_5_AVG_L());
+			preStmt.setFloat(19, data.getP2_SWC_15_AVG_L());
+			preStmt.setFloat(20, data.getP2_SWC_30_AVG_L());
+			preStmt.setFloat(21, data.getP3_SWC_5_AVG_L());
+			preStmt.setFloat(22, data.getP3_SWC_15_AVG_L());
+			preStmt.setFloat(23, data.getP3_SWC_30_AVG_L());
+			preStmt.setFloat(24, data.getP3_SolT5_AVG_L());
+			preStmt.setFloat(25, data.getP3_SolT15_AVG_L());
+			preStmt.setFloat(26, data.getP3_SolT30_AVG_L());
+			preStmt.setFloat(27, data.getP4_SolT5_AVG_L());
+			preStmt.setFloat(28, data.getP4_SolT15_AVG_L());
+			preStmt.setFloat(29, data.getP4_SolT30_AVG_L());
+			preStmt.setFloat(30, data.getSnowDepth_L());
 
 			preStmt.executeUpdate();
 			rs = preStmt.getGeneratedKeys();

@@ -16,19 +16,24 @@
 </nav>
 <article>
 	<section>
-		<div class="container">
+		<!-- <div class="container"> -->
 			<div id="content" class="tab-content">
 				<table class="table table-hover">
 					<thead>
 						<tr>
+							<th>Site</th>
 							<th>From Date</th>
 							<th>To Date</th>
 							<th>Data type</th>
 							<th>Parameter</th>
+							<th>Frequency type</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
+							<td><select ng-model="siteType">
+									<option value="ATQ">Atqasuk</option>
+							</select></td>
 							<td><input type="datetime-local" ng-model="fromDate"></td>
 							<td><input type="datetime-local" ng-model="toDate"></td>
 							<td><select ng-model="dataType">
@@ -38,7 +43,7 @@
 							</select></td>
 							<td><select ng-model="parameter"
 								ng-show="dataType=='atq_no_gap_filled'"><option
-										value="VPD">VPD</option>
+										value="vpd">VPD</option>
 									<option value="windSpeed">windSpeed</option>
 									<option value="wind_dir">wind_dir</option>
 									<option value="uStar">u*</option>
@@ -47,9 +52,7 @@
 									<option value="le">LE</option>
 									<option value="qc_LE">qc_LE</option>
 									<option value="co2_flux">co2_flux</option>
-									<option value="qc_co2_flux">qc_co2_flux</option>
 									<option value="h2o_flux">h2o_flux</option>
-									<option value="qc_h2o_flux">qc_h2o_flux</option>
 									<option value="ch4_flux">ch4_flux</option>
 									<option value="qc_ch4_flux">qc_ch4_flux</option>
 									<option value="co2_mixing_ratio">co2_mixing_ratio</option>
@@ -59,15 +62,15 @@
 									<option value="rh">RH</option></select> <select ng-model="parameter"
 								ng-show="dataType=='atq_gap_filled'"><option
 										value="nee_f">NEE_f</option>
-									<option value="nee_fqcok">NEE_fqcOK</option>
+									<option value="nee_fqcOK">NEE_fqcOK</option>
 									<option value="le_f">LE_f</option>
-									<option value="le_fqcok">LE_fqcOK</option>
+									<option value="le_fqcOK">LE_fqcOK</option>
 									<option value="h_f">H_f</option>
-									<option value="h_fqcok">H_fqcOK</option>
+									<option value="h_fqcOK">H_fqcOK</option>
 									<option value="reco">Reco</option>
 									<option value="gpp_f">GPP_f</option></select> <select
 								ng-model="parameter" ng-show="dataType=='atq_meteorological'"><option
-										value="PAR_AVG_L">PAR_AVG_L</option>
+										value="par_AVG_L">PAR_AVG_L</option>
 									<option value="rsolar_AVG_L">Rsolar_AVG_L</option>
 									<option value="rnet_WC_AVG_L">Rnet_WC_AVG_L</option>
 									<option value="air_T_AVG_L">Air_T_AVG_L</option>
@@ -96,6 +99,10 @@
 									<option value="p4_SolT15_AVG_L">P4_SolT15_AVG_L</option>
 									<option value="p4_SolT30_AVG_L">P4_SolT30_AVG_L</option>
 									<option value="snowDepth_L">SnowDepth_L</option></select></td>
+							<td><select ng-model="frequencyType">
+									<option value="daily">Daily</option>
+									<option value="hourly">Hourly</option>
+							</select></td>
 							<td><input type="button" ng-click="generateGraph()"
 								value="generate graph"></td>
 							<td><input type="button" ng-click="generateExcel()"
@@ -114,6 +121,6 @@
 				<div id="chartContainer" style="height: 300px; width: 100%;">
 				</div>
 			</div>
-		</div>
+		<!-- </div> -->
 	</section>
 </article>

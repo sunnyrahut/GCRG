@@ -12,6 +12,7 @@ public class NoGapFilledDataVO {
 	private float LE;
 	private float qc_LE;
 	private float h2o_flux;
+	private float co2_flux;
 	private float ch4_flux;
 	private float qc_ch4_flux;
 	private float co2_mixing_ratio;
@@ -154,5 +155,13 @@ public class NoGapFilledDataVO {
 
 	public void setRH(float rH) {
 		RH = rH;
+	}
+
+	public float getCo2_flux() {
+		return co2_flux;
+	}
+
+	public void setCo2_flux(float co2_flux) {
+		this.co2_flux = co2_flux;
 	}
 }

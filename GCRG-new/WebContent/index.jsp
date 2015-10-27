@@ -30,10 +30,15 @@
 	<footer>
 		<p align="center">
 			<b>This material is based upon work supported by the National
-				Science Foundation under NSF OPP: 9732105 and 0119060 Any opinions,
+				Aeronautics and Space Administration and National Science Foundation
+				under NSF OPP: 9732105 and 0119060 and NSF OPP: Award no.
+				"ARC-1204263" NASA JPL: CARVE (Carbon in Arctic Reservoir
+				Vulnerability Experiment) an Earth Ventures (EV-1) DOE Terrestrial
+				Ecosystem Science program: Award no. " DE-SC005160" Any opinions,
 				findings, conclusions, or recommendations expressed in the material
 				are those of the author(s) and do not necessarily reflect the views
-				of the National Science Foundation.</b>
+				of the National Science Foundation or National Aeronautics and Space
+				Administration.</b>
 		</p>
 	</footer>
 	<!-- JavaScripts libraries-->

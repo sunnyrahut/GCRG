@@ -59,6 +59,9 @@ public class DatabaseUploader {
 			System.out.println("CO2 mixing ratio:" + parameters[15]);
 			dataVo.setCo2_mixing_ratio(Float.parseFloat(parameters[15]));
 
+			System.out.println("CO2 flux:" + parameters[7]);
+			dataVo.setCo2_flux(Float.parseFloat(parameters[7]));
+
 			System.out.println("H2O flux:" + parameters[9]);
 			dataVo.setH2o_flux(Float.parseFloat(parameters[9]));
 
