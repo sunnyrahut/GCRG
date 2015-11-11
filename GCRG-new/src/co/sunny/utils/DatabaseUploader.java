@@ -62,6 +62,9 @@ public class DatabaseUploader {
 			System.out.println("CO2 flux:" + parameters[7]);
 			dataVo.setCo2_flux(Float.parseFloat(parameters[7]));
 
+			System.out.println("CH4 flux:" + parameters[8]);
+			dataVo.setCh4_flux(Float.parseFloat(parameters[8]));
+
 			System.out.println("H2O flux:" + parameters[9]);
 			dataVo.setH2o_flux(Float.parseFloat(parameters[9]));
 

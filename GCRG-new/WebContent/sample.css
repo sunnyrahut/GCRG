@@ -15,7 +15,7 @@
 		font-family: "Times New Roman", Georgia, Serif;
 		font-size: 175%;
 		font-weight: 100;
-		background-image: url('bkgrnd.jpg');
+		background-color: rgba(107, 167, 181, 0.42);
 		background-size: cover;
 	}
 	h2 {
