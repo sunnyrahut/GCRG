@@ -47,6 +47,7 @@
 		src="scripts/lib/bootstrap/js/jquery-1.11.0.min.js">
 		
 	</script>
+	<script type="text/javascript" src="scripts/lib/download.js"></script>
 	<script type="text/javascript"
 		src="scripts/lib/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript"

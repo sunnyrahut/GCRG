@@ -96,8 +96,13 @@ public class AtqasukRESTService {
 		GCRGResponse resp = new GCRGResponse();
 
 		try {
+			generateCSV.setTimeStampFrom(generateCSV.getTimeStampFrom()
+					.replaceAll("-", "/"));
+			generateCSV.setTimeStampTo(generateCSV.getTimeStampTo().replaceAll(
+					"-", "/"));
 			List<CSVData> list = dao.getParamData(generateCSV);
-			GenerateCSVFile.generate(list, generateCSV);
+			// GenerateCSVFile.generate(list, generateCSV);
+			resp.setData(list);
 			resp.setStatus("SUCCESS");
 		} catch (GCRGException e) {
 			resp.setStatus("ERROR");

@@ -8,13 +8,19 @@ gcrg
 						'auth',
 						'$window',
 						function($scope, $location, $http, auth, $window) {
+
 							$scope.signOut = function() {
 								$window.sessionStorage["userInfo"] = null;
 								userInfo = null;
 								$location.path('/loginExistingUser');
 							};
-
+							var allData1 = [];
+							var allData2 = [];
+							var allData3 = [];
+							var allData4 = [];
+							var graphCount = 0;
 							$scope.generateGraph = function() {
+								graphCount++;
 								var timeStamps = [];
 								var parameter = [];
 								var fromDate = new Date($scope.fromDate);
@@ -31,12 +37,12 @@ gcrg
 										+ toDate.getHours() + ':'
 										+ toDate.getMinutes();
 								console.log(toDate);
-								var allData = [];
 								var dataSeries = {
 									type : "scatter",
 									color : "rgba(54,158,173,.7)"
 								};
 								var dataPoints = [];
+								var allData = [];
 								var param;
 								var par = $scope.parameter;
 								var freq = $scope.frequencyType;
@@ -221,7 +227,7 @@ gcrg
 									break;
 								}
 								switch ($scope.dataType) {
-								case "atq_no_gap_filled":
+								case "atq_no_gap_filled_cleaned":
 									$http(
 											{
 												method : 'GET',
@@ -359,35 +365,132 @@ gcrg
 														} else {
 															$scope.badSelect = "Please select appropriate time stamps."
 														}
-														var chart = new CanvasJS.Chart(
-																"chartContainer",
-																{
-																	zoomEnabled : true,
-																	title : {
-																		text : parameter
-																				+ " vs time stamps"
-																	},
-																	axisX : {
-																		labelAngle : -30
-																	},
-																	axisY : {
-																		includeZero : false,
-																		title : param
-																	},
-																	legend : {
-																		horizontalAlign : "right",
-																		verticalAlign : "center"
-																	},
-																	data : allData
-																// random
-																// generator
-																// below
-																});
-														chart.render();
+														switch (graphCount) {
+														case 1:
+															allData1 = allData;
+															var chart = new CanvasJS.Chart(
+																	"chartContainer",
+																	{
+																		zoomEnabled : true,
+																		title : {
+																			text : parameter
+																					+ " vs time stamps"
+																		},
+																		axisX : {
+																			labelAngle : -30
+																		},
+																		axisY : {
+																			includeZero : false,
+																			title : param
+																		},
+																		legend : {
+																			horizontalAlign : "right",
+																			verticalAlign : "center"
+																		},
+																		data : allData1
+																	// random
+																	// generator
+																	// below
+																	});
+															chart.render();
+															break;
+
+														case 2:
+															allData2 = allData;
+															var chart = new CanvasJS.Chart(
+																	"chartContainer2",
+																	{
+																		zoomEnabled : true,
+																		title : {
+																			text : parameter
+																					+ " vs time stamps"
+																		},
+																		axisX : {
+																			labelAngle : -30
+																		},
+																		axisY : {
+																			includeZero : false,
+																			title : param
+																		},
+																		legend : {
+																			horizontalAlign : "right",
+																			verticalAlign : "center"
+																		},
+																		data : allData2
+																	// random
+																	// generator
+																	// below
+																	});
+															chart.render();
+															break;
+
+														case 3:
+															allData3 = allData;
+															var chart = new CanvasJS.Chart(
+																	"chartContainer3",
+																	{
+																		zoomEnabled : true,
+																		title : {
+																			text : parameter
+																					+ " vs time stamps"
+																		},
+																		axisX : {
+																			labelAngle : -30
+																		},
+																		axisY : {
+																			includeZero : false,
+																			title : param
+																		},
+																		legend : {
+																			horizontalAlign : "right",
+																			verticalAlign : "center"
+																		},
+																		data : allData3
+																	// random
+																	// generator
+																	// below
+																	});
+															chart.render();
+															break;
+
+														case 4:
+															allData4 = allData;
+															var chart = new CanvasJS.Chart(
+																	"chartContainer4",
+																	{
+																		zoomEnabled : true,
+																		title : {
+																			text : parameter
+																					+ " vs time stamps"
+																		},
+																		axisX : {
+																			labelAngle : -30
+																		},
+																		axisY : {
+																			includeZero : false,
+																			title : param
+																		},
+																		legend : {
+																			horizontalAlign : "right",
+																			verticalAlign : "center"
+																		},
+																		data : allData4
+																	// random
+																	// generator
+																	// below
+																	});
+															chart.render();
+															break;
+
+														default:
+															alert("You have reached maximum limit for the graphs!! Please refresh this page to clear the gaphs that are already displayed.");
+														}
+
 													})
 											.error(
 													function(data, status,
 															headers, config) {
+														alert("Please select dates greater than 01/03/2015!");
 														console
 																.log(
 																		data,
@@ -504,35 +607,130 @@ gcrg
 														} else {
 															$scope.badSelect = "Please select appropriate tme stamps."
 														}
-														var chart = new CanvasJS.Chart(
-																"chartContainer",
-																{
-																	zoomEnabled : true,
-																	title : {
-																		text : $scope.parameter
-																				+ " vs time stamps"
-																	},
-																	axisX : {
-																		labelAngle : -30
-																	},
-																	axisY : {
-																		includeZero : false,
-																		title : param
-																	},
-																	legend : {
-																		horizontalAlign : "right",
-																		verticalAlign : "center"
-																	},
-																	data : allData
-																// random
-																// generator
-																// below
-																});
-														chart.render();
+														switch (graphCount) {
+														case 1:
+															allData1 = allData;
+															var chart = new CanvasJS.Chart(
+																	"chartContainer",
+																	{
+																		zoomEnabled : true,
+																		title : {
+																			text : parameter
+																					+ " vs time stamps"
+																		},
+																		axisX : {
+																			labelAngle : -30
+																		},
+																		axisY : {
+																			includeZero : false,
+																			title : param
+																		},
+																		legend : {
+																			horizontalAlign : "right",
+																			verticalAlign : "center"
+																		},
+																		data : allData1
+																	// random
+																	// generator
+																	// below
+																	});
+															chart.render();
+															break;
+
+														case 2:
+															allData2 = allData;
+															var chart = new CanvasJS.Chart(
+																	"chartContainer2",
+																	{
+																		zoomEnabled : true,
+																		title : {
+																			text : parameter
+																					+ " vs time stamps"
+																		},
+																		axisX : {
+																			labelAngle : -30
+																		},
+																		axisY : {
+																			includeZero : false,
+																			title : param
+																		},
+																		legend : {
+																			horizontalAlign : "right",
+																			verticalAlign : "center"
+																		},
+																		data : allData2
+																	// random
+																	// generator
+																	// below
+																	});
+															chart.render();
+															break;
+
+														case 3:
+															allData3 = allData;
+															var chart = new CanvasJS.Chart(
+																	"chartContainer3",
+																	{
+																		zoomEnabled : true,
+																		title : {
+																			text : parameter
+																					+ " vs time stamps"
+																		},
+																		axisX : {
+																			labelAngle : -30
+																		},
+																		axisY : {
+																			includeZero : false,
+																			title : param
+																		},
+																		legend : {
+																			horizontalAlign : "right",
+																			verticalAlign : "center"
+																		},
+																		data : allData3
+																	// random
+																	// generator
+																	// below
+																	});
+															chart.render();
+															break;
+
+														case 4:
+															allData4 = allData;
+															var chart = new CanvasJS.Chart(
+																	"chartContainer4",
+																	{
+																		zoomEnabled : true,
+																		title : {
+																			text : parameter
+																					+ " vs time stamps"
+																		},
+																		axisX : {
+																			labelAngle : -30
+																		},
+																		axisY : {
+																			includeZero : false,
+																			title : param
+																		},
+																		legend : {
+																			horizontalAlign : "right",
+																			verticalAlign : "center"
+																		},
+																		data : allData4
+																	// random
+																	// generator
+																	// below
+																	});
+															chart.render();
+															break;
+														default:
+															alert("You have reached maximum limit for the graphs!! Please refresh this page to clear the gaphs that are already displayed.");
+														}
 													})
 											.error(
 													function(data, status,
 															headers, config) {
+														alert("Please select dates greater than 01/03/2015!");
 														console
 																.log(
 																		data,
@@ -586,8 +784,10 @@ gcrg
 																		sum += data.data[i][par];
 																	} else {
 																		if (count != 0) {
-																			sum = sum
-																					/ count;
+																			if (par != "ppt_TOT_L") {
+																				sum = sum
+																						/ count;
+																			}
 																		}
 																		if (sum != 0) {
 																			dataPoints
@@ -668,35 +868,131 @@ gcrg
 														} else {
 															$scope.badSelect = "Please select appropriate tme stamps."
 														}
-														var chart = new CanvasJS.Chart(
-																"chartContainer",
-																{
-																	zoomEnabled : true,
-																	title : {
-																		text : $scope.parameter
-																				+ " vs time stamps"
-																	},
-																	axisX : {
-																		labelAngle : -30
-																	},
-																	axisY : {
-																		includeZero : false,
-																		title : param
-																	},
-																	legend : {
-																		horizontalAlign : "right",
-																		verticalAlign : "center"
-																	},
-																	data : allData
-																// random
-																// generator
-																// below
-																});
-														chart.render();
+														switch (graphCount) {
+														case 1:
+															allData1 = allData;
+															var chart = new CanvasJS.Chart(
+																	"chartContainer",
+																	{
+																		zoomEnabled : true,
+																		title : {
+																			text : parameter
+																					+ " vs time stamps"
+																		},
+																		axisX : {
+																			labelAngle : -30
+																		},
+																		axisY : {
+																			includeZero : false,
+																			title : param
+																		},
+																		legend : {
+																			horizontalAlign : "right",
+																			verticalAlign : "center"
+																		},
+																		data : allData1
+																	// random
+																	// generator
+																	// below
+																	});
+															chart.render();
+															break;
+
+														case 2:
+															allData2 = allData;
+															var chart = new CanvasJS.Chart(
+																	"chartContainer2",
+																	{
+																		zoomEnabled : true,
+																		title : {
+																			text : parameter
+																					+ " vs time stamps"
+																		},
+																		axisX : {
+																			labelAngle : -30
+																		},
+																		axisY : {
+																			includeZero : false,
+																			title : param
+																		},
+																		legend : {
+																			horizontalAlign : "right",
+																			verticalAlign : "center"
+																		},
+																		data : allData2
+																	// random
+																	// generator
+																	// below
+																	});
+															chart.render();
+															break;
+
+														case 3:
+															allData3 = allData;
+															var chart = new CanvasJS.Chart(
+																	"chartContainer3",
+																	{
+																		zoomEnabled : true,
+																		title : {
+																			text : parameter
+																					+ " vs time stamps"
+																		},
+																		axisX : {
+																			labelAngle : -30
+																		},
+																		axisY : {
+																			includeZero : false,
+																			title : param
+																		},
+																		legend : {
+																			horizontalAlign : "right",
+																			verticalAlign : "center"
+																		},
+																		data : allData3
+																	// random
+																	// generator
+																	// below
+																	});
+															chart.render();
+															break;
+
+														case 4:
+															allData4 = allData;
+															var chart = new CanvasJS.Chart(
+																	"chartContainer4",
+																	{
+																		zoomEnabled : true,
+																		title : {
+																			text : parameter
+																					+ " vs time stamps"
+																		},
+																		axisX : {
+																			labelAngle : -30
+																		},
+																		axisY : {
+																			includeZero : false,
+																			title : param
+																		},
+																		legend : {
+																			horizontalAlign : "right",
+																			verticalAlign : "center"
+																		},
+																		data : allData4
+																	// random
+																	// generator
+																	// below
+																	});
+															chart.render();
+															break;
+
+														default:
+															alert("You have reached maximum limit for the graphs!! Please refresh this page to clear the gaphs that are already displayed.");
+														}
 													})
 											.error(
 													function(data, status,
 															headers, config) {
+														alert("Please select dates greater than 01/03/2015!");
 														console
 																.log(
 																		data,
@@ -709,10 +1005,26 @@ gcrg
 							};
 
 							$scope.generateExcel = function() {
+								var fromDate = new Date($scope.fromDate);
+								fromDate = fromDate.getUTCFullYear() + '-'
+										+ (fromDate.getUTCMonth() + 1) + '-'
+										+ fromDate.getUTCDate() + ' '
+										+ fromDate.getHours() + ':'
+										+ fromDate.getMinutes();
+								console.log(fromDate);
+								var toDate = new Date($scope.toDate);
+								toDate = toDate.getUTCFullYear() + '-'
+										+ (toDate.getUTCMonth() + 1) + '-'
+										+ (toDate.getUTCDate()) + ' '
+										+ toDate.getHours() + ':'
+										+ toDate.getMinutes();
+								console.log(toDate);
 
 								var obj = {
 									dataType : $scope.dataType,
-									parameter : $scope.parameter
+									parameter : $scope.parameter,
+									timeStampTo : toDate,
+									timeStampFrom : fromDate
 								}
 								$http({
 									method : 'POST',
@@ -725,7 +1037,19 @@ gcrg
 														config) {
 													console.log(data, status,
 															headers, config);
-													alert("CSV File Successfully Generated!!");
+													var fullData = "Time Stamp,"
+															+ $scope.parameter
+															+ "\n";
+													for (var i = 0; i < data.data.length; i++) {
+														fullData += data.data[i].timeStamp
+																+ ","
+																+ data.data[i].parameter
+																+ "\n";
+													}
+													download(fullData,
+															$scope.parameter
+																	+ ".csv",
+															"text/plain");
 												}).error(
 												function(data, status, headers,
 														config) {

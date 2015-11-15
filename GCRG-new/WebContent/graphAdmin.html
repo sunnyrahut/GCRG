@@ -36,14 +36,15 @@
 								<option value="">Select</option>
 								<option value="ATQ">Atqasuk</option>
 						</select></td>
-						<td><input type="datetime-local" ng-model="fromDate"></td>
-						<td><input type="datetime-local" ng-model="toDate"></td>
+						<td><input type="date" ng-model="fromDate"></td>
+						<td><input type="date" ng-model="toDate"></td>
 						<td><select ng-model="frequencyType">
 								<option value="">Select</option>
 								<option value="daily">Daily</option>
 								<option value="hourly">Hourly</option>
 						</select></td>
-						<td><select ng-model="window">
+						<td><select ng-model="window"
+							title="select the days for averaging window">
 								<option value=1>0</option>
 								<option value=3>3</option>
 								<option value=5>5</option>
@@ -51,12 +52,12 @@
 						</select></td>
 						<td><select ng-model="dataType">
 								<option value="">Select</option>
-								<option value="atq_no_gap_filled">No gap filled</option>
+								<option value="atq_no_gap_filled_cleaned">No gap filled</option>
 								<option value="atq_gap_filled">Gap filled</option>
 								<option value="atq_meteorological">Meteorological</option>
 						</select></td>
 						<td><select ng-model="parameter"
-							ng-show="dataType=='atq_no_gap_filled'"><option
+							ng-show="dataType=='atq_no_gap_filled_cleaned'"><option
 									value="vpd">VPD</option>
 								<option value="">Select</option>
 								<option value="windSpeed">windSpeed</option>
@@ -88,35 +89,35 @@
 						</select> <select ng-model="parameter"
 							ng-show="dataType=='atq_meteorological'"><option
 									value="">Select</option>
-								<option value="par_AVG_L">PAR_AVG_L</option>
-								<option value="rsolar_AVG_L">Rsolar_AVG_L</option>
-								<option value="rnet_WC_AVG_L">Rnet_WC_AVG_L</option>
-								<option value="air_T_AVG_L">Air_T_AVG_L</option>
-								<option value="rh_AVG_L">RH_AVG_L</option>
-								<option value="g_1_AVG_L">G_1_AVG_L</option>
-								<option value="g_2_AVG_L">G_2_AVG_L</option>
-								<option value="g_3_AVG_L">G_3_AVG_L</option>
-								<option value="ppt_TOT_L">PPT_TOT_L</option>
-								<option value="press_mb_AVG_L">Press_mb_AVG_L</option>
-								<option value="ss_Tl_R_AVG_L">SS_Tl_R_AVG_L</option>
-								<option value="ss_Dif_R_AVG_L">SS_Dif_R_AVG_L</option>
-								<option value="swc_1_AVG_L">SWC_1_AVG_L</option>
-								<option value="swc_2_AVG_L">SWC_2_AVG_L</option>
-								<option value="swc_3_AVG_L">SWC_3_AVG_L</option>
-								<option value="swc_4_AVG_L">SWC_4_AVG_L</option>
-								<option value="p2_SWC_5_AVG_L">P2_SWC_5_AVG_L</option>
-								<option value="p2_SWC_15_AVG_L">P2_SWC_15_AVG_L</option>
-								<option value="p2_SWC_30_AVG_L">P2_SWC_30_AVG_L</option>
-								<option value="p3_SWC_5_AVG_L">P3_SWC_5_AVG_L</option>
-								<option value="p3_SWC_15_AVG_L">P3_SWC_15_AVG_L</option>
-								<option value="p3_SWC_30_AVG_L">P3_SWC_30_AVG_L</option>
-								<option value="p3_SolT5_AVG_L">P3_SolT5_AVG_L</option>
-								<option value="p3_SolT15_AVG_L">P3_SolT15_AVG_L</option>
-								<option value="p3_SolT30_AVG_L">P3_SolT30_AVG_L</option>
-								<option value="p4_SolT5_AVG_L">P4_SolT5_AVG_L</option>
-								<option value="p4_SolT15_AVG_L">P4_SolT15_AVG_L</option>
-								<option value="p4_SolT30_AVG_L">P4_SolT30_AVG_L</option>
-								<option value="snowDepth_L">SnowDepth_L</option></select></td>
+								<option value="par_AVG_L">PAR_AVG</option>
+								<option value="rsolar_AVG_L">Rsolar_AVG</option>
+								<option value="rnet_WC_AVG_L">Rnet_WC_AVG</option>
+								<option value="air_T_AVG_L">Air_T_AVG</option>
+								<option value="rh_AVG_L">RH_AVG</option>
+								<option value="g_1_AVG_L">G_1_AVG</option>
+								<option value="g_2_AVG_L">G_2_AVG</option>
+								<option value="g_3_AVG_L">G_3_AVG</option>
+								<option value="ppt_TOT_L">PPT_TOT</option>
+								<option value="press_mb_AVG_L">Press_mb_AVG</option>
+								<option value="ss_Tl_R_AVG_L">SS_Tl_R_AVG</option>
+								<option value="ss_Dif_R_AVG_L">SS_Dif_R_AVG</option>
+								<option value="swc_1_AVG_L">SWC_1_AVG</option>
+								<option value="swc_2_AVG_L">SWC_2_AVG</option>
+								<option value="swc_3_AVG_L">SWC_3_AVG</option>
+								<option value="swc_4_AVG_L">SWC_4_AVG</option>
+								<option value="p2_SWC_5_AVG_L">P2_SWC_5_AVG</option>
+								<option value="p2_SWC_15_AVG_L">P2_SWC_15_AVG</option>
+								<option value="p2_SWC_30_AVG_L">P2_SWC_30_AVG</option>
+								<option value="p3_SWC_5_AVG_L">P3_SWC_5_AVG</option>
+								<option value="p3_SWC_15_AVG_L">P3_SWC_15_AVG</option>
+								<option value="p3_SWC_30_AVG_L">P3_SWC_30_AVG</option>
+								<option value="p3_SolT5_AVG_L">P3_SolT5_AVG</option>
+								<option value="p3_SolT15_AVG_L">P3_SolT15_AVG</option>
+								<option value="p3_SolT30_AVG_L">P3_SolT30_AVG</option>
+								<option value="p4_SolT5_AVG_L">P4_SolT5_AVG</option>
+								<option value="p4_SolT15_AVG_L">P4_SolT15_AVG</option>
+								<option value="p4_SolT30_AVG_L">P4_SolT30_AVG</option>
+								<option value="snowDepth_L">SnowDepth</option></select></td>
 						<td><input type="button" ng-click="generateGraph()"
 							value="generate graph"></td>
 						<td><input type="button" ng-click="generateExcel()"
@@ -133,6 +134,9 @@
 						labels="labels" legend="true" series="series"></canvas>
 				</div> -->
 			<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+			<div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+			<div id="chartContainer3" style="height: 300px; width: 100%;"></div>
+			<div id="chartContainer4" style="height: 300px; width: 100%;"></div>
 		</div>
 		<div>{{badSelect}}</div>
 		<!-- </div> -->

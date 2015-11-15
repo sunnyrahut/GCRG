@@ -296,9 +296,13 @@ public class AtqasukDAO {
 
 		List<CSVData> allData = new ArrayList<CSVData>();
 
+		System.out.println("Time: " + generateCSV);
 		try {
 			ps = con.prepareStatement("SELECT " + generateCSV.getParameter()
-					+ ",time_stamp FROM " + generateCSV.getDataType());
+					+ ",time_stamp FROM " + generateCSV.getDataType()
+					+ " WHERE time_stamp<=? AND time_stamp>=?");
+			ps.setString(1, generateCSV.getTimeStampTo());
+			ps.setString(2, generateCSV.getTimeStampFrom());
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
