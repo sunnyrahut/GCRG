@@ -8,7 +8,9 @@ gcrg
 						'auth',
 						'$window',
 						function($scope, $location, $http, auth, $window) {
-
+							if ($('[type="date"]').prop('type') != 'date') {
+								$('[type="date"]').datepicker();
+							}
 							$scope.signOut = function() {
 								$window.sessionStorage["userInfo"] = null;
 								userInfo = null;
@@ -21,6 +23,9 @@ gcrg
 							var graphCount = 0;
 							$scope.generateGraph = function() {
 								graphCount++;
+								if (graphCount > 4) {
+									graphCount = 1;
+								}
 								var timeStamps = [];
 								var parameter = [];
 								var fromDate = new Date($scope.fromDate);
@@ -251,11 +256,14 @@ gcrg
 															var count = 0;
 															for (var i = 0; i < data.data.length; i++) {
 																var par = $scope.parameter;
-																if (data.data[i][par] == -9999
-																		|| data.data[i][par] == -6999) {
+																if (data.data[i][par] <= -5999) {
 																	console
 																			.log("-9999 data");
 																	continue;
+																} else if (param == "%"
+																		&& data.data[i][par] > 100) {
+																	console
+																			.log("Invalid data!");
 																} else {
 
 																	if (date
@@ -293,11 +301,14 @@ gcrg
 														} else if (freq == "hourly") {
 															for (var i = 0; i < data.data.length; i++) {
 																var par = $scope.parameter;
-																if (data.data[i][par] == -9999
-																		|| data.data[i][par] == -6999) {
+																if (data.data[i][par] <= -5999) {
 																	console
 																			.log("-9999 data");
 																	continue;
+																} else if (param == "%"
+																		&& data.data[i][par] > 100) {
+																	console
+																			.log("Invalid data!");
 																} else {
 																	dataPoints
 																			.push({
@@ -365,6 +376,7 @@ gcrg
 														} else {
 															$scope.badSelect = "Please select appropriate time stamps."
 														}
+
 														switch (graphCount) {
 														case 1:
 															allData1 = allData;
@@ -481,9 +493,6 @@ gcrg
 																	});
 															chart.render();
 															break;
-
-														default:
-															alert("You have reached maximum limit for the graphs!! Please refresh this page to clear the gaphs that are already displayed.");
 														}
 
 													})
@@ -523,11 +532,14 @@ gcrg
 															var count = 0;
 															for (var i = 0; i < data.data.length; i++) {
 																var par = $scope.parameter;
-																if (data.data[i][par] == -9999
-																		|| data.data[i][par] == -6999) {
+																if (data.data[i][par] <= -5999) {
 																	console
 																			.log("-9999 data");
 																	continue;
+																} else if (param == "%"
+																		&& data.data[i][par] > 100) {
+																	console
+																			.log("Invalid data!");
 																} else {
 
 																	if (date
@@ -563,11 +575,14 @@ gcrg
 														} else if (freq == "hourly") {
 															for (var i = 0; i < data.data.length; i++) {
 																var par = $scope.parameter;
-																if (data.data[i][par] == -9999
-																		|| data.data[i][par] == -6999) {
+																if (data.data[i][par] <= -5999) {
 																	console
 																			.log("-9999 data");
 																	continue;
+																} else if (param == "%"
+																		&& data.data[i][par] > 100) {
+																	console
+																			.log("Invalid data!");
 																} else {
 																	dataPoints
 																			.push({
@@ -723,8 +738,6 @@ gcrg
 																	});
 															chart.render();
 															break;
-														default:
-															alert("You have reached maximum limit for the graphs!! Please refresh this page to clear the gaphs that are already displayed.");
 														}
 													})
 											.error(
@@ -765,11 +778,14 @@ gcrg
 															var count = 0;
 															for (var i = 0; i < data.data.length; i++) {
 																var par = $scope.parameter;
-																if (data.data[i][par] == -9999
-																		|| data.data[i][par] == -6999) {
+																if (data.data[i][par] <= -5999) {
 																	console
 																			.log("-9999 data");
 																	continue;
+																} else if (param == "%"
+																		&& data.data[i][par] > 100) {
+																	console
+																			.log("Invalid data!");
 																} else {
 
 																	if (date
@@ -807,11 +823,14 @@ gcrg
 														} else if (freq == "hourly") {
 															for (var i = 0; i < data.data.length; i++) {
 																var par = $scope.parameter;
-																if (data.data[i][par] == -9999
-																		|| data.data[i][par] == -6999) {
+																if (data.data[i][par] <= -5999) {
 																	console
 																			.log("-9999 data");
 																	continue;
+																} else if (param == "%"
+																		&& data.data[i][par] > 100) {
+																	console
+																			.log("Invalid data!");
 																} else {
 																	dataPoints
 																			.push({
@@ -984,9 +1003,6 @@ gcrg
 																	});
 															chart.render();
 															break;
-
-														default:
-															alert("You have reached maximum limit for the graphs!! Please refresh this page to clear the gaphs that are already displayed.");
 														}
 													})
 											.error(
@@ -1022,7 +1038,6 @@ gcrg
 
 								var obj = {
 									dataType : $scope.dataType,
-									parameter : $scope.parameter,
 									timeStampTo : toDate,
 									timeStampFrom : fromDate
 								}
@@ -1037,17 +1052,140 @@ gcrg
 														config) {
 													console.log(data, status,
 															headers, config);
-													var fullData = "Time Stamp,"
-															+ $scope.parameter
-															+ "\n";
-													for (var i = 0; i < data.data.length; i++) {
-														fullData += data.data[i].timeStamp
-																+ ","
-																+ data.data[i].parameter
+													switch ($scope.dataType) {
+													case "atq_no_gap_filled_cleaned":
+														var fullData = "Time Stamp,Wind Speed, Wind Direction, U*, H, qc_H, LE, qc_LE, CO2_Flux, H2O_Flux, CH4_Flux, qc_CH4_Flux, co2_mixing_ratio, h2o_mixing_ratio, ch4_mixing_ratio, air_pressure, RH"
 																+ "\n";
+														for (var i = 0; i < data.data.length; i++) {
+															fullData += data.data[i].timeStamp
+																	+ ","
+																	+ data.data[i].windSpeed
+																	+ ","
+																	+ data.data[i].wind_dir
+																	+ ","
+																	+ data.data[i].uStar
+																	+ ","
+																	+ data.data[i].h
+																	+ ","
+																	+ data.data[i].qc_H
+																	+ ","
+																	+ data.data[i].le
+																	+ ","
+																	+ data.data[i].qc_LE
+																	+ ","
+																	+ data.data[i].co2_flux
+																	+ ","
+																	+ data.data[i].h2o_flux
+																	+ ","
+																	+ data.data[i].ch4_flux
+																	+ ","
+																	+ data.data[i].qc_ch4_flux
+																	+ ","
+																	+ data.data[i].co2_mixing_ratio
+																	+ ","
+																	+ data.data[i].h2o_mixing_ratio
+																	+ ","
+																	+ data.data[i].ch4_mixing_ratio
+																	+ ","
+																	+ data.data[i].air_pressure
+																	+ ","
+																	+ data.data[i].rh
+																	+ "\n";
+														}
+														break;
+													case "atq_gap_filled":
+														var fullData = "Time Stamp,nee_f,nee_fqcOK,le_f,le_fqcOK,h_f,h_fqcOK,reco,gpp_f"
+																+ "\n";
+														for (var i = 0; i < data.data.length; i++) {
+															fullData += data.data[i].timeStamp
+																	+ ","
+																	+ data.data[i].nee_f
+																	+ ","
+																	+ data.data[i].nee_fqcOK
+																	+ ","
+																	+ data.data[i].le_f
+																	+ ","
+																	+ data.data[i].le_fqcOK
+																	+ ","
+																	+ data.data[i].h_f
+																	+ ","
+																	+ data.data[i].h_fqcOK
+																	+ ","
+																	+ data.data[i].reco
+																	+ ","
+																	+ data.data[i].gpp_f
+																	+ "\n";
+														}
+														break;
+													case "atq_meteorological":
+														var fullData = "Time Stamp,par_AVG_L,rsolar_AVG_L,rnet_WC_AVG_L,air_T_AVG_L,rh_AVG_L,g_1_AVG_L,g_2_AVG_L,g_3_AVG_L,ppt_TOT_L,press_mb_AVG_L,ss_Tl_R_AVG_L,ss_Dif_R_AVG_L,swc_1_AVG_L,swc_2_AVG_L,swc_3_AVG_L,swc_4_AVG_L,p2_SWC_5_AVG_L,p2_SWC_15_AVG_L,p2_SWC_30_AVG_L,p3_SWC_5_AVG_L,p3_SWC_15_AVG_L,p3_SWC_30_AVG_L,p3_SoilT5_AVG_L,p3_SoilT15_AVG_L,p3_SoilT30_AVG_L,p4_SoilT5_AVG_L,p4_SoilT15_AVG_L,p4_SoilT30_AVG_L,snowDepth_L"
+																+ "\n";
+														for (var i = 0; i < data.data.length; i++) {
+															fullData += data.data[i].timeStamp
+																	+ ","
+																	+ data.data[i].par_AVG_L
+																	+ ","
+																	+ data.data[i].rsolar_AVG_L
+																	+ ","
+																	+ data.data[i].rnet_WC_AVG_L
+																	+ ","
+																	+ data.data[i].air_T_AVG_L
+																	+ ","
+																	+ data.data[i].rh_AVG_L
+																	+ ","
+																	+ data.data[i].g_1_AVG_L
+																	+ ","
+																	+ data.data[i].g_2_AVG_L
+																	+ ","
+																	+ data.data[i].g_3_AVG_L
+																	+ ","
+																	+ data.data[i].ppt_TOT_L
+																	+ ","
+																	+ data.data[i].press_mb_AVG_L
+																	+ ","
+																	+ data.data[i].ss_Tl_R_AVG_L
+																	+ ","
+																	+ data.data[i].ss_Dif_R_AVG_L
+																	+ ","
+																	+ data.data[i].swc_1_AVG_L
+																	+ ","
+																	+ data.data[i].swc_2_AVG_L
+																	+ ","
+																	+ data.data[i].swc_3_AVG_L
+																	+ ","
+																	+ data.data[i].swc_4_AVG_L
+																	+ ","
+																	+ data.data[i].p2_SWC_5_AVG_L
+																	+ ","
+																	+ data.data[i].p2_SWC_15_AVG_L
+																	+ ","
+																	+ data.data[i].p2_SWC_30_AVG_L
+																	+ ","
+																	+ data.data[i].p3_SWC_5_AVG_L
+																	+ ","
+																	+ data.data[i].p3_SWC_15_AVG_L
+																	+ ","
+																	+ data.data[i].p3_SWC_30_AVG_L
+																	+ ","
+																	+ data.data[i].p3_SolT5_AVG_L
+																	+ ","
+																	+ data.data[i].p3_SolT15_AVG_L
+																	+ ","
+																	+ data.data[i].p3_SolT30_AVG_L
+																	+ ","
+																	+ data.data[i].p4_SolT5_AVG_L
+																	+ ","
+																	+ data.data[i].p4_SolT15_AVG_L
+																	+ ","
+																	+ data.data[i].p4_SolT30_AVG_L
+																	+ ","
+																	+ data.data[i].snowDepth_L
+																	+ "\n";
+														}
+														break;
 													}
 													download(fullData,
-															$scope.parameter
+															$scope.dataType
 																	+ ".csv",
 															"text/plain");
 												}).error(

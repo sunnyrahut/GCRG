@@ -2,7 +2,6 @@ package co.sunny.entities;
 
 public class GenerateCSVVO {
 	private String dataType;
-	private String parameter;
 	private String timeStampTo;
 	private String timeStampFrom;
 
@@ -28,13 +27,5 @@ public class GenerateCSVVO {
 
 	public void setDataType(String dataType) {
 		this.dataType = dataType;
-	}
-
-	public String getParameter() {
-		return parameter;
-	}
-
-	public void setParameter(String parameter) {
-		this.parameter = parameter;
 	}
 }

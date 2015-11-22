@@ -100,7 +100,7 @@ public class AtqasukRESTService {
 					.replaceAll("-", "/"));
 			generateCSV.setTimeStampTo(generateCSV.getTimeStampTo().replaceAll(
 					"-", "/"));
-			List<CSVData> list = dao.getParamData(generateCSV);
+			List<?> list = dao.getData(generateCSV);
 			// GenerateCSVFile.generate(list, generateCSV);
 			resp.setData(list);
 			resp.setStatus("SUCCESS");

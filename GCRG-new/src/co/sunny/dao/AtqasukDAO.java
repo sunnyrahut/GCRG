@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.sunny.entities.CSVData;
 import co.sunny.entities.GapFilledDataVO;
 import co.sunny.entities.GenerateCSVVO;
 import co.sunny.entities.MeteorologicalDataVO;
@@ -287,38 +286,26 @@ public class AtqasukDAO {
 		return data;
 	}
 
-	public List<CSVData> getParamData(GenerateCSVVO generateCSV)
-			throws GCRGException {
+	public List<?> getData(GenerateCSVVO generateCSV) throws GCRGException {
 
-		Connection con = DBConnector.getDBConnection();
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-
-		List<CSVData> allData = new ArrayList<CSVData>();
-
-		System.out.println("Time: " + generateCSV);
-		try {
-			ps = con.prepareStatement("SELECT " + generateCSV.getParameter()
-					+ ",time_stamp FROM " + generateCSV.getDataType()
-					+ " WHERE time_stamp<=? AND time_stamp>=?");
-			ps.setString(1, generateCSV.getTimeStampTo());
-			ps.setString(2, generateCSV.getTimeStampFrom());
-			rs = ps.executeQuery();
-
-			while (rs.next()) {
-				CSVData data = new CSVData();
-				data.setTimeStamp(rs.getTimestamp("time_stamp").toString());
-				data.setParameter(rs.getString(generateCSV.getParameter()));
-				allData.add(data);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new GCRGException("Error: " + e.getMessage(), e.getCause());
-		} finally {
-			DBConnector.closeResources(ps, rs, con);
+		switch (generateCSV.getDataType()) {
+		case "atq_no_gap_filled_cleaned":
+			List<NoGapFilledDataVO> allData = getAllNoGapData(
+					generateCSV.getTimeStampFrom(),
+					generateCSV.getTimeStampTo());
+			return allData;
+		case "atq_gap_filled":
+			List<GapFilledDataVO> allData1 = getAllGapData(
+					generateCSV.getTimeStampFrom(),
+					generateCSV.getTimeStampTo());
+			return allData1;
+		case "atq_meteorological":
+			List<MeteorologicalDataVO> allData2 = getAllMeteoData(
+					generateCSV.getTimeStampFrom(),
+					generateCSV.getTimeStampTo());
+			return allData2;
+		default:
+			return null;
 		}
-
-		return allData;
 	}
 }

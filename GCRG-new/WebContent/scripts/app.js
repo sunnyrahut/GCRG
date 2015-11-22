@@ -47,9 +47,9 @@ gcrg.factory("authenticateUser", function($http, $q, $window, $location) {
 				};
 				$window.sessionStorage["userInfo"] = JSON.stringify(userInfo);
 				if (userInfo.userType == "Admin") {
-					$location.path('/viewUsers');
+					$location.path('/graphAdmin');
 				} else if (userInfo.userType == "User") {
-					$location.path('/contactsUser');
+					$location.path('/graphUser');
 				}
 				deferred.resolve(userInfo);
 			} else {

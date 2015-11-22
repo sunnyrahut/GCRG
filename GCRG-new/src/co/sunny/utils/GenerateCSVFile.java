@@ -25,10 +25,10 @@ public class GenerateCSVFile {
 		// e1.printStackTrace();
 		// }
 		File fileName = new File("C:\\Users\\Sunny\\Desktop\\"
-				+ data.getDataType() + data.getParameter() + ".csv");
+				+ data.getDataType() + data + ".csv");
 		try {
 			fileWriter = new FileWriter(fileName, true);
-			fileWriter.append("Time" + "," + data.getParameter());
+			fileWriter.append("Time" + "," + data);
 			fileWriter.append("\n");
 			for (int i = 0; i < list.size(); i++) {
 				fileWriter.append(list.get(i).getTimeStamp() + ","
