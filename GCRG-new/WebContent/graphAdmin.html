@@ -36,8 +36,10 @@
 								<option value="">Select</option>
 								<option value="ATQ">Atqasuk</option>
 						</select></td>
-						<td><input type="date" ng-model="fromDate"></td>
-						<td><input type="date" ng-model="toDate"></td>
+						<td><input type="text" ng-model="fromDate"
+							placeholder="yyyy-mm-dd HH:MM"></td>
+						<td><input type="text" ng-model="toDate"
+							placeholder="yyyy-mm-dd HH:MM"></td>
 						<td><select ng-model="frequencyType">
 								<option value="">Select</option>
 								<option value="daily">Daily</option>
@@ -57,9 +59,9 @@
 								<option value="atq_meteorological">Meteorological</option>
 						</select></td>
 						<td><select ng-model="parameter"
-							ng-show="dataType=='atq_no_gap_filled_cleaned'"><option
-									value="vpd">VPD</option>
+							ng-show="dataType=='atq_no_gap_filled_cleaned'">
 								<option value="">Select</option>
+								<option value="vpd">VPD</option>
 								<option value="windSpeed">windSpeed</option>
 								<option value="wind_dir">wind_dir</option>
 								<option value="uStar">u*</option>
@@ -75,8 +77,8 @@
 								<option value="h2o_mixing_ratio">h2o_mixing_ratio</option>
 								<option value="ch4_mixing_ratio">ch4_mixing_ratio</option>
 								<option value="air_pressure">air_pressure</option>
-								<option value="rh">RH</option></select> <select ng-model="parameter"
-							ng-show="dataType=='atq_gap_filled'">
+								<option value="rh">RH</option>
+						</select> <select ng-model="parameter" ng-show="dataType=='atq_gap_filled'">
 								<option value="">Select</option>
 								<option value="nee_f">NEE_f</option>
 								<option value="nee_fqcOK">NEE_fqcOK</option>

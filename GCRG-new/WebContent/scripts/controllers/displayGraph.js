@@ -8,9 +8,12 @@ gcrg
 						'auth',
 						'$window',
 						function($scope, $location, $http, auth, $window) {
-							if ($('[type="date"]').prop('type') != 'date') {
-								$('[type="date"]').datepicker();
-							}
+							// if ($('[type="date"]').prop('type') != 'date') {
+							// console.log("Inside");
+							// $('[type="date"]').datepicker({
+							// dateFormat : "mm/dd/yyyy"
+							// });
+							// }
 							$scope.signOut = function() {
 								$window.sessionStorage["userInfo"] = null;
 								userInfo = null;
@@ -22,29 +25,31 @@ gcrg
 							var allData4 = [];
 							var graphCount = 0;
 							$scope.generateGraph = function() {
+								console.log($scope.fromDate);
 								graphCount++;
 								if (graphCount > 4) {
 									graphCount = 1;
 								}
 								var timeStamps = [];
 								var parameter = [];
-								var fromDate = new Date($scope.fromDate);
-								fromDate = fromDate.getUTCFullYear() + '-'
-										+ (fromDate.getUTCMonth() + 1) + '-'
-										+ fromDate.getUTCDate() + ' '
-										+ fromDate.getHours() + ':'
-										+ fromDate.getMinutes();
-								console.log(fromDate);
-								var toDate = new Date($scope.toDate);
-								toDate = toDate.getUTCFullYear() + '-'
-										+ (toDate.getUTCMonth() + 1) + '-'
-										+ (toDate.getUTCDate() - 1) + ' '
-										+ toDate.getHours() + ':'
-										+ toDate.getMinutes();
+								var fromDate = $scope.fromDate;
+								// fromDate = fromDate.getUTCFullYear() + '-'
+								// + (fromDate.getUTCMonth() + 1) + '-'
+								// + fromDate.getUTCDate() + ' '
+								// + fromDate.getHours() + ':'
+								// + fromDate.getMinutes();
+								// console.log(fromDate);
+								var toDate = $scope.toDate;
 								console.log(toDate);
+								// toDate = toDate.getUTCFullYear() + '-'
+								// + (toDate.getUTCMonth() + 1) + '-'
+								// + (toDate.getUTCDate()) + ' '
+								// + toDate.getHours() + ':'
+								// + toDate.getMinutes();
+								// console.log(toDate);
 								var dataSeries = {
 									type : "scatter",
-									color : "rgba(54,158,173,.7)"
+									color : "blue"
 								};
 								var dataPoints = [];
 								var allData = [];
