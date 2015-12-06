@@ -291,8 +291,16 @@ gcrg
 																			dataPoints
 																					.push({
 																						x : new Date(
-																								Date
-																										.parse(date)),
+																								date
+																										.split(/[- :]/)[0],
+																								date
+																										.split(/[- :]/)[1] - 1,
+																								date
+																										.split(/[- :]/)[2],
+																								date
+																										.split(/[- :]/)[3],
+																								date
+																										.split(/[- :]/)[4]),
 																						y : sum
 																					});
 																		}
@@ -318,8 +326,16 @@ gcrg
 																	dataPoints
 																			.push({
 																				x : new Date(
-																						Date
-																								.parse(data.data[i].timeStamp)),
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[0],
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[1] - 1,
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[2],
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[3],
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[4]),
 																				y : data.data[i][par]
 																			});
 																}
@@ -566,8 +582,16 @@ gcrg
 																			dataPoints
 																					.push({
 																						x : new Date(
-																								Date
-																										.parse(date)),
+																								date
+																										.split(/[- :]/)[0],
+																								date
+																										.split(/[- :]/)[1] - 1,
+																								date
+																										.split(/[- :]/)[2],
+																								date
+																										.split(/[- :]/)[3],
+																								date
+																										.split(/[- :]/)[4]),
 																						y : sum
 																					});
 																		}
@@ -592,8 +616,16 @@ gcrg
 																	dataPoints
 																			.push({
 																				x : new Date(
-																						Date
-																								.parse(data.data[i].timeStamp)),
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[0],
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[1] - 1,
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[2],
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[3],
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[4]),
 																				y : data.data[i][par]
 																			});
 																}
@@ -814,8 +846,16 @@ gcrg
 																			dataPoints
 																					.push({
 																						x : new Date(
-																								Date
-																										.parse(date)),
+																								date
+																										.split(/[- :]/)[0],
+																								date
+																										.split(/[- :]/)[1] - 1,
+																								date
+																										.split(/[- :]/)[2],
+																								date
+																										.split(/[- :]/)[3],
+																								date
+																										.split(/[- :]/)[4]),
 																						y : sum
 																					});
 																		}
@@ -840,8 +880,16 @@ gcrg
 																	dataPoints
 																			.push({
 																				x : new Date(
-																						Date
-																								.parse(data.data[i].timeStamp)),
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[0],
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[1] - 1,
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[2],
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[3],
+																						data.data[i].timeStamp
+																								.split(/[- :]/)[4]),
 																				y : data.data[i][par]
 																			});
 																}
