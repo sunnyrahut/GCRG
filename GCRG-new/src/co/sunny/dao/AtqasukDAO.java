@@ -220,6 +220,10 @@ public class AtqasukDAO {
 				data.setSWC_2_AVG_L(rs.getFloat("SWC_2_AVG_L"));
 				data.setSWC_3_AVG_L(rs.getFloat("SWC_3_AVG_L"));
 				data.setSWC_4_AVG_L(rs.getFloat("SWC_4_AVG_L"));
+				data.setSoil_1_AVG_L(rs.getFloat("Soil_1_AVG_L"));
+				data.setSoil_2_AVG_L(rs.getFloat("Soil_2_AVG_L"));
+				data.setSoil2_1_AVG_L(rs.getFloat("Soil2_1_AVG_L"));
+				data.setSoil2_2_AVG_L(rs.getFloat("Soil2_2_AVG_L"));
 				allData.add(data);
 			}
 
@@ -240,7 +244,7 @@ public class AtqasukDAO {
 		try {
 			preStmt = conn
 					.prepareStatement(
-							"INSERT INTO atq_meteorological (time_stamp, PAR_AVG_L, Rsolar_AVG_L, Rnet_WC_AVG_L, Air_T_AVG_L, RH_AVG_L, G_1_AVG_L, G_2_AVG_L, G_3_AVG_L, PPT_TOT_L, Press_mb_AVG_L, SS_Tl_R_AVG_L, SS_Dif_R_AVG_L, SWC_1_AVG_L, SWC_2_AVG_L, SWC_3_AVG_L, SWC_4_AVG_L, P2_SWC_5_AVG_L, P2_SWC_15_AVG_L, P2_SWC_30_AVG_L, P3_SWC_5_AVG_L, P3_SWC_15_AVG_L, P3_SWC_30_AVG_L, P3_SolT5_AVG_L, P3_SolT15_AVG_L, P3_SolT30_AVG_L, P4_SolT5_AVG_L, P4_SolT15_AVG_L, P4_SolT30_AVG_L, SnowDepth_L) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+							"INSERT INTO atq_meteorological (time_stamp, PAR_AVG_L, Rsolar_AVG_L, Rnet_WC_AVG_L, Air_T_AVG_L, RH_AVG_L, G_1_AVG_L, G_2_AVG_L, G_3_AVG_L, PPT_TOT_L, Press_mb_AVG_L, SS_Tl_R_AVG_L, SS_Dif_R_AVG_L, SWC_1_AVG_L, SWC_2_AVG_L, SWC_3_AVG_L, SWC_4_AVG_L, P2_SWC_5_AVG_L, P2_SWC_15_AVG_L, P2_SWC_30_AVG_L, P3_SWC_5_AVG_L, P3_SWC_15_AVG_L, P3_SWC_30_AVG_L, P3_SolT5_AVG_L, P3_SolT15_AVG_L, P3_SolT30_AVG_L, P4_SolT5_AVG_L, P4_SolT15_AVG_L, P4_SolT30_AVG_L, SnowDepth_L, Soil_1_AVG_L, Soil_2_AVG_L, Soil2_1_AVG_L, Soil2_2_AVG_L) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS);
 			// date = format.parse(data.getTimeStamp());
 			preStmt.setString(1, data.getTimeStamp());
@@ -274,6 +278,10 @@ public class AtqasukDAO {
 			preStmt.setFloat(28, data.getP4_SolT15_AVG_L());
 			preStmt.setFloat(29, data.getP4_SolT30_AVG_L());
 			preStmt.setFloat(30, data.getSnowDepth_L());
+			preStmt.setFloat(31, data.getSoil_1_AVG_L());
+			preStmt.setFloat(32, data.getSoil_2_AVG_L());
+			preStmt.setFloat(33, data.getSoil2_1_AVG_L());
+			preStmt.setFloat(34, data.getSoil2_2_AVG_L());
 
 			preStmt.executeUpdate();
 			rs = preStmt.getGeneratedKeys();

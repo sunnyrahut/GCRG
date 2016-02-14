@@ -124,7 +124,7 @@ public class Test {
 				int countRow = 0;
 				while ((data = br.readLine()) != null) {
 					countRow++;
-					if (countRow > 2) {
+					if (countRow > 3) {
 						parameters = data.split("\t");
 						try {
 							dbUploader.uploadNoGapData(parameters);

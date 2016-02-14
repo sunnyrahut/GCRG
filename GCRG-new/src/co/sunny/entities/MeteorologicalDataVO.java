@@ -31,10 +31,46 @@ public class MeteorologicalDataVO {
 	private float P4_SolT5_AVG_L;
 	private float P4_SolT15_AVG_L;
 	private float P4_SolT30_AVG_L;
+	private float Soil_1_AVG_L;
+	private float Soil_2_AVG_L;
+	private float Soil2_1_AVG_L;
+	private float Soil2_2_AVG_L;
 	private float SnowDepth_L;
 
 	public String getTimeStamp() {
 		return timeStamp;
+	}
+
+	public float getSoil_1_AVG_L() {
+		return Soil_1_AVG_L;
+	}
+
+	public void setSoil_1_AVG_L(float soil_1_AVG_L) {
+		Soil_1_AVG_L = soil_1_AVG_L;
+	}
+
+	public float getSoil_2_AVG_L() {
+		return Soil_2_AVG_L;
+	}
+
+	public void setSoil_2_AVG_L(float soil_2_AVG_L) {
+		Soil_2_AVG_L = soil_2_AVG_L;
+	}
+
+	public float getSoil2_1_AVG_L() {
+		return Soil2_1_AVG_L;
+	}
+
+	public void setSoil2_1_AVG_L(float soil2_1_AVG_L) {
+		Soil2_1_AVG_L = soil2_1_AVG_L;
+	}
+
+	public float getSoil2_2_AVG_L() {
+		return Soil2_2_AVG_L;
+	}
+
+	public void setSoil2_2_AVG_L(float soil2_2_AVG_L) {
+		Soil2_2_AVG_L = soil2_2_AVG_L;
 	}
 
 	public void setTimeStamp(String timeStamp) {

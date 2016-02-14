@@ -63,7 +63,7 @@ public class ScheduledTaskNoGap extends TimerTask {
 		sdf = new SimpleDateFormat(newFormat);
 		Date date = null;
 		try {
-			date = sdf.parse("2015/10/15 17:00:00");
+			date = sdf.parse("2016/01/10 00:00:00");
 		} catch (ParseException e3) {
 			// TODO Auto-generated catch block
 			e3.printStackTrace();
@@ -112,13 +112,13 @@ public class ScheduledTaskNoGap extends TimerTask {
 									+ sourceFile.getName().replaceAll("_", "")
 											.substring(13));
 					oldFile.renameTo(newFile);
-					rt.exec("\"C:\\Program Files (x86)\\LI-COR\\EddyPro-6.0.0\\bin\\eddypro_rp.exe\" -s win -c console -m desktop C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\ATQ-LGR-CSAT_improved_separation_NewCols.eddypro");
+					rt.exec("\"C:\\Program Files (x86)\\LI-COR\\EddyPro-6.0.0\\bin\\eddypro_rp.exe\" -s win -c console -m desktop C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\Final_EddyPro\\ATQ-LGR-CSAT_improved_separation.eddypro");
 					try {
 						Thread.sleep(15000); // 3000 milliseconds is one second.
 					} catch (InterruptedException ex) {
 						Thread.currentThread().interrupt();
 					}
-					rt.exec("\"C:\\Program Files (x86)\\LI-COR\\EddyPro-6.0.0\\bin\\eddypro_fcc.exe\" -s win -c console -m desktop C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\ATQ-LGR-CSAT_improved_separation_NewCols.eddypro");
+					rt.exec("\"C:\\Program Files (x86)\\LI-COR\\EddyPro-6.0.0\\bin\\eddypro_fcc.exe\" -s win -c console -m desktop C:\\Users\\Sunny\\Documents\\automated_eddy_covariance\\Final_EddyPro\\ATQ-LGR-CSAT_improved_separation.eddypro");
 					System.out.println("Eddy Pro Executed..");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

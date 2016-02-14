@@ -31,9 +31,8 @@ public class DatabaseUploader {
 		calendar.set(Calendar.HOUR_OF_DAY,
 				(int) Float.parseFloat(parameters[3]));
 		System.out.println("Minute: "
-				+ ((Float.parseFloat(parameters[4]) % 1) * 24) % 1);
-		if ((((Float.parseFloat(parameters[4]) % 1) * 24) % 1) >= 0.9
-				|| (((Float.parseFloat(parameters[4]) % 1) * 24) % 1) <= 0.1) {
+				+ ((Float.parseFloat(parameters[4]) % 1) * 48) % 2);
+		if (((Float.parseFloat(parameters[4]) % 1) * 48) % 2 < 1) {
 			calendar.set(Calendar.MINUTE, 00);
 		} else {
 			calendar.set(Calendar.MINUTE, 30);
@@ -254,3 +253,5 @@ public class DatabaseUploader {
 		}
 	}
 }
+
+//alter table atq_meteorological add Soil_1_AVG_L double;

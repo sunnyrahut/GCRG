@@ -71,4 +71,7 @@
 		color: rgba(0, 0, 0, 0.66);
 		text-shadow: 1px 0px rgba(255, 255, 255, 0.72);
 	}
+	#chartContainer, #chartContainer2, #chartContainer3, #chartContainer4 {
+		text-align: center
+	}
 }
