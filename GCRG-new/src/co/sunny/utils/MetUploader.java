@@ -63,6 +63,13 @@ public class MetUploader {
 				dataVo.setG_3_AVG_L(-9999);
 			}
 
+			if (!parameters[9].equals("")) {
+				dataVo.setRH_AVG_L(Float.parseFloat(parameters[9]));
+				System.out.println("RH_AVG_L:" + parameters[9]);
+			} else {
+				dataVo.setRH_AVG_L(-9999);
+			}
+
 			if (!parameters[3].equals("")) {
 				dataVo.setPAR_AVG_L(Float.parseFloat(parameters[3]));
 				System.out.println("PAR_AVG_L:" + parameters[3]);

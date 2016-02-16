@@ -290,19 +290,19 @@ gcrg
 									param = "\u00B0" + "C";
 									break;
 								case "soil_1_AVG_L":
-									name = "Soil temperature (Tsoil)";
+									name = "Soil temperature (Tsoil) surface C";
 									param = "\u00B0" + "C";
 									break;
 								case "soil_2_AVG_L":
-									name = "Soil temperature (Tsoil)";
+									name = "Soil temperature (Tsoil) 5 cm C";
 									param = "\u00B0" + "C";
 									break;
 								case "soil2_1_AVG_L":
-									name = "Soil temperature (Tsoil)";
+									name = "Soil temperature (Tsoil) surface D";
 									param = "\u00B0" + "C";
 									break;
 								case "soil2_2_AVG_L":
-									name = "Soil temperature (Tsoil)";
+									name = "Soil temperature (Tsoil) 5 cm D";
 									param = "\u00B0" + "C";
 									break;
 								case "snowDepth_L":
@@ -489,7 +489,6 @@ gcrg
 																				zoomEnabled : true,
 																				title : {
 																					text : name
-																							+ " vs time stamps"
 																				},
 																				axisX : {
 																					labelAngle : -30
@@ -519,7 +518,6 @@ gcrg
 																				zoomEnabled : true,
 																				title : {
 																					text : name
-																							+ " vs time stamps"
 																				},
 																				axisX : {
 																					labelAngle : -30
@@ -549,7 +547,6 @@ gcrg
 																				zoomEnabled : true,
 																				title : {
 																					text : name
-																							+ " vs time stamps"
 																				},
 																				axisX : {
 																					labelAngle : -30
@@ -579,7 +576,6 @@ gcrg
 																				zoomEnabled : true,
 																				title : {
 																					text : name
-																							+ " vs time stamps"
 																				},
 																				axisX : {
 																					labelAngle : -30
@@ -809,7 +805,6 @@ gcrg
 																		zoomEnabled : true,
 																		title : {
 																			text : name
-																					+ " vs time stamps"
 																		},
 																		axisX : {
 																			labelAngle : -30
@@ -838,7 +833,6 @@ gcrg
 																		zoomEnabled : true,
 																		title : {
 																			text : name
-																					+ " vs time stamps"
 																		},
 																		axisX : {
 																			labelAngle : -30
@@ -867,7 +861,6 @@ gcrg
 																		zoomEnabled : true,
 																		title : {
 																			text : name
-																					+ " vs time stamps"
 																		},
 																		axisX : {
 																			labelAngle : -30
@@ -896,7 +889,6 @@ gcrg
 																		zoomEnabled : true,
 																		title : {
 																			text : name
-																					+ " vs time stamps"
 																		},
 																		axisX : {
 																			labelAngle : -30
@@ -1090,7 +1082,6 @@ gcrg
 																		zoomEnabled : true,
 																		title : {
 																			text : name
-																					+ " vs time stamps"
 																		},
 																		axisX : {
 																			labelAngle : -30
@@ -1119,7 +1110,6 @@ gcrg
 																		zoomEnabled : true,
 																		title : {
 																			text : name
-																					+ " vs time stamps"
 																		},
 																		axisX : {
 																			labelAngle : -30
@@ -1148,7 +1138,6 @@ gcrg
 																		zoomEnabled : true,
 																		title : {
 																			text : name
-																					+ " vs time stamps"
 																		},
 																		axisX : {
 																			labelAngle : -30
@@ -1177,7 +1166,6 @@ gcrg
 																		zoomEnabled : true,
 																		title : {
 																			text : name
-																					+ " vs time stamps"
 																		},
 																		axisX : {
 																			labelAngle : -30
