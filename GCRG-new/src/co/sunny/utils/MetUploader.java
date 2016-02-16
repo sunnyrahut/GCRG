@@ -69,6 +69,13 @@ public class MetUploader {
 			} else {
 				dataVo.setRH_AVG_L(-9999);
 			}
+			
+			if (!parameters[10].equals("")) {
+				dataVo.setPPT_TOT_L(Float.parseFloat(parameters[10]));
+				System.out.println("PPT_TOT_L:" + parameters[10]);
+			} else {
+				dataVo.setRH_AVG_L(-9999);
+			}
 
 			if (!parameters[3].equals("")) {
 				dataVo.setPAR_AVG_L(Float.parseFloat(parameters[3]));
