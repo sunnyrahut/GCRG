@@ -77,19 +77,19 @@ gcrg
                         case "co2_flux":
                             name = "Net ecosystem exchange of CO" + "\u2082" + "(NEE)";
                             parameter = "CO" + "\u2082";
-                            param = "mg m" + "\u207B" + "\u00B2" + "h" + "\u207B" + "\u00B9";
+                            param = "\u03BC" + "mol m" + "\u207B" + "\u00B2" + " s" + "\u207B" + "\u00B9";
                             convert = true;
                             break;
                         case "h2o_flux":
                             name = "H" + "\u2082" + "O flux";
                             parameter = "H" + "\u2082" + "O_flux";
-                            param = "mg m" + "\u207B" + "\u00B2" + "h" + "\u207B" + "\u00B9";
+                            param = "\u03BC" + "mol m" + "\u207B" + "\u00B2" + " s" + "\u207B" + "\u00B9";
                             convert = true;
                             break;
                         case "ch4_flux":
                             name = "Methane (CH" + "\u2084" + ") flux";
                             parameter = "CH" + "\u2084" + "_flux";
-                            param = "mg m" + "\u207B" + "\u00B2" + "h" + "\u207B" + "\u00B9";
+                            param = "\u03BC" + "mol m" + "\u207B" + "\u00B2" + " s" + "\u207B" + "\u00B9";
                             convert = true;
                             break;
                         case "qc_ch4_flux":
