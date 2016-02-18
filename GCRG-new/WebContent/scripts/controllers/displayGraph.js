@@ -17,7 +17,9 @@ gcrg
                 var allData3 = [];
                 var allData4 = [];
                 var graphCount = 0;
+                $body = $("body");
                 $scope.generateGraph = function() {
+                    $body.addClass("loading");
                     console.log($scope.fromDate);
                     graphCount++;
                     if (graphCount > 4) {
@@ -1110,9 +1112,11 @@ gcrg
                                     });
                             break;
                     }
+                    $body.removeClass("loading");
                 };
 
                 $scope.generateExcel = function() {
+                    $body.addClass("loading");
                     var fromDate = new Date($scope.fromDate);
                     fromDate = fromDate.getUTCFullYear() + '-' + (fromDate.getUTCMonth() + 1) + '-' + fromDate.getUTCDate() + ' ' + fromDate.getHours() + ':' + fromDate.getMinutes();
                     console.log(fromDate);
@@ -1165,6 +1169,7 @@ gcrg
                                 console.log(data, status,
                                     headers, config);
                             });
+                            $body.removeClass("loading");
                 };
             }
         ]);
