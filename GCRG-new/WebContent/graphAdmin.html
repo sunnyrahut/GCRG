@@ -2,7 +2,7 @@
 	<div style="text-align: center">
 		<div class="heading">Global Change Research Group</div>
 		<button type="button" ng-click="signOut()"
-			class="btn btn-default navbar-btn">logout</button>
+		class="btn btn-default navbar-btn">logout</button>
 	</div>
 </header>
 <nav>
@@ -33,119 +33,178 @@
 				<tbody>
 					<tr>
 						<td><select ng-model="siteType">
-								<option value="">Select</option>
-								<option value="ATQ">Atqasuk</option>
+							<option value="">Select</option>
+							<option value="ATQ">Atqasuk</option>
 						</select></td>
 						<td><input type="text" ng-model="fromDate"
-							placeholder="yyyy-mm-dd HH:MM"></td>
+						placeholder="yyyy-mm-dd HH:MM"></td>
 						<td><input type="text" ng-model="toDate"
-							placeholder="yyyy-mm-dd HH:MM"></td>
+						placeholder="yyyy-mm-dd HH:MM"></td>
 						<td><select ng-model="frequencyType">
-								<option value="">Select</option>
-								<option value="daily">Daily</option>
-								<option value="hourly">Hourly</option>
+							<option value="">Select</option>
+							<option value="daily">Daily</option>
+							<option value="hourly">Hourly</option>
 						</select></td>
 						<td><select ng-model="window"
 							title="select the days for averaging window">
-								<option value=1>0</option>
-								<option value=3>3</option>
-								<option value=5>5</option>
-								<option value=7>7</option>
+							<option value=1>0</option>
+							<option value=3>3</option>
+							<option value=5>5</option>
+							<option value=7>7</option>
 						</select></td>
 						<td><select ng-model="dataType">
-								<option value="">Select</option>
-								<option value="atq_no_gap_filled_cleaned">Flux data</option>
-								<option value="atq_gap_filled">Gap filled data</option>
-								<option value="atq_meteorological">Meteorological data</option>
+							<option value="">Select</option>
+							<option value="atq_no_gap_filled_cleaned">Flux data</option>
+							<option value="atq_gap_filled">Gap filled data</option>
+							<option value="atq_meteorological">Meteorological data</option>
 						</select></td>
 						<td><select ng-model="parameter"
 							ng-show="dataType=='atq_no_gap_filled_cleaned'">
-								<option value="">Select</option>
-								<option value="vpd">VPD</option>
-								<option value="windSpeed">Wind speed</option>
-								<option value="wind_dir">Wind direction</option>
-								<option value="uStar">Friction velocity (u*)</option>
-								<option value="h">H</option>
-								<option value="qc_H">QC - H</option>
-								<option value="le">LE</option>
-								<option value="qc_LE">QC - LE</option>
-								<option value="co2_flux">NEE</option>
-								<option value="h2o_flux">H2O flux</option>
-								<option value="ch4_flux">CH4 flux</option>
-								<option value="qc_ch4_flux">QC - CH4 flux</option>
-								<option value="co2_mixing_ratio">CO2 mixing ratio</option>
-								<option value="h2o_mixing_ratio">H2O mixing ratio</option>
-								<option value="ch4_mixing_ratio">CH4 mixing ratio</option>
-								<option value="air_pressure">Baro. Pressure A</option>
-								<option value="rh">RH - LICOR</option>
+							<option value="">Select</option>
+							<option value="vpd">VPD</option>
+							<option value="windSpeed">Wind speed</option>
+							<option value="wind_dir">Wind direction</option>
+							<option value="uStar">Friction velocity (u*)</option>
+							<option value="h">H</option>
+							<option value="qc_H">QC - H</option>
+							<option value="le">LE</option>
+							<option value="qc_LE">QC - LE</option>
+							<option value="co2_flux">NEE</option>
+							<option value="h2o_flux">H2O flux</option>
+							<option value="ch4_flux">CH4 flux</option>
+							<option value="qc_ch4_flux">QC - CH4 flux</option>
+							<option value="co2_mixing_ratio">CO2 mixing ratio</option>
+							<option value="h2o_mixing_ratio">H2O mixing ratio</option>
+							<option value="ch4_mixing_ratio">CH4 mixing ratio</option>
+							<option value="air_pressure">Baro. Pressure A</option>
+							<option value="rh">RH - LICOR</option>
 						</select> <select ng-model="parameter" ng-show="dataType=='atq_gap_filled'">
-								<option value="">Select</option>
-								<option value="nee_f">NEE (gap-filled)</option>
-								<option value="nee_fqcOK">QC - NEE (gap-filled)</option>
-								<option value="le_f">LE (gap-filled)</option>
-								<option value="le_fqcOK">QC - LE (gap-filled)</option>
-								<option value="h_f">H (gap-filled)</option>
-								<option value="h_fqcOK">QC - H (gap-filled)</option>
-								<option value="reco">Reco</option>
-								<option value="gpp_f">GPP</option>
-						</select> <select ng-model="parameter"
-							ng-show="dataType=='atq_meteorological'"><option
-									value="">Select</option>
-								<option value="par_AVG_L">Total PAR - LICOR</option>
-								<option value="rsolar_AVG_L">Rsolar</option>
-								<option value="rnet_WC_AVG_L">Rnet</option>
-								<option value="air_T_AVG_L">Tair</option>
-								<option value="rh_AVG_L">RH - Vaisala</option>
-								<option value="g_1_AVG_L">G1</option>
-								<option value="g_2_AVG_L">G2</option>
-								<option value="g_3_AVG_L">G3</option>
-								<option value="ppt_TOT_L">Precip.</option>
-								<option value="press_mb_AVG_L">Baro. Pressure B</option>
-								<option value="ss_Tl_R_AVG_L">Total PAR - BF4</option>
-								<option value="ss_Dif_R_AVG_L">Diffuse PAR - BF4</option>
-								<option value="swc_1_AVG_L">SWC 15 cm A</option>
-								<option value="swc_2_AVG_L">SWC 15 cm B</option>
-								<option value="swc_3_AVG_L">SWC 15 cm C</option>
-								<option value="swc_4_AVG_L">SWC 15 cm D</option>
-								<option value="p2_SWC_5_AVG_L">SWC 5 cm A</option>
-								<option value="p2_SWC_15_AVG_L">SWC 15 cm E</option>
-								<option value="p2_SWC_30_AVG_L">SWC 30 cm A</option>
-								<option value="p3_SWC_5_AVG_L">SWC 5 cm B</option>
-								<option value="p3_SWC_15_AVG_L">SWC 15 cm F</option>
-								<option value="p3_SWC_30_AVG_L">SWC 30 cm B</option>
-								<option value="p3_SolT5_AVG_L">Tsoil 5 cm A</option>
-								<option value="p3_SolT15_AVG_L">Tsoil 15 cm A</option>
-								<option value="p3_SolT30_AVG_L">Tsoil 30 cm A</option>
-								<option value="p4_SolT5_AVG_L">Tsoil 5 cm B</option>
-								<option value="p4_SolT15_AVG_L">Tsoil 15 cm B</option>
-								<option value="p4_SolT30_AVG_L">Tsoil 30 cm B</option>
-								<option value="soil_1_AVG_L">Tsoil surface C</option>
-								<option value="soil_2_AVG_L">Tsoil 5 cm C</option>
-								<option value="soil2_1_AVG_L">Tsoil surface D</option>
-								<option value="soil2_2_AVG_L">Tsoil 5 cm D</option>
-								<option value="snowDepth_L">Snow depth</option>
-						</select></td>
-						<td><input type="button" ng-click="generateGraph()"
-							value="generate graph"></td>
-						<td><input type="button" ng-click="generateExcel()"
-							value="generate csv"></td>
-					</tr>
-				</tbody>
-			</table>
-			<div style="text-align: center">
-				<a href="http://www.bgc-jena.mpg.de/~MDIwork/eddyproc/upload.php"
-					target="_blank">Eddy Covariance Gap-Filling Tool </a>
-			</div>
-			<!-- <div class="tab-pane active" id="tab-contacts">
+						<option value="">Select</option>
+						<option value="nee_f">NEE (gap-filled)</option>
+						<option value="nee_fqcOK">QC - NEE (gap-filled)</option>
+						<option value="le_f">LE (gap-filled)</option>
+						<option value="le_fqcOK">QC - LE (gap-filled)</option>
+						<option value="h_f">H (gap-filled)</option>
+						<option value="h_fqcOK">QC - H (gap-filled)</option>
+						<option value="reco">Reco</option>
+						<option value="gpp_f">GPP</option>
+					</select> <select ng-model="parameter"
+					ng-show="dataType=='atq_meteorological'"><option
+					value="">Select</option>
+					<option value="par_AVG_L">Total PAR - LICOR</option>
+					<option value="rsolar_AVG_L">Rsolar</option>
+					<option value="rnet_WC_AVG_L">Rnet</option>
+					<option value="air_T_AVG_L">Tair</option>
+					<option value="rh_AVG_L">RH - Vaisala</option>
+					<option value="g_1_AVG_L">G1</option>
+					<option value="g_2_AVG_L">G2</option>
+					<option value="g_3_AVG_L">G3</option>
+					<option value="ppt_TOT_L">Precip.</option>
+					<option value="press_mb_AVG_L">Baro. Pressure B</option>
+					<option value="ss_Tl_R_AVG_L">Total PAR - BF4</option>
+					<option value="ss_Dif_R_AVG_L">Diffuse PAR - BF4</option>
+					<option value="swc_1_AVG_L">SWC 15 cm A</option>
+					<option value="swc_2_AVG_L">SWC 15 cm B</option>
+					<option value="swc_3_AVG_L">SWC 15 cm C</option>
+					<option value="swc_4_AVG_L">SWC 15 cm D</option>
+					<option value="p2_SWC_5_AVG_L">SWC 5 cm A</option>
+					<option value="p2_SWC_15_AVG_L">SWC 15 cm E</option>
+					<option value="p2_SWC_30_AVG_L">SWC 30 cm A</option>
+					<option value="p3_SWC_5_AVG_L">SWC 5 cm B</option>
+					<option value="p3_SWC_15_AVG_L">SWC 15 cm F</option>
+					<option value="p3_SWC_30_AVG_L">SWC 30 cm B</option>
+					<option value="p3_SolT5_AVG_L">Tsoil 5 cm A</option>
+					<option value="p3_SolT15_AVG_L">Tsoil 15 cm A</option>
+					<option value="p3_SolT30_AVG_L">Tsoil 30 cm A</option>
+					<option value="p4_SolT5_AVG_L">Tsoil 5 cm B</option>
+					<option value="p4_SolT15_AVG_L">Tsoil 15 cm B</option>
+					<option value="p4_SolT30_AVG_L">Tsoil 30 cm B</option>
+					<option value="soil_1_AVG_L">Tsoil surface C</option>
+					<option value="soil_2_AVG_L">Tsoil 5 cm C</option>
+					<option value="soil2_1_AVG_L">Tsoil surface D</option>
+					<option value="soil2_2_AVG_L">Tsoil 5 cm D</option>
+					<option value="snowDepth_L">Snow depth</option>
+				</select></td>
+				<td><input type="button" ng-click="generateGraph()"
+				value="generate graph"></td>
+				<td><input type="button" ng-click="generateExcel()"
+				value="generate csv"></td>
+			</tr>
+		</tbody>
+	</table>
+	<div style="text-align: center">
+		<a href="http://www.bgc-jena.mpg.de/~MDIwork/eddyproc/upload.php"
+		target="_blank">Eddy Covariance Gap-Filling Tool </a>
+	</div>
+	<!-- <div class="tab-pane active" id="tab-contacts">
 					<canvas id="line" class="chart chart-line" data="data"
 						labels="labels" legend="true" series="series"></canvas>
-				</div> -->
-			<div id="chartContainer" style="height: 300px; width: 100%;"></div>
-			<div id="chartContainer2" style="height: 300px; width: 100%;"></div>
-			<div id="chartContainer3" style="height: 300px; width: 100%;"></div>
-			<div id="chartContainer4" style="height: 300px; width: 100%;"></div>
-		</div>
-		<div>{{badSelect}}</div>
-		<!-- </div> -->
-	</section>
+	</div> -->
+	<table>
+		<thead><tr><td>Parameter</td><td>Period of data available</td></tr></thead>
+		<tbody>
+			<tr><td>Vapor pressure deficit (VPD)</td><td>2004-2016</td></tr>
+			<tr><td>Wind speed</td><td>2004-2016</td></tr>
+			<tr><td>Wind direction</td><td>2004-2016</td></tr>
+			<tr><td>Friction velocity (u*)</td><td>2004-2016</td></tr>
+			<tr><td>Sensible heat flux (H)</td><td>2004-2016</td></tr>
+			<tr><td>H quality control flag</td><td>2004-2016</td></tr>
+			<tr><td>Latent heat flux (LE)</td><td>2004-2016</td></tr>
+			<tr><td>LE quality control flag</td><td>2004-2016</td></tr>
+			<tr><td>Net ecosystem exchange of CO2 (NEE)</td><td>2004-2012 and 2015-2016</td></tr>
+			<tr><td>H2O flux</td><td>2004-2012 and 2015-2016</td></tr>
+			<tr><td>Methane (CH4) flux</td><td>2015-2016</td></tr>
+			<tr><td>CH4 quality control flag</td><td>2013-2016</td></tr>
+			<tr><td>CO2 mixing ratio</td><td>2004-2012 and 2015-2016</td></tr>
+			<tr><td>H2O mixing ratio</td><td>2004-2012 and 2015-2016</td></tr>
+			<tr><td>CH4 mixing ratio</td><td>2015-2016</td></tr>
+			<tr><td>Barometric pressure A</td><td>2004-2016</td></tr>
+			<tr><td>Relative humidity (RH) - LICOR</td></tr>
+			<tr><td>Gap-filled NEE</td></tr>
+			<tr><td>Gap-filled NEE quality control</td></tr>
+			<tr><td>Gap-filled LE</td></tr>
+			<tr><td>Gap-filled LE quality control</td></tr>
+			<tr><td>Gap-filled H</td></tr>
+			<tr><td>Gap-filled quality control</td></tr>
+			<tr><td>Ecosystem respiration (Reco)</td></tr>
+			<tr><td>Gross primary production (GPP)</td></tr>
+			<tr><td>Photosynthetically active radiation (PAR)</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Solar radiation (Rsolar)</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Net radiation (Rnet)</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Air temperature (Tair)</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Relative humidity (RH) - Vaisala</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil heat flux 1 (G1)</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil heat flux 2 (G2)</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil heat flux 3 (G3)</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Precipitation</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Barometric pressure B</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Photosynthetically active radiation (PAR) - BF4</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Diffuse PAR - BF4</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil water content 15cm A</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil water content 15cm B</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil water content 15cm C</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil water content 15cm D</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil water content 5cm A</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil water content 15cm E</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil water content 30cm A</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil water content 5cm B</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil water content 15cm F</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil water content 30cm B</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil temperature (Tsoil) 5 cm A</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil temperature (Tsoil) 15 cm A</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil temperature (Tsoil) 30 cm A</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil temperature (Tsoil) 5 cm B</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil temperature (Tsoil) 15 cm B</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Soil temperature (Tsoil) 30 cm B</td><td>1999-2008 and 2014-2016</td></tr>
+			<tr><td>Snow depth</td><td>1999-2008 and 2014-2016</td></tr>
+		</tbody>
+	</table>
+	<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+	<div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+	<div id="chartContainer3" style="height: 300px; width: 100%;"></div>
+	<div id="chartContainer4" style="height: 300px; width: 100%;"></div>
+</div>
+<div>{{badSelect}}</div>
+<!-- </div> -->
+</section>
 </article>
