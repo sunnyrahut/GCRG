@@ -19,7 +19,7 @@ gcrg
 							var allData4 = [];
 							var graphCount = 0;
 							$scope.generateGraph = function() {
-								$("body").addClass("loading");
+								start();
 								console.log($scope.fromDate);
 								graphCount++;
 								if (graphCount > 4) {
@@ -514,6 +514,7 @@ gcrg
 																			});
 																	chart
 																			.render();
+																			stop();
 																	break;
 
 																case 2:
@@ -543,6 +544,7 @@ gcrg
 																			});
 																	chart
 																			.render();
+																			stop();
 																	break;
 
 																case 3:
@@ -572,6 +574,7 @@ gcrg
 																			});
 																	chart
 																			.render();
+																			stop();
 																	break;
 
 																case 4:
@@ -601,6 +604,7 @@ gcrg
 																			});
 																	chart
 																			.render();
+																			stop();
 																	break;
 																}
 															} else {
@@ -1119,6 +1123,7 @@ gcrg
 																	// below
 																	});
 															chart.render();
+															stop();
 															break;
 
 														case 2:
@@ -1147,6 +1152,7 @@ gcrg
 																	// below
 																	});
 															chart.render();
+															stop();
 															break;
 
 														case 3:
@@ -1175,6 +1181,7 @@ gcrg
 																	// below
 																	});
 															chart.render();
+															stop();
 															break;
 
 														case 4:
@@ -1203,6 +1210,7 @@ gcrg
 																	// below
 																	});
 															chart.render();
+															stop();
 															break;
 														}
 													})
@@ -1406,3 +1414,10 @@ gcrg
 												});
 							};
 						} ]);
+function start() {
+	$("body").addClass("loading");
+}
+
+function stop() {
+	$("body").removeClass("loading");
+}
