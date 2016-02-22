@@ -140,65 +140,158 @@
 					<canvas id="line" class="chart chart-line" data="data"
 						labels="labels" legend="true" series="series"></canvas>
 	</div> -->
-	<table>
-		<thead><tr><td>Parameter</td><td>Period of data available</td></tr></thead>
-		<tbody>
-			<tr><td>Vapor pressure deficit (VPD)</td><td>2004-2016</td></tr>
-			<tr><td>Wind speed</td><td>2004-2016</td></tr>
-			<tr><td>Wind direction</td><td>2004-2016</td></tr>
-			<tr><td>Friction velocity (u*)</td><td>2004-2016</td></tr>
-			<tr><td>Sensible heat flux (H)</td><td>2004-2016</td></tr>
-			<tr><td>H quality control flag</td><td>2004-2016</td></tr>
-			<tr><td>Latent heat flux (LE)</td><td>2004-2016</td></tr>
-			<tr><td>LE quality control flag</td><td>2004-2016</td></tr>
-			<tr><td>Net ecosystem exchange of CO2 (NEE)</td><td>2004-2012 and 2015-2016</td></tr>
-			<tr><td>H2O flux</td><td>2004-2012 and 2015-2016</td></tr>
-			<tr><td>Methane (CH4) flux</td><td>2015-2016</td></tr>
-			<tr><td>CH4 quality control flag</td><td>2013-2016</td></tr>
-			<tr><td>CO2 mixing ratio</td><td>2004-2012 and 2015-2016</td></tr>
-			<tr><td>H2O mixing ratio</td><td>2004-2012 and 2015-2016</td></tr>
-			<tr><td>CH4 mixing ratio</td><td>2015-2016</td></tr>
-			<tr><td>Barometric pressure A</td><td>2004-2016</td></tr>
-			<tr><td>Relative humidity (RH) - LICOR</td></tr>
-			<tr><td>Gap-filled NEE</td></tr>
-			<tr><td>Gap-filled NEE quality control</td></tr>
-			<tr><td>Gap-filled LE</td></tr>
-			<tr><td>Gap-filled LE quality control</td></tr>
-			<tr><td>Gap-filled H</td></tr>
-			<tr><td>Gap-filled quality control</td></tr>
-			<tr><td>Ecosystem respiration (Reco)</td></tr>
-			<tr><td>Gross primary production (GPP)</td></tr>
-			<tr><td>Photosynthetically active radiation (PAR)</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Solar radiation (Rsolar)</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Net radiation (Rnet)</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Air temperature (Tair)</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Relative humidity (RH) - Vaisala</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil heat flux 1 (G1)</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil heat flux 2 (G2)</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil heat flux 3 (G3)</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Precipitation</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Barometric pressure B</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Photosynthetically active radiation (PAR) - BF4</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Diffuse PAR - BF4</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil water content 15cm A</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil water content 15cm B</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil water content 15cm C</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil water content 15cm D</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil water content 5cm A</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil water content 15cm E</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil water content 30cm A</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil water content 5cm B</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil water content 15cm F</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil water content 30cm B</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil temperature (Tsoil) 5 cm A</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil temperature (Tsoil) 15 cm A</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil temperature (Tsoil) 30 cm A</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil temperature (Tsoil) 5 cm B</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil temperature (Tsoil) 15 cm B</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Soil temperature (Tsoil) 30 cm B</td><td>1999-2008 and 2014-2016</td></tr>
-			<tr><td>Snow depth</td><td>1999-2008 and 2014-2016</td></tr>
-		</tbody>
-	</table>
+			<h1>Variables along with their time intervals for which the data
+			is available.</h1>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Parameter</th>
+					<th>Time interval</th>
+					<th>Parameter</th>
+					<th>Time interval</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><b>Vapor pressure deficit (VPD)</b></td>
+					<td>2004-2016</td>
+					<td><b>Wind speed</b></td>
+					<td>2004-2016</td>
+				</tr>
+				<tr>
+					<td><b>Wind direction</b></td>
+					<td>2004-2016</td>
+					<td><b>Friction velocity (u*)</b></td>
+					<td>2004-2016</td>
+				</tr>
+				<tr>
+					<td><b>Sensible heat flux (H)</b></td>
+					<td>2004-2016</td>
+					<td><b>H quality control flag</b></td>
+					<td>2004-2016</td>
+				</tr>
+				<tr>
+					<td><b>Latent heat flux (LE)</b></td>
+					<td>2004-2016</td>
+					<td><b>LE quality control flag</b></td>
+					<td>2004-2016</td>
+				</tr>
+				<tr>
+					<td><b>Net ecosystem exchange of CO2 (NEE)</b></td>
+					<td>2004-2012 and 2015-2016</td>
+					<td><b>H2O flux</b></td>
+					<td>2004-2012 and 2015-2016</td>
+				</tr>
+				<tr>
+					<td><b>Methane (CH4) flux</b></td>
+					<td>2015-2016</td>
+					<td><b>CH4 quality control flag</b></td>
+					<td>2013-2016</td>
+				</tr>
+				<tr>
+					<td><b>CO2 mixing ratio</b></td>
+					<td>2004-2012 and 2015-2016</td>
+					<td><b>H2O mixing ratio</b></td>
+					<td>2004-2012 and 2015-2016</td>
+				</tr>
+				<tr>
+					<td><b>CH4 mixing ratio</b></td>
+					<td>2015-2016</td>
+					<td><b>Barometric pressure A</b></td>
+					<td>2004-2016</td>
+				</tr>
+				<tr>
+					<td><b>Relative humidity (RH) - LICOR</b></td>
+					<td></td>
+					<td><b>Photosynthetically active radiation (PAR)</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Solar radiation (Rsolar)</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Net radiation (Rnet)</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Air temperature (Tair)</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Relative humidity (RH) - Vaisala</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Soil heat flux 1 (G1)</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Soil heat flux 2 (G2)</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Soil heat flux 3 (G3)</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Precipitation</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Barometric pressure B</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Photosynthetically active radiation (PAR) - BF4</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Diffuse PAR - BF4</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Soil water content 15cm A</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Soil water content 15cm B</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Soil water content 15cm C</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Soil water content 15cm D</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Soil water content 5cm A</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Soil water content 15cm E</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Soil water content 30cm A</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Soil water content 5cm B</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Soil water content 15cm F</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Soil water content 30cm B</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Soil temperature (Tsoil) 5 cm A</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Soil temperature (Tsoil) 15 cm A</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Soil temperature (Tsoil) 30 cm A</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Soil temperature (Tsoil) 5 cm B</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Soil temperature (Tsoil) 15 cm B</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+				<tr>
+					<td><b>Soil temperature (Tsoil) 30 cm B</b></td>
+					<td>1999-2008 and 2014-2016</td>
+					<td><b>Snow depth</b></td>
+					<td>1999-2008 and 2014-2016</td>
+				</tr>
+			</tbody>
+		</table>
 	<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 	<div id="chartContainer2" style="height: 300px; width: 100%;"></div>
 	<div id="chartContainer3" style="height: 300px; width: 100%;"></div>
