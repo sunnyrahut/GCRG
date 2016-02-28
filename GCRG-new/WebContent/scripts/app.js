@@ -31,6 +31,9 @@ gcrg.run([ '$http', '$templateCache', function($http, $templateCache) {
 	$http.get('graphAdmin.html', {
 		cache : $templateCache
 	});
+	$http.get('info.html', {
+		cache : $templateCache
+	});
 } ]);
 
 gcrg.factory("authenticateUser", function($http, $q, $window, $location) {
@@ -281,6 +284,34 @@ gcrg
 																.parse($window.sessionStorage["userInfo"]);
 
 														if (userInfo.userType == "User") {
+															return $q
+																	.when(userInfo);
+														} else {
+															return $q
+																	.reject({
+																		authenticated : false
+																	});
+														}
+													} ]
+										}
+									})
+							.when(
+									'/info',
+									{
+										templateUrl : 'info.html',
+										controller : 'Info',
+										resolve : {
+											auth : [
+													"$q",
+													"$window",
+													"authenticateUser",
+													function($q, $window,
+															authenticateUser) {
+														var userInfo = JSON
+																.parse($window.sessionStorage["userInfo"]);
+
+														if (userInfo.userType == "User"
+																|| userInfo.userType == "Admin") {
 															return $q
 																	.when(userInfo);
 														} else {
