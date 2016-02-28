@@ -1,0 +1,401 @@
+<header>
+	<div style="text-align: center">
+		<div class="heading">Global Change Research Group</div>
+		<button type="button" ng-click="signOut()"
+			class="btn btn-default navbar-btn">logout</button>
+	</div>
+</header>
+<nav>
+	<div class="tab-background">
+		<ul class="nav nav-tabs nav-justified">
+			<li><a href="#/graphUser">Graphs</a></li>
+			<li class="active"><a>Variables Information</a></li>
+		</ul>
+	</div>
+</nav>
+<article>
+	<section>
+		<div id="content" class="tab-content">
+			<h1>Variables along with their time intervals for which the data
+				is available.</h1>
+			<h1>
+				<b>Flux and auxilary data</b>
+			</h1>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th style="width: 300px">Drop down name</th>
+						<th>Definition</th>
+						<th style="width: 130px">Units</th>
+						<th style="width: 250px">Time interval</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><b>Vapor pressure deficit (VPD)</b></td>
+						<td>The difference between the vapor pressure inside the leaf
+							compared to the vapor pressure of the air</td>
+						<td>Pascal</td>
+						<td>2004-2008</td>
+					</tr>
+					<tr>
+						<td><b>Wind Speed</b></td>
+						<td>Wind speed in the region</td>
+						<td>m s<sup>-1</sup></td>
+						<td>2004-2008 and 2011-present</td>
+					</tr>
+					<tr>
+						<td><b>Wind Direction</b></td>
+						<td>Wind direction in the region</td>
+						<td>Degrees</td>
+						<td>2004-2008 and 2011-present</td>
+					</tr>
+					<tr>
+						<td><b>Friction velocity (u*)</b></td>
+						<td>It is useful as a method in fluid mechanics to compare
+							true velocities, such as the velocity of a flow in a stream, to a
+							velocity that relates shear between layers of flow</td>
+						<td>m s<sup>-1</sup></td>
+						<td>2004-2008 and 2011-present</td>
+					</tr>
+					<tr>
+						<td><b>Sensible heat flux (H)</b></td>
+						<td>It is the process where heat energy is transferred from
+							the Earth's surface to the atmosphere by conduction and
+							convection</td>
+						<td>W m<sup>-2</sup></td>
+						<td>2004-2008 and 2011-present</td>
+					</tr>
+					<tr>
+						<td><b>H quality control flag</b></td>
+						<td>This is a constant used for filling the gaps in the data</td>
+						<td>N/A</td>
+						<td>2004-2008 and 2015-present</td>
+					</tr>
+					<tr>
+						<td><b>Latent heat flux (LE)</b></td>
+						<td>It is the flux of heat from the Earth's surface to the
+							atmosphere that is associated with evaporation of water at the
+							surface and subsequent condensation of water vapor in the
+							troposphere</td>
+						<td>W m<sup>-2</sup></td>
+						<td>2004-2008 and 2015-present</td>
+					</tr>
+					<tr>
+						<td><b>LE quality control flag</b></td>
+						<td>This is a constant used for filling the gaps in the data</td>
+						<td>N/A</td>
+						<td>2004-2008 and 2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Net ecosystem exchange of CO<sub>2</sub> (NEE)
+						</b></td>
+						<td>It is calculated by how much CO<sub>2</sub> is put into
+							the environment compared to how much is removed
+						</td>
+						<td>mg C m<sup>-2</sup> h<sup>-1</sup></td>
+						<td>2004-2008 and 2011-present</td>
+					</tr>
+					<tr>
+						<td><b>H<sub>2</sub>O flux
+						</b></td>
+						<td>It is calculated by how much H<sub>2</sub>O is put into
+							the environment compared to how much is removed
+						</td>
+						<td>mmol m<sup>-2</sup> s<sup>-1</sup></td>
+						<td>2004-2008 and 2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Methane (CH<sub>4</sub>) flux
+						</b></td>
+						<td>It is calculated by how much CH<sub>4</sub> is put into
+							the environment compared to how much is removed
+						</td>
+						<td>mg C m<sup>-2</sup> h<sup>-1</sup></td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>CH<sub>4</sub> quality control flag
+						</b></td>
+						<td>This is a constant used for filling the gaps in the data</td>
+						<td>N/A</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>CO<sub>2</sub> mixing ratio
+						</b></td>
+						<td>It is defined as the number of moles of CO<sub>2</sub>
+							per mole of air
+						</td>
+						<td>&#181mol mol<sup>-1</sup></td>
+						<td>2004-2008 and 2015-present</td>
+					</tr>
+					<tr>
+						<td><b>H<sub>2</sub>O mixing ratio
+						</b></td>
+						<td>It is defined as the number of moles of CO<sub>2</sub>
+							per mole of air
+						</td>
+						<td>&#181mol mol<sup>-1</sup></td>
+						<td>2004-2008 and 2015-present</td>
+					</tr>
+					<tr>
+						<td><b>CH<sub>4</sub> mixing ratio
+						</b></td>
+						<td>It is defined as the number of moles of CH<sub>4</sub>
+							per mole of air
+						</td>
+						<td>&#181mol mol<sup>-1</sup></td>
+						<td>2015-present</td>
+					</tr>
+					<tr>
+						<td><b>Relative humidity (RH) - LICOR</b></td>
+						<td>The amount of water vapor present in air expressed as a
+							percentage of the amount needed for saturation at the same
+							temperature.</td>
+						<td>%</td>
+						<td>2004-2008 and 2011-present</td>
+					</tr>
+				</tbody>
+			</table>
+			<h1>
+				<b>Meteorological data</b>
+			</h1>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th style="width: 300px">Drop down name</th>
+						<th>Definition</th>
+						<th style="width: 130px">Units</th>
+						<th style="width: 250px">Time interval</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><b>Precipitation</b></td>
+						<td>Rain, snow, sleet, or hail that falls to the ground</td>
+						<td>mm</td>
+						<td>1999-2008 and 2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Photosynthetically active radiation (PAR)</b></td>
+						<td>It is the amount of light available for photosynthesis,
+							which is light in the 400 to 700 nanometer wavelength range</td>
+						<td>&#181mol m<sup>-2</sup> s<sup>-1</sup></td>
+						<td>1999-2008 and 2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Solar radiation (Rsolar)</b></td>
+						<td>It is radiant energy emitted by the sun from a nuclear
+							fusion reaction that creates electromagnetic energy</td>
+						<td>W m<sup>-2</sup></td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Net radiation (Rnet)</b></td>
+						<td>It is the balance between incoming and outgoing energy at
+							the top of the atmosphere</td>
+						<td>W m<sup>-2</sup></td>
+						<td>1999-2008 and 2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Air temperature (Tair)</b></td>
+						<td>It is a measure of how hot or cold the air is</td>
+						<td>&#176C</td>
+						<td>1999-2008 and 2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Relative humidity (RH) - Vaisala</b></td>
+						<td>The amount of water vapor present in air expressed as a
+							percentage of the amount needed for saturation at the same
+							temperature.</td>
+						<td>%</td>
+						<td>1999-2008 and 2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil heat flux 1 (G1)</b></td>
+						<td>It is the process where heat energy is transferred from
+							the Earth's surface to the subsurface of the Earth via conduction</td>
+						<td>W m<sup>-2</sup></td>
+						<td>1999-2008 and 2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil heat flux 2 (G2)</b></td>
+						<td>It is the process where heat energy is transferred from
+							the Earth's surface to the subsurface of the Earth via conduction</td>
+						<td>W m<sup>-2</sup></td>
+						<td>1999-2008 and 2013-2014</td>
+					</tr>
+					<tr>
+						<td><b>Barometric pressure</b></td>
+						<td>It is the pressure exerted by the weight of the
+							atmosphere</td>
+						<td>mbar</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Photosynthetically active radiation (PAR) - BF4</b></td>
+						<td>It is the amount of light available for photosynthesis,
+							which is light in the 400 to 700 nanometer wavelength range</td>
+						<td>&#181mol m<sup>-2</sup> s<sup>-1</sup></td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Diffuse PAR - BF4</b></td>
+						<td>It is the amount of light available for photosynthesis,
+							which is light in the 400 to 700 nanometer wavelength range over
+							a wide area</td>
+						<td>&#181mol m<sup>-2</sup> s<sup>-1</sup></td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil water content 15cm A</b></td>
+						<td>It is the ratio of the mass of water in a sample to the
+							mass of solids in the sample, expressed as a percentage at 15 cm
+							depth in the soil profile A</td>
+						<td>%</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil water content 15cm B</b></td>
+						<td>It is the ratio of the mass of water in a sample to the
+							mass of solids in the sample, expressed as a percentage at 15 cm
+							depth in the soil profile B</td>
+						<td>%</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil water content 15cm C</b></td>
+						<td>It is the ratio of the mass of water in a sample to the
+							mass of solids in the sample, expressed as a percentage at 15 cm
+							depth in the soil profile C</td>
+						<td>%</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil water content 15cm D</b></td>
+						<td>It is the ratio of the mass of water in a sample to the
+							mass of solids in the sample, expressed as a percentage at 15 cm
+							depth in the soil profile D</td>
+						<td>%</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil water content 5cm A</b></td>
+						<td>It is the ratio of the mass of water in a sample to the
+							mass of solids in the sample, expressed as a percentage at 5 cm
+							depth in the soil profile A</td>
+						<td>%</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil water content 15cm E</b></td>
+						<td>It is the ratio of the mass of water in a sample to the
+							mass of solids in the sample, expressed as a percentage at 15 cm
+							depth in the soil profile E</td>
+						<td>%</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil water content 30cm A</b></td>
+						<td>It is the ratio of the mass of water in a sample to the
+							mass of solids in the sample, expressed as a percentage at 30 cm
+							depth in the soil profile A</td>
+						<td>%</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil water content 5cm B</b></td>
+						<td>It is the ratio of the mass of water in a sample to the
+							mass of solids in the sample, expressed as a percentage at 5 cm
+							depth in the soil profile B</td>
+						<td>%</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil water content 15cm F</b></td>
+						<td>It is the ratio of the mass of water in a sample to the
+							mass of solids in the sample, expressed as a percentage at 15 cm
+							depth in the soil profile F</td>
+						<td>%</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil water content 30cm B</b></td>
+						<td>It is the ratio of the mass of water in a sample to the
+							mass of solids in the sample, expressed as a percentage at 30 cm
+							depth in the soil profile B</td>
+						<td>%</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil temperature (Tsoil) 5 cm A</b></td>
+						<td>Temperature of the soil profile A at 5 cm depth</td>
+						<td>&#176C</td>
+						<td>2014-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil temperature (Tsoil) 15 cm A</b></td>
+						<td>Temperature of the soil profile A at 15 cm depth</td>
+						<td>&#176C</td>
+						<td>2014-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil temperature (Tsoil) 30 cm A</b></td>
+						<td>Temperature of the soil profile A at 30 cm depth</td>
+						<td>&#176C</td>
+						<td>2014-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil temperature (Tsoil) 5 cm B</b></td>
+						<td>Temperature of the soil profile B at 5 cm depth</td>
+						<td>&#176C</td>
+						<td>2014-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil temperature (Tsoil) 15 cm B</b></td>
+						<td>Temperature of the soil profile B at 15 cm depth</td>
+						<td>&#176C</td>
+						<td>2014-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil temperature (Tsoil) 30 cm B</b></td>
+						<td>Temperature of the soil profile B at 30 cm depth</td>
+						<td>&#176C</td>
+						<td>2014-present</td>
+					</tr>
+					<tr>
+						<td><b>Snow depth</b></td>
+						<td>Depth of the snow in the region</td>
+						<td>m</td>
+						<td>2013-present</td>
+					</tr>
+					<tr>
+						<td><b>Soil temperature (Tsoil) surface C</b></td>
+						<td>Temperature of the soil surface C</td>
+						<td>&#176C</td>
+						<td>1999-2008</td>
+					</tr>
+					<tr>
+						<td><b>Soil temperature (Tsoil) 5 cm C</b></td>
+						<td>Temperature of the soil surface C at 5cm depth</td>
+						<td>&#176C</td>
+						<td>1999-2008</td>
+					</tr>
+					<tr>
+						<td><b>Soil temperature (Tsoil) surface D</b></td>
+						<td>Temperature of the soil surface D</td>
+						<td>&#176C</td>
+						<td>1999-2008</td>
+					</tr>
+					<tr>
+						<td><b>Soil temperature (Tsoil) 5 cm D</b></td>
+						<td>Temperature of the soil surface D at 5cm depth</td>
+						<td>&#176C</td>
+						<td>1999-2008</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</article>
