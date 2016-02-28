@@ -9,6 +9,7 @@
 	<div class="tab-background">
 		<ul class="nav nav-tabs nav-justified">
 			<li class="active"><a>Graphs</a></li>
+			<li><a href="#/info">Variables Information</a></li>
 		</ul>
 	</div>
 </nav>
@@ -23,7 +24,7 @@
 						<th>From Date</th>
 						<th>To Date</th>
 						<th>Frequency</th>
-						<th>Window</th>
+						<th>Averaging interval</th>
 						<th>Data type</th>
 						<th>Parameter</th>
 					</tr>
@@ -51,9 +52,10 @@
 						</select></td>
 						<td><select ng-model="dataType">
 								<option value="">Select</option>
-								<option value="atq_no_gap_filled_cleaned">No gap filled</option>
-								<option value="atq_gap_filled">Gap filled</option>
-								<option value="atq_meteorological">Meteorological</option>
+								<option value="atq_no_gap_filled_cleaned">Flux &
+									auxilary data</option>
+								<option value="atq_gap_filled">Gap filled data</option>
+								<option value="atq_meteorological">Meteorological data</option>
 						</select></td>
 						<td><select ng-model="parameter"
 							ng-show="dataType=='atq_no_gap_filled_cleaned'">
@@ -73,7 +75,6 @@
 								<option value="co2_mixing_ratio">CO2 mixing ratio</option>
 								<option value="h2o_mixing_ratio">H2O mixing ratio</option>
 								<option value="ch4_mixing_ratio">CH4 mixing ratio</option>
-								<option value="air_pressure">Baro. Pressure A</option>
 								<option value="rh">RH - LICOR</option>
 						</select> <select ng-model="parameter" ng-show="dataType=='atq_gap_filled'">
 								<option value="">Select</option>
@@ -95,9 +96,8 @@
 								<option value="rh_AVG_L">RH - Vaisala</option>
 								<option value="g_1_AVG_L">G1</option>
 								<option value="g_2_AVG_L">G2</option>
-								<option value="g_3_AVG_L">G3</option>
 								<option value="ppt_TOT_L">Precip.</option>
-								<option value="press_mb_AVG_L">Baro. Pressure B</option>
+								<option value="press_mb_AVG_L">Baro. Pressure</option>
 								<option value="ss_Tl_R_AVG_L">Total PAR - BF4</option>
 								<option value="ss_Dif_R_AVG_L">Diffuse PAR - BF4</option>
 								<option value="swc_1_AVG_L">SWC 15 cm A</option>
@@ -129,10 +129,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<div style="text-align: center">
-				<a href="http://www.bgc-jena.mpg.de/~MDIwork/eddyproc/upload.php"
-					target="_blank">Eddy Covariance Gap-Filling Tool </a>
-			</div>
+
 			<!-- <div class="tab-pane active" id="tab-contacts">
 					<canvas id="line" class="chart chart-line" data="data"
 						labels="labels" legend="true" series="series"></canvas>
