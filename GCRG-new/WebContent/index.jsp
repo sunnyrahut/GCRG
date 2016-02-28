@@ -40,7 +40,9 @@
 				Foundation or NASA.</b>
 		</p>
 	</footer>
-	<div class="modal"></div>
+	<div class="modal">
+		<!-- Place at bottom of page -->
+	</div>
 	<!-- JavaScripts libraries-->
 	<script type="text/javascript"
 		src="http://maps.googleapis.com/maps/api/js"></script>
@@ -78,6 +80,7 @@
 	<script type="text/javascript" src="scripts/controllers/doneUser.js"></script>
 	<script type="text/javascript" src="scripts/controllers/viewUsers.js"></script>
 	<script type="text/javascript" src="scripts/controllers/contacts.js"></script>
+	<script type="text/javascript" src="scripts/controllers/info.js"></script>
 	<script type="text/javascript" src="scripts/controllers/fileUpload.js"></script>
 	<script type="text/javascript"
 		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
